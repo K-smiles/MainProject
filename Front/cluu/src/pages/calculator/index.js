@@ -1,4 +1,4 @@
-/**
+/*
 =========================================================
 * Material Kit 2 React - v2.1.0
 =========================================================
@@ -13,10 +13,14 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import Card from "@mui/material/Card";
+// @mui material components
+import Grid from "@mui/material/Grid";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
+import MKInput from "components/MKInput";
+import MKButton from "components/MKButton";
+import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
@@ -26,32 +30,18 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
-//sub element
-import HomeHeader from "pages/home/content/Header";
-import Places from "pages/home/content/Posts";
-/**
- * Home page, includes header, and sections.
- * @returns 
- */
-
-function Home() {
+// Image
+import bgImage from "assets/images/illustrations/illustration-reset.jpg";
+import Content from 'pages/calculator/content'
+function Calculator() {
     return (
         <>
             <MKBox position="fixed" top="0.5rem" width="100%">
-                <DefaultNavbar routes={routes} />
+                <DefaultNavbar
+                    routes={routes}
+                />
             </MKBox>
-            <HomeHeader />
-            <Card
-                sx={{
-                    p: 2,
-                    mx: { xs: 2, lg: 3 },
-                    mt: -8,
-                    mb: 4,
-                    boxShadow: ({ boxShadows: { xxl } }) => xxl,
-                }}
-            >
-                <Places />
-            </Card>
+            <Content/>
             <MKBox pt={6} px={1} mt={6}>
                 <DefaultFooter content={footerRoutes} />
             </MKBox>
@@ -59,4 +49,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Calculator;

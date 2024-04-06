@@ -23,13 +23,9 @@ import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React components
 import TransparentBlogCard from "examples/Cards/BlogCards/TransparentBlogCard";
-import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
 
 // Images
 import post1 from "assets/images/examples/testimonial-6-2.jpg";
-import post2 from "assets/images/examples/testimonial-6-3.jpg";
-import post3 from "assets/images/examples/blog-9-4.jpg";
-import post4 from "assets/images/examples/blog2.jpg";
 
 function Places() {
     return (
@@ -37,10 +33,38 @@ function Places() {
             <Container>
                 <Grid container item xs={12} lg={6}>
                     <MKTypography variant="h3" mb={6}>
-                        内容标题
+                        Sections
                     </MKTypography>
                 </Grid>
                 <Grid container spacing={3}>
+                    <Grid item xs={15} sm={8} lg={4}>
+                        <TransparentBlogCard
+                            image={post1}
+                            title="Diabetes Introduction"
+                            description="Discover the essentials of diabetes, 
+                            from its basic definition to understanding its various types and how it affects your health"
+                            action={{
+                                type: "internal",
+                                route: "/disabetes",
+                                color: "info",
+                                label: "read more",
+                            }}
+                        />
+                    </Grid>
+                    <Grid item xs={15} sm={8} lg={4}>
+                        <TransparentBlogCard
+                            image={post1}
+                            title="Diabetes risk calculator"
+                            description="Quickly assess your risk for diabetes with our simple 
+                            questionnaire and receive personalized results to help guide your health decisions."
+                            action={{
+                                type: "internal",
+                                route: "/calculator",
+                                color: "info",
+                                label: "read more",
+                            }}
+                        />
+                    </Grid>
                     <Grid item xs={15} sm={8} lg={4}>
                         <TransparentBlogCard
                             image={post1}
@@ -48,39 +72,12 @@ function Places() {
                             description="描述"
                             action={{
                                 type: "internal",
-                                route: "/pages/blogs/author",
+                                route: "/#",
                                 color: "info",
                                 label: "read more",
                             }}
                         />
                     </Grid>
-                    <Grid item xs={15} sm={8} lg={4}>
-                        <TransparentBlogCard
-                            image={post2}
-                            title="MateLabs machine learning"
-                            description="If you’ve ever wanted to train a machine learning model and integrate it with IFTTT, you now can with ..."
-                            action={{
-                                type: "internal",
-                                route: "/pages/blogs/author",
-                                color: "info",
-                                label: "read more",
-                            }}
-                        />
-                    </Grid>
-                    <Grid item xs={15} sm={8} lg={4}>
-                        <TransparentBlogCard
-                            image={post3}
-                            title="MateLabs machine learning"
-                            description="If you’ve ever wanted to train a machine learning model and integrate it with IFTTT, you now can with ..."
-                            action={{
-                                type: "internal",
-                                route: "/pages/blogs/author",
-                                color: "info",
-                                label: "read more",
-                            }}
-                        />
-                    </Grid>
-
                 </Grid>
             </Container>
         </MKBox>

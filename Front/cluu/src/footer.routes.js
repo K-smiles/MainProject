@@ -1,6 +1,5 @@
 // @mui icons
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 
@@ -14,18 +13,14 @@ const date = new Date().getFullYear();
 
 export default {
   brand: {
-    name: "Material Kit 2",
+    name: "DiabeticGuardian",
     image: logoCT,
     route: "/",
   },
   socials: [
     {
       icon: <FacebookIcon />,
-      link: "https://www.facebook.com/CreativeTim/",
-    },
-    {
-      icon: <TwitterIcon />,
-      link: "https://twitter.com/creativetim",
+      link: "https://www.facebook.com",
     },
     {
       icon: <GitHubIcon />,
@@ -33,12 +28,12 @@ export default {
     },
     {
       icon: <YouTubeIcon />,
-      link: "https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w",
+      link: "https://www.youtube.com",
     },
   ],
   menus: [
     {
-      name: "company",
+      name: "Team",
       items: [
         { name: "about us", href: "https://www.creative-tim.com/presentation" },
         { name: "freebies", href: "https://www.creative-tim.com/templates/free" },

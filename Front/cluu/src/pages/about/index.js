@@ -1,4 +1,4 @@
-/**
+/*
 =========================================================
 * Material Kit 2 React - v2.1.0
 =========================================================
@@ -13,8 +13,7 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useState } from "react";
-
+// @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -28,32 +27,27 @@ import MKButton from "components/MKButton";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
+// About Us page sections
+import Information from "pages/about/sections/Information";
+import Team from "pages/about/sections/Team";
+import Featuring from "pages/about/sections/Featuring";
+import Newsletter from "pages/about/sections/Newsletter";
+
 // Routes
 import routes from "routes";
 import footerRoutes from "footer.routes";
-import Newsletter from "pages/LandingPages/AboutUs/sections/Newsletter";
+
 // Images
 import bgImage from "assets/images/bg-about-us.jpg";
 
-
-function TestPa() {
-  const [rememberMe, setRememberMe] = useState(false);
-
-  const handleSetRememberMe = () => setRememberMe(!rememberMe);
-
+function About() {
   return (
     <>
-      <DefaultNavbar
-        routes={routes}
-        action={{
-          type: "external",
-          route: "https://www.creative-tim.com/product/material-kit-react",
-          label: "free download",
-          color: "default",
-        }}
-        transparent
-        light
-      />
+      <MKBox position="fixed" top="0.5rem" width="100%">
+        <DefaultNavbar
+          routes={routes}
+        />
+      </MKBox>
       <MKBox
         minHeight="75vh"
         width="100%"
@@ -118,17 +112,30 @@ function TestPa() {
           </Grid>
         </Container>
       </MKBox>
-      <Card
+      <MKBox
+        minHeight="75vh"
+        width="100%"
         sx={{
-          p: 2,
-          mx: { xs: 2, lg: 3 },
-          mt: -8,
-          mb: 4,
-          boxShadow: ({ boxShadows: { xxl } }) => xxl,
+          backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
+            `${linearGradient(
+              rgba(gradients.dark.main, 0.6),
+              rgba(gradients.dark.state, 0.6)
+            )}, url(${bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "grid",
+          placeItems: "center",
         }}
       >
-       <Newsletter />
-      </Card>
+
+
+    
+        <Featuring />
+        <Newsletter />
+        <Team/>
+      </MKBox>
+
+
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>
@@ -136,11 +143,4 @@ function TestPa() {
   );
 }
 
-export default TestPa;
-
-
-
-// <Information />
-// <Team />
-// <Featuring />
-// <Newsletter />
+export default About;
