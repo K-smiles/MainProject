@@ -284,7 +284,20 @@ function Content() {
                             </Grid>
                         </MKBox>
 
-                        {/* Continue with existing content sections */}
+                        <MKBox p={3}>
+                            <Grid container spacing={3}>
+                                <Grid item ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }}  style={{ fontSize: "1rem" }}>
+                                    Reference:
+                                    <br />Diabetes Australia. (2018, June 7). *Type 2 Diabetes warning* [Video]. YouTube. https://www.youtube.com/watch?v=b6zmySnj0zQ
+                                    <br />My Health My Community. (2018, March 8). *Diabetes daily routine* [Video]. YouTube. https://www.youtube.com/watch?v=dnW_9deG95Y
+                                    <br />Diabetes Australia. (2019, September 16). *If I Had Known - Barry's Story* [Video]. YouTube. https://www.youtube.com/watch?v=6CUNs5LzwoE
+                                    <br />1. International Working Group on the Diabetic Foot. (2020). Diabetic foot syndrome: Epidemiology, economic impact, and guidelines for management. International Journal of Wound Care, 27(3), 263-271. https://doi.org/10.1111/iwj.13781
+                                    <br />2. Gregg, E. W., Li, Y., Wang, J., Burrows, N. R., Ali, M. K., Rolka, D., Williams, D. E., & Geiss, L. (2016). Changes in diabetes-related complications in the United States, 1990–2010. New England Journal of Medicine, 370(16), 1514-1523. https://www.sciencedirect.com/science/article/abs/pii/S016882271630225X
+                                    <br />3. World Health Organization. (2020). Diabetes. https://www.who.int/zh/news-room/fact-sheets/detail/diabetes
+                                    <br />4. Centers for Disease Control and Prevention. (2020). What is diabetes? https://www.cdc.gov/diabetes/basics/diabetes.html
+                                </Grid>
+                            </Grid>
+                        </MKBox>
                     </MKBox>
                 </Grid>
             </Grid>

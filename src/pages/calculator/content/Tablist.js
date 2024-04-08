@@ -146,7 +146,7 @@ export default function BasicTabs() {
     setTabValue(12)
   };
   return (
-    <MKBox sx={{ width: '100%' }} bgColor="primary">
+    <MKBox sx={{ width: '100%' }} >
       <MKBox bgColor="info" sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={tabValue} onChange={handleTabChange} aria-label="basic tabs example">
           <Tab label="1" {...a11yProps(0)} />

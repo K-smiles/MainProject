@@ -16,7 +16,7 @@ export default function AccordionUsage() {
                     aria-controls="panel3-content"
                     id="panel3-header"
                 >
-                    More details
+                    <h1>More details</h1>
                 </AccordionSummary>
                 <AccordionDetails>
                     <CateTable />

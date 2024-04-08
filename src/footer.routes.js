@@ -35,14 +35,14 @@ export default {
     {
       name: "Team",
       items: [
-        { name: "about us", href: "https://www.creative-tim.com/presentation" },
+        { name: "about us", href: "/about" },
       ],
     },
     {
       name: "help & support",
       items: [
         { name: "contact us", href: "" },
-        { name: "sponsorships", href: "https://www.creative-tim.com/sponsorships" },
+        { name: "sponsorships", href: "" },
       ],
     },
     {

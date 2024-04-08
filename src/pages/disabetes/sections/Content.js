@@ -44,7 +44,6 @@ function Content() {
     };
 
     return (
-
         <>
             <MKBox
                 minHeight="75vh"
@@ -151,10 +150,13 @@ function Content() {
                                     Type 1, an autoimmune disease that causes insulin deficiency; <br /><br />
                                     Type 2 diabetes, caused by the body's ineffective use of insulin, is often linked to lifestyle factors; Gestational diabetes, which occurs during pregnancy. <br /><br />
                                     However, our web project focuses on type 2 diabetes with an emphasis on prevention and management through lifestyle changes, as type 1 diabetes is largely inherited.
+                                    <AccordionUsage />
                                 </Grid>
+              
                             </Grid>
+    
                         </MKBox>
-                        <AccordionUsage />
+
                         <MKBox
                             variant="gradient"
                             bgColor="white"
@@ -181,7 +183,7 @@ function Content() {
                                 </Grid>
                                 <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }} style={{ fontSize: "1.5rem" }} >
                                     <Link to="/disabetes/2">
-                                        <MKButton color="primary">More Content</MKButton>
+                                        <MKButton color="info">More Content</MKButton>
                                     </Link>
                                 </Grid>
 

@@ -25,10 +25,10 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 
 import Content from "./sections/Content";
-
 function Disabetes() {
     return (
         <>
+    
             <DefaultNavbar routes={routes}
                 transparent
                 relative

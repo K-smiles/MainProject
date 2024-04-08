@@ -18,16 +18,16 @@ const routes = [
     component: <Home />,
   },
   {
-    name: "What is Disabetes ?",
+    name: "What is Diabetes ?",
     icon: <Icon>dashboard</Icon>,
     columns: 1,
     rowsPerColumn: 2,
     collapse: [
       {
-        name: "Disabetes",
+        name: "Diabetes",
         collapse: [
           {
-            name: "Disabetes",
+            name: "Diabetes",
             route: "/disabetes/1",
             component: <Disabetes />,
           },
