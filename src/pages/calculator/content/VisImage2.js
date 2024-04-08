@@ -166,7 +166,7 @@ function VisImage(props) {
       .style("text-decoration", "underline")
       .style("font-weight", "bold")
       .style("font-family", "Arial, sans-serif")
-      .text("Age Influence in Diabetes");
+      .text("Waist Influence in Diabetes");
 
 
 
