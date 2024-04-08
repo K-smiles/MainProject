@@ -29,11 +29,11 @@ import footerRoutes from "footer.routes";
 //sub element
 import HomeHeader from "pages/home/content/Header";
 import Places from "pages/home/content/Posts";
+
 /**
  * Home page, includes header, and sections.
  * @returns 
  */
-
 function Home() {
     return (
         <>

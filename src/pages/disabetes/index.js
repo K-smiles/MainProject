@@ -29,7 +29,7 @@ import Content from "./sections/Content";
 function Disabetes() {
     return (
         <>
-            <MKBox position="fixed" top="0.5rem" width="100%">
+            <MKBox position="fixed" top="0.5rem" width="100%" zIndex={9999}>
                 <DefaultNavbar routes={routes}/>
             </MKBox>
             <Content />

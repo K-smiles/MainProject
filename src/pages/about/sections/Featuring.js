@@ -58,29 +58,30 @@ function Featuring() {
         <Grid container justifyContent="center" sx={{ textAlign: "center" }}>
           <Grid item xs={12} md={3}>
             <DefaultCounterCard
-              count={5234}
+              count={20}
               separator=","
-              title="Projects"
-              description="Of “high-performing” level are led by a certified project manager"
+              title={<span style={{ color: "#00BFFF", fontSize: "2rem" }}>Projects</span>}
+              description={<span style={{ color: "white", fontSize: "1rem" }}>Number of projects completed by team members</span>}
             />
           </Grid>
           <Grid item xs={12} md={3}>
             <DefaultCounterCard
-              count={3400}
+              count={960}
               separator=","
               suffix="+"
-              title="Hours"
-              description="That meets quality standards required by our users"
+              title={<span style={{ color: "#00BFFF", fontSize: "2rem" }}>Hours</span>}
+              description={<span style={{ color: "white",fontSize: "1rem" }}>Total development time of the project</span>}
             />
           </Grid>
           <Grid item xs={12} md={3}>
             <DefaultCounterCard
               count={24}
-              suffix="/7"
-              title="Support"
-              description="Actively engage team members that finishes on time"
+              suffix="/5"
+              title={<span style={{ color: "#00BFFF", fontSize: "2rem" }}>Delivery time</span>}
+              description={<span style={{ color: "white",fontSize: "1rem" }}>The team will provide you with a complete service by the May 27 deadline</span>}
             />
           </Grid>
+
         </Grid>
       </Container>
     </MKBox>

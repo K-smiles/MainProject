@@ -6,19 +6,20 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import CateTable from './CateTable';
+
 export default function AccordionUsage() {
     return (
         <div>
-            <Accordion defaultExpanded>
+            <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel3-content"
                     id="panel3-header"
                 >
-                    Accordion Actions
+                    More details
                 </AccordionSummary>
                 <AccordionDetails>
-                    <CateTable/>
+                    <CateTable />
                 </AccordionDetails>
                 <AccordionActions>
                     <Button>Cancel</Button>

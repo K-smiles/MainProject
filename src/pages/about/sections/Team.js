@@ -25,10 +25,10 @@ import MKTypography from "components/MKTypography";
 import HorizontalTeamCard from "examples/Cards/TeamCards/HorizontalTeamCard";
 
 // Images
-import team1 from "assets/images/team-5.jpg";
-import team2 from "assets/images/bruce-mars.jpg";
-import team3 from "assets/images/ivana-squares.jpg";
-import team4 from "assets/images/ivana-square.jpg";
+import team1 from "assets/images/chengchen.png";
+import team2 from "assets/images/kehan.png";
+import team3 from "assets/images/mengwei.png";
+import team4 from "assets/images/tianli.png";
 
 function Team() {
   return (
@@ -58,9 +58,9 @@ function Team() {
             <MKBox mb={1}>
               <HorizontalTeamCard
                 image={team1}
-                name="Emma Roberts"
-                position={{ color: "info", label: "UI Designer" }}
-                description="Artist is a term applied to a person who engages in an activity deemed to be an art."
+                name="Chengchen Lu"
+                position={{ color: "info", label: "IT Designer(IT)" }}
+                description="The fire is the test of gold; adversity of strong men."
               />
             </MKBox>
           </Grid>
@@ -68,9 +68,9 @@ function Team() {
             <MKBox mb={1}>
               <HorizontalTeamCard
                 image={team2}
-                name="William Pearce"
-                position={{ color: "info", label: "Boss" }}
-                description="Artist is a term applied to a person who engages in an activity deemed to be an art."
+                name="Kehan Zeng"
+                position={{ color: "info", label: "Project manager(BIS)" }}
+                description="When an opportunity is neglected,it never comes back to you."
               />
             </MKBox>
           </Grid>
@@ -78,9 +78,9 @@ function Team() {
             <MKBox mb={{ xs: 1, lg: 0 }}>
               <HorizontalTeamCard
                 image={team3}
-                name="Ivana Flow"
-                position={{ color: "info", label: "Athlete" }}
-                description="Artist is a term applied to a person who engages in an activity deemed to be an art."
+                name="Mengwei Jiang"
+                position={{ color: "info", label: "Data analyst(DS)" }}
+                description="Everything has its time and that time must be watched."
               />
             </MKBox>
           </Grid>
@@ -88,9 +88,9 @@ function Team() {
             <MKBox mb={{ xs: 1, lg: 0 }}>
               <HorizontalTeamCard
                 image={team4}
-                name="Marquez Garcia"
-                position={{ color: "info", label: "JS Developer" }}
-                description="Artist is a term applied to a person who engages in an activity deemed to be an art."
+                name="Tianli Gao"
+                position={{ color: "info", label: "Data analyst(DS)" }}
+                description="Wise men are silent; fools talk."
               />
             </MKBox>
           </Grid>

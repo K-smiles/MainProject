@@ -7,6 +7,7 @@ const columns = [
         dataIndex: 'name',
         key: 'name',
         render: (text) => <a>{text}</a>,
+        
     },
     {
         title: 'Specific Symptoms',
@@ -86,23 +87,7 @@ const typeOneDiabetesData = [
         tags: 'Requires taking insulin every day to manage.',
     },
 ];
-const gestationalDiabetesData = [
-    {
-        key: '1',
-        name: 'What It Is',
-        tags: 'High blood sugar that develops during pregnancy and usually goes away after giving birth.',
-    },
-    {
-        key: '2',
-        name: 'When It Occurs',
-        tags: 'Usually detected in the middle stage of pregnancy.',
-    },
-    {
-        key: '3',
-        name: 'Treatment',
-        tags: 'Monitoring and managing blood sugar is critical.',
-    },
-];
+
 
 const typeTwoDiabetesData = [
     {
@@ -123,11 +108,31 @@ const typeTwoDiabetesData = [
 ];
 
 
+const CateTable = () => (
+    <>
 
-const CateTable = () => <>
-    <Table pagination={false} columns={columns} dataSource={data} />
-    <Table pagination={false} columns={columnsDiabetes} dataSource={typeOneDiabetesData} />
-    <Table pagination={false} columns={columnsDiabetes} dataSource={gestationalDiabetesData} />
-    <Table pagination={false} columns={columnsDiabetes} dataSource={typeTwoDiabetesData} />
-</>;
+        <style>
+            {`
+                .custom-table .ant-table-cell {
+                    font-size: 25px; 
+                }
+            `}
+        </style>
+        <h2>Type 1 Diabetes</h2>
+        <Table 
+            pagination={false} 
+            columns={columnsDiabetes} 
+            dataSource={typeOneDiabetesData}
+            className="custom-table" 
+        />
+        <h2>Type 2 Diabetes</h2>
+        <Table 
+            pagination={false} 
+            columns={columnsDiabetes} 
+            dataSource={typeTwoDiabetesData}
+            className="custom-table" 
+        />
+    </>
+);
+
 export default CateTable;

@@ -4,6 +4,7 @@ import Icon from "@mui/material/Icon";
 import Home from "layouts/home"
 import About from "layouts/about";
 import Disabetes from "layouts/disabetes";
+import Disabetes2 from "pages/disabetes2";
 import Calculator from "layouts/calculator";
 
 
@@ -21,8 +22,23 @@ const routes = [
     icon: <Icon>dashboard</Icon>,
     columns: 1,
     rowsPerColumn: 2,
-    route: "/disabetes",
-    component: <Disabetes />,
+    collapse: [
+      {
+        name: "Disabetes",
+        collapse: [
+          {
+            name: "Disabetes",
+            route: "/disabetes/1",
+            component: <Disabetes />,
+          },
+          {
+            name: "More content",
+            route: "/disabetes/2",
+            component: <Disabetes2 />,
+          },
+        ],
+      },
+    ],
   },
   {
     name: "Risk Calculator",

@@ -33,7 +33,6 @@ function Content() {
                 ml={{ xs: "auto", lg: 6 }}
                 mr={{ xs: "auto", lg: 6 }}
             >
-
                 <MKBox
                     bgColor="white"
                     borderRadius="xl"

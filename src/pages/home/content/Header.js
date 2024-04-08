@@ -21,7 +21,7 @@ import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
 // Images
-import bgImage from "assets/images/bg-about-us.jpg";
+import bgImage from "assets/images/hompage.jpg";
 
 
 function HomeHeader() {
@@ -64,15 +64,18 @@ function HomeHeader() {
                     >
                     </MKTypography>
                     <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
+                        <h1 style={{ fontSize: "6rem", textAlign: "left" }}>DiabeticGuardian</h1>
+                    </MKTypography>
+                    <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
                         <h3>Dive into understanding diabetes, a chronic condition that can impact our lives as we age.
-                        Here, you'll receive a clear introduction to what diabetes is,
-                        how it progresses, and its common symptoms.
-                        We cover different types of diabetes and provide easy-to-understand information,
-                        empowering you to manage your health effectively.</h3>
-
+                            Here, you'll receive a clear introduction to what diabetes is,
+                            how it progresses, and its common symptoms.
+                            We cover different types of diabetes and provide easy-to-understand information,
+                            empowering you to manage your health effectively.</h3>
                     </MKTypography>
                 </Grid>
             </Container>
+
         </MKBox>
     );
 }
