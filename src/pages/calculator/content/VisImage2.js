@@ -126,7 +126,7 @@ function VisImage(props) {
           .style("opacity", 1)
           .html(`
         <table>
-            <tr><td style="text-align: left; padding-right: 10px;">Age:</td><td style="min-width:50px; text-align: left;"><strong>${d.Waist_Circumference_Category}</strong></td></tr>
+            <tr><td style="text-align: left; padding-right: 10px;">WAIST:</td><td style="min-width:50px; text-align: left;"><strong>${d.Waist_Circumference_Category}</strong></td></tr>
             <tr><td style="text-align: left; padding-right: 10px;">Odd Ratio:</td><td style="min-width:50px; text-align: left;"><strong>${d.Odd_Ratio}</strong></td></tr>
         </table>
     `)

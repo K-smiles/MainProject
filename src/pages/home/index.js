@@ -41,7 +41,6 @@ function Home() {
                 transparent
                 relative
             />
-
             <HomeHeader />
             <Card
                 sx={{
