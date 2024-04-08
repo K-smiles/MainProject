@@ -36,56 +36,55 @@ import Content from 'pages/calculator/content'
 function Calculator() {
     return (
         <>
-            <MKBox position="fixed" top="0.5rem" width="100%">
-                <DefaultNavbar
-                    routes={routes}
-                />
-            </MKBox>
+            <DefaultNavbar routes={routes}
+                transparent
+                relative
+            />
             <MKBox
-            minHeight="75vh"
-            width="100%"
-            sx={{
-                backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
-                    `${linearGradient(
-                        rgba(gradients.dark.main, 0.6),
-                        rgba(gradients.dark.state, 0.6)
-                    )}, url(${bgImage})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                display: "grid",
-                placeItems: "center",
-            }}
-        >
-            <Container>
-                <Grid
-                    container
-                    item
-                    xs={12}
-                    lg={8}
-                    justifyContent="center"
-                    alignItems="center"
-                    flexDirection="column"
-                    sx={{ mx: "auto", textAlign: "center" }}
-                >
-                    <MKTypography
-                        variant="h1"
-                        color="white"
-                        sx={({ breakpoints, typography: { size } }) => ({
-                            [breakpoints.down("md")]: {
-                                fontSize: size["3xl"],
-                            },
-                        })}
+                minHeight="75vh"
+                width="100%"
+                sx={{
+                    backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
+                        `${linearGradient(
+                            rgba(gradients.dark.main, 0.6),
+                            rgba(gradients.dark.state, 0.6)
+                        )}, url(${bgImage})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    display: "grid",
+                    placeItems: "center",
+                }}
+            >
+                <Container>
+                    <Grid
+                        container
+                        item
+                        xs={12}
+                        lg={8}
+                        justifyContent="center"
+                        alignItems="center"
+                        flexDirection="column"
+                        sx={{ mx: "auto", textAlign: "center" }}
                     >
-                    </MKTypography>
-                    <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
-                        <h1 style={{ fontSize: "6rem", textAlign: "left" }}>DiabeticGuardian</h1>
-                    </MKTypography>
-                    <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
-                    </MKTypography>
-                </Grid>
-            </Container>
+                        <MKTypography
+                            variant="h1"
+                            color="white"
+                            sx={({ breakpoints, typography: { size } }) => ({
+                                [breakpoints.down("md")]: {
+                                    fontSize: size["3xl"],
+                                },
+                            })}
+                        >
+                        </MKTypography>
+                        <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
+                            <h1 style={{ fontSize: "6rem", textAlign: "left" }}>DiabeticGuardian</h1>
+                        </MKTypography>
+                        <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
+                        </MKTypography>
+                    </Grid>
+                </Container>
 
-        </MKBox>
+            </MKBox>
             <Grid container direction="row" justifyContent="center" alignItems="center" >
                 <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex" flexDirection="column" justifyContent="center" >
                     <MKBox
@@ -106,11 +105,11 @@ function Calculator() {
                             <MKBox p={3}>
                                 <MKTypography mb={5} style={{ fontSize: "1.5rem" }} >
                                     <h1>
-                                    Start
-                                    Welcome to the diabetes risk calculator
-                                    Diabetes is one of the fastest growing chronic condition in Australia.
+                                        Start
+                                        Welcome to the diabetes risk calculator
+                                        Diabetes is one of the fastest growing chronic condition in Australia.
 
-                                    To find out your risk of developing diabetes, complete the following 11 short questions.
+                                        To find out your risk of developing diabetes, complete the following 11 short questions.
                                     </h1></MKTypography>
                             </MKBox>
                         </Grid>

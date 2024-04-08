@@ -37,9 +37,11 @@ import Places from "pages/home/content/Posts";
 function Home() {
     return (
         <>
-            <MKBox position="fixed" top="0.5rem" width="100%">
-                <DefaultNavbar routes={routes} />
-            </MKBox>
+            <DefaultNavbar routes={routes}
+                transparent
+                relative
+            />
+
             <HomeHeader />
             <Card
                 sx={{

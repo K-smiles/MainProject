@@ -56,8 +56,8 @@ function VisImage(props) {
 
     const highlightClass = 'highlighted-bar';
 
-    const race = 0
-    const gender = 0
+    let race = 0
+    let gender = 0
     //is male
     if (mygender == 3)
     {

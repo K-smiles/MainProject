@@ -43,11 +43,11 @@ import bgImage from "assets/images/aobut_us.jpg";
 function About() {
   return (
     <>
-      <MKBox position="fixed" top="0.5rem" width="100%" zIndex={9999}>
-        <DefaultNavbar
-          routes={routes}
-        />
-      </MKBox>
+      <DefaultNavbar routes={routes}
+        transparent
+        relative
+        size = "large"
+      />
       <MKBox
         minHeight="75vh"
         width="100%"
@@ -86,11 +86,8 @@ function About() {
               More about the design team
             </MKTypography>
             <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
-            We are slow walkers. Even though we walk slowly, we never turn back.
+              We are slow walkers. Even though we walk slowly, we never turn back.
             </MKTypography>
-            <MKButton color="default" sx={{ color: ({ palette: { dark } }) => dark.main }}>
-              create account
-            </MKButton>
           </Grid>
         </Container>
       </MKBox>
@@ -109,12 +106,9 @@ function About() {
           placeItems: "center",
         }}
       >
-
-
-    
         <Featuring />
         <Newsletter />
-        <Team/>
+        <Team />
       </MKBox>
 
 
