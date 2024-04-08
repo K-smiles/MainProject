@@ -587,15 +587,14 @@ export default function BasicTabs() {
           <Grid item
             xs={8}
             lg={8}
-            justifyContent="center"
-            alignItems="center"
+            justifyContent="left"
+            alignItems="left"
             flexDirection="column"
             sx={{ mx: "auto", textAlign: "center" }} >
             {score.age != -1 ? <VisImage age={score.age} /> : null}
             {score.age != -1 && score.waist != -1 && score.country != -1 && score.gender != -1 ? <VisImage2 age={score.age} gender={score.gender} country={score.country} waist={score.waist} /> : null}
           </Grid>
         </Grid>
-
       </CustomTabPanel>
     </MKBox >
   );
