@@ -47,7 +47,7 @@ function Places() {
                             from its basic definition to understanding its various types and how it affects your health"
                             action={{
                                 type: "internal",
-                                route: "/disabetes",
+                                route: "/disabetes/1",
                                 color: "info",
                                 label: "read more",
                             }}
