@@ -1,18 +1,3 @@
-/**
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
@@ -22,7 +7,6 @@ import MKTypography from "components/MKTypography";
 
 // Images
 import bgImage from "assets/images/hompage.jpg";
-
 
 function HomeHeader() {
 
@@ -62,9 +46,10 @@ function HomeHeader() {
                             },
                         })}
                     >
-                    </MKTypography>
-                    <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
                         <h1 style={{ fontSize: "6rem", textAlign: "left" }}>DiabeticGuardian</h1>
+                    </MKTypography>
+                    <MKTypography variant="h1" color="white" sy={{fontSize: "6rem", textAlign: "left"}}opacity={0.8} mt={1} mb={3}>
+                    DiabeticGuardian 
                     </MKTypography>
                     <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
                         <h3>Dive into understanding diabetes, a chronic condition that can impact our lives as we age.
@@ -75,7 +60,6 @@ function HomeHeader() {
                     </MKTypography>
                 </Grid>
             </Container>
-
         </MKBox>
     );
 }

@@ -25,7 +25,7 @@ import MKButton from "components/MKButton";
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
-import DefaultFooter from "examples/Footers/DefaultFooter";
+import SimpleFooter from "examples/Footers/SimpleFooter";
 
 // About Us page sections
 import Information from "pages/about/sections/Information";
@@ -112,9 +112,9 @@ function About() {
       </MKBox>
 
 
-      <MKBox pt={6} px={1} mt={6}>
-        <DefaultFooter content={footerRoutes} />
-      </MKBox>
+      <MKBox pt={1} px={1} mt={0}>
+                <SimpleFooter content={footerRoutes} />
+            </MKBox>
     </>
   );
 }

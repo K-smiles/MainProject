@@ -31,6 +31,8 @@ import waist from "assets/riskpicture/waist.png"
 import ScoreTable from './ScoreTable';
 import VisImage from './VisImage';
 import VisImage2 from './VisImage2';
+
+
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -93,15 +95,18 @@ export default function BasicTabs() {
   //gender change
   const handleGenderChange = (event) => {
     setScore({ ...score, gender: Number(event.target.value) })
+    setTabValue(1)
   };
 
   //Age change
   const handleAgeChange = (event) => {
     setScore({ ...score, age: Number(event.target.value) })
+    setTabValue(2)
   };
   //isEthnicity change
   const handleIsEthnicityChange = (event) => {
     setScore({ ...score, isEthnicity: Number(event.target.value) })
+    setTabValue(3)
   };
   //country change
   const handleCountryChange = (event) => {
@@ -112,34 +117,42 @@ export default function BasicTabs() {
     else {
       setScore({ ...score, country: 0 })
     }
+    setTabValue(4)
   };
   //country change
   const handlePareChange = (event) => {
     setScore({ ...score, pare: Number(event.target.value) })
-  };
-  // HGB change
-  const handleHBGChange = (event) => {
-    setScore({ ...score, high_blood_glucose: Number(event.target.value) })
-  };
-  // is medi
-  const handleIsMedicationChange = (event) => {
-    setScore({ ...score, isMedication: Number(event.target.value) })
+    setTabValue(5)
   };
   // is smoke change
   const handleIsSmokeChange = (event) => {
     setScore({ ...score, isSmoke: Number(event.target.value) })
+    setTabValue(6)
   };
   // is veg
   const handleIsVeChange = (event) => {
     setScore({ ...score, isVe: Number(event.target.value) })
+    setTabValue(7)
   };
   // is exercise
   const handleIsExerciseChange = (event) => {
     setScore({ ...score, isExercise: Number(event.target.value) })
+    setTabValue(8)
   };
-  // is exercise
+  // HGB change
+  const handleHBGChange = (event) => {
+    setScore({ ...score, high_blood_glucose: Number(event.target.value) })
+    setTabValue(9)
+  };
+  // is medi
+  const handleIsMedicationChange = (event) => {
+    setScore({ ...score, isMedication: Number(event.target.value) })
+    setTabValue(10)
+  };
+  // waist
   const handleWaisteChange = (event) => {
     setScore({ ...score, waist: Number(event.target.value) })
+    setTabValue(11)
   };
 
   const onClickToDetail = (event) => {
@@ -166,9 +179,9 @@ export default function BasicTabs() {
       </MKBox>
       <CustomTabPanel value={tabValue} index={0} >
         <Grid container >
-          <Grid item xs={6} md={8}>
-            <FormControl>
-              <FormLabel id="demo-controlled-radio-buttons-group"  ><MKTypography variant="h2" mb={6}>
+          <Grid item xs={6} md={8} >
+            <FormControl >
+              <FormLabel id="demo-controlled-radio-buttons-group" label="asd" ><MKTypography variant="h1" mb={3}>
                 Your Gender</MKTypography></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
@@ -176,10 +189,8 @@ export default function BasicTabs() {
                 onChange={handleGenderChange}
                 value={score.gender}
               >
-                <FormControlLabel value="3" control={<Radio />} />
-                <h1>Male</h1>
-                <FormControlLabel value="0" control={<Radio />} />
-                <h1>Female</h1>
+                <FormControlLabel value="3" control={<Radio />} label={<MKTypography variant="h1" >Male</MKTypography>}/>
+                <FormControlLabel value="0" control={<Radio />} label={<MKTypography variant="h1" >Female</MKTypography>}/>
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -198,10 +209,9 @@ export default function BasicTabs() {
           <Grid item xs={6} md={8}>
             <FormControl>
               <FormLabel id="demo-controlled-radio-buttons-group">
-                <MKTypography variant="h2" mb={6}>
+                <MKTypography variant="h1" mb={3}>
                   What's your age range?
                 </MKTypography>
-
               </FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
@@ -209,16 +219,11 @@ export default function BasicTabs() {
                 onChange={handleAgeChange}
                 value={score.age}
               >
-                <FormControlLabel value="0" control={<Radio />} />
-                <h1>Under 35</h1>
-                <FormControlLabel value="2" control={<Radio />} />
-                <h1>35-44 </h1>
-                <FormControlLabel value="4" control={<Radio />} />
-                <h1>45-54 </h1>
-                <FormControlLabel value="6" control={<Radio />} />
-                <h1>55-64 </h1>
-                <FormControlLabel value="8" control={<Radio />} />
-                <h1>65 and above</h1>
+                <FormControlLabel value="0" control={<Radio />} label={<MKTypography variant="h1" >Under 35</MKTypography>}/>
+                <FormControlLabel value="2" control={<Radio />} label={<MKTypography variant="h1" >35-44</MKTypography>}/>
+                <FormControlLabel value="4" control={<Radio />} label={<MKTypography variant="h1" >45-54 </MKTypography>}/>
+                <FormControlLabel value="6" control={<Radio />} label={<MKTypography variant="h1" >55-64</MKTypography>}/>
+                <FormControlLabel value="8" control={<Radio />} label={<MKTypography variant="h1" >65 and above</MKTypography>}/>
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -237,7 +242,7 @@ export default function BasicTabs() {
           <Grid item xs={6} md={8}>
             <FormControl>
               <FormLabel id="demo-controlled-radio-buttons-group">
-                <MKTypography variant="h2" mb={6}>
+                <MKTypography variant="h1" mb={3}>
                   Your heritage: Do you identify
                   with any of the following descents: Aboriginal,
                   Torres Strait Islander, Pacific Islander or
@@ -250,10 +255,8 @@ export default function BasicTabs() {
                 onChange={handleIsEthnicityChange}
                 value={score.isEthnicity}
               >
-                <FormControlLabel value="0" control={<Radio />} />
-                <h1>No</h1>
-                <FormControlLabel value="2" control={<Radio />} />
-                <h1>Yes</h1>
+                <FormControlLabel value="0" control={<Radio />} label={<MKTypography variant="h1" >No</MKTypography>}/>
+                <FormControlLabel value="2" control={<Radio />} label={<MKTypography variant="h1" >Yes</MKTypography>}/>
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -272,25 +275,16 @@ export default function BasicTabs() {
           <Grid item xs={6} md={8}>
             <FormControl>
               <FormLabel id="demo-controlled-radio-buttons-group">
-                <MKTypography variant="h2" mb={6}>Birthplace: Where were you born?</MKTypography></FormLabel>
+                <MKTypography variant="h1" mb={3}>Birthplace: Where were you born?</MKTypography></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 onChange={handleCountryChange}
                 value={countryValue}
               >
-                <FormControlLabel value="aus" control={<Radio />} />
-                <h2>
-                  Australia
-                </h2>
-                <FormControlLabel value="asi" control={<Radio />} />
-                <h2>
-                  Asia (including the Indian sub-continent), Middle East, North Africa, Southern Europe
-                </h2>
-                <FormControlLabel value="oth" control={<Radio />} />
-                <h2>
-                  Other
-                </h2>
+                <FormControlLabel value="aus" control={<Radio />} label={<MKTypography variant="h1" >Australia</MKTypography>}/>
+                <FormControlLabel value="asi" control={<Radio />} label={<MKTypography variant="h2" >Asia (including the Indian sub-continent), Middle East, North Africa, Southern Europe</MKTypography>}/>
+                <FormControlLabel value="oth" control={<Radio />} label={<MKTypography variant="h1" >Other</MKTypography>}/>
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -310,21 +304,15 @@ export default function BasicTabs() {
         <Grid container >
           <Grid item xs={6} md={8}>
             <FormControl>
-              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h2" mb={6}>Family history of diabetes?</MKTypography></FormLabel>
+              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" mb={3}>Family history of diabetes?</MKTypography></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 onChange={handlePareChange}
                 value={score.pare}
               >
-                <FormControlLabel value="0" control={<Radio />} />
-                <h1>
-                  No
-                </h1>
-                <FormControlLabel value="3" control={<Radio />} />
-                <h1>
-                  Yes
-                </h1>
+                <FormControlLabel value="0" control={<Radio />} label={<MKTypography variant="h1" >No</MKTypography>}/>
+                <FormControlLabel value="3" control={<Radio />} label={<MKTypography variant="h1" >Yes</MKTypography>}/>
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -344,21 +332,15 @@ export default function BasicTabs() {
         <Grid container >
           <Grid item xs={6} md={8}>
             <FormControl>
-              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h2" mb={6}>Do you smoke?</MKTypography></FormLabel>
+              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" mb={3}>Do you smoke?</MKTypography></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 onChange={handleIsSmokeChange}
                 value={score.isSmoke}
               >
-                <FormControlLabel value="0" control={<Radio />} />
-                <h1>
-                  No
-                </h1>
-                <FormControlLabel value="2" control={<Radio />} />
-                <h1>
-                  Yes
-                </h1>
+                <FormControlLabel value="0" control={<Radio />} label={<MKTypography variant="h1" >No</MKTypography>}/>
+                <FormControlLabel value="2" control={<Radio />} label={<MKTypography variant="h1" >Yes</MKTypography>}/>
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -377,16 +359,16 @@ export default function BasicTabs() {
         <Grid container >
           <Grid item xs={6} md={8}>
             <FormControl>
-              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h2" mb={6}>Daily intake of vegetables or fruit?</MKTypography></FormLabel>
+              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" mb={3}>Daily intake of vegetables or fruit?</MKTypography></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 onChange={handleIsVeChange}
                 value={score.isVe}
               >
-                <FormControlLabel value="0" control={<Radio />} />
+                <FormControlLabel value="0" control={<Radio />} label={<MKTypography variant="h1" >Every day</MKTypography>}/>
                 <h1>Every day</h1>
-                <FormControlLabel value="1" control={<Radio />} />
+                <FormControlLabel value="1" control={<Radio />} label={<MKTypography variant="h1" >Not every day</MKTypography>}/>
                 <h1>Not every day</h1>
               </RadioGroup>
             </FormControl>
@@ -401,7 +383,6 @@ export default function BasicTabs() {
           </Grid>
         </Grid>
       </CustomTabPanel>
-
       <CustomTabPanel value={tabValue} index={7}>
         <Grid container >
           <Grid item xs={6} md={8}>
@@ -546,7 +527,8 @@ export default function BasicTabs() {
             alignItems="center"
             flexDirection="column"
             sx={{ mx: "auto", textAlign: "center" }} >
-            <CateTable />
+            <CateTable score={(score.age + score.country + score.gender + score.high_blood_glucose +
+              score.isEthnicity + score.isExercise + score.isMedication + score.isSmoke + score.isVe + score.pare + score.waist)} />
           </Grid>
           <Grid item
             xs={12}
@@ -563,9 +545,7 @@ export default function BasicTabs() {
         </Grid>
       </CustomTabPanel>
       <CustomTabPanel value={tabValue} index={12}>
-
         <Grid container >
-
           <Grid item
             xs={4}
             lg={4}

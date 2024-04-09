@@ -18,7 +18,7 @@ import MKBox from "components/MKBox";
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
-import DefaultFooter from "examples/Footers/DefaultFooter";
+import SimpleFooter from "examples/Footers/SimpleFooter";
 
 // Routes
 import routes from "routes";
@@ -34,8 +34,8 @@ function Disabetes2() {
                 relative
             />
             <Content />
-            <MKBox pt={6} px={1} mt={6}>
-                <DefaultFooter content={footerRoutes} />
+            <MKBox pt={1} px={1} mt={0}>
+                <SimpleFooter content={footerRoutes} />
             </MKBox>
         </>
     );

@@ -6,8 +6,6 @@ Before running the project, please install Node.js. And download the project
 ## Front
 In root folder, enter the command below on the terminal:
 ```
-cd Front/cluu
-
 //then
 npm install
 

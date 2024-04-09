@@ -1,17 +1,4 @@
-/*
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 // @mui material components
 import Grid from "@mui/material/Grid";
@@ -26,13 +13,13 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Link } from 'react-router-dom'
+import { Link as DomLink } from 'react-router-dom'
+
 // Image
 import bgImage1 from "assets/images/illustrations/old_cough.jpg";
 import bgImage2 from "assets/images/illustrations/old_bones.jpg";
 import bgImage3 from "assets/images/illustrations/old_papule.png";
-import bgImage from "assets/images/epic1background.jpg";
-
+import { Link, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 
 function Content() {
     const settings = {
@@ -45,27 +32,11 @@ function Content() {
 
     return (
         <>
-            <MKBox
-                minHeight="75vh"
-                width="100%"
-                sx={{
-                    backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
-                        `${linearGradient(
-                            rgba(gradients.dark.main, 0.6),
-                            rgba(gradients.dark.state, 0.6)
-                        )}, url(${bgImage})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    display: "grid",
-                    placeItems: "center",
-                }}
-            >
-                <h1 style={{ color: "white", fontSize: "90px", opacity: "0.8", position: "middle" }}>Introduction to Diabetes</h1>
-            </MKBox>
-
-            <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" mt={-23}>
+            <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" mt={-20}>
                 <Grid item ml={{ xs: "auto", lg: 1 }} mr={{ xs: "auto", lg: 1 }}>
                     <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex" flexDirection="column" justifyContent="center" mt={{ xs: 20, sm: 18, md: 20 }} mb={{ xs: 20, sm: 18, md: 20 }} mx={10}>
+                        <Element name="DiaIntroduction" className="element">
+                        </Element>
                         <MKBox
                             variant="gradient"
                             bgColor="white"
@@ -73,11 +44,11 @@ function Content() {
                             borderRadius="lg"
                             p={4}
                             mx={2}
-                            mt={-5}
-                        >
+                            mt={-5}>
                             <MKTypography variant="h2" color="black" ml={27}>
                                 {"What is Diabetes?"}
                             </MKTypography>
+
                         </MKBox>
                         <MKBox p={3}>
                             <Grid container spacing={3} direction="row" justifyContent="center" alignItems="center">
@@ -129,6 +100,8 @@ function Content() {
                                 </Grid>
                             </Grid>
                         </MKBox>
+                        <Element name="DiaType" className="element">
+                        </Element>
                         <MKBox
                             variant="gradient"
                             bgColor="white"
@@ -143,7 +116,6 @@ function Content() {
                             </MKTypography>
                         </MKBox>
                         <MKBox p={3}>
-
                             <Grid container spacing={3}>
                                 <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }} style={{ fontSize: "1.5rem" }} >
                                     There are three main types of diabetes: <br /><br />
@@ -152,11 +124,12 @@ function Content() {
                                     However, our web project focuses on type 2 diabetes with an emphasis on prevention and management through lifestyle changes, as type 1 diabetes is largely inherited.
                                     <AccordionUsage />
                                 </Grid>
-              
                             </Grid>
-    
+
                         </MKBox>
 
+                        <Element name="DiaSymptoms" className="element">
+                        </Element>
                         <MKBox
                             variant="gradient"
                             bgColor="white"
@@ -170,7 +143,6 @@ function Content() {
                                 {"What are the early symptoms of diabetes?"}
                             </MKTypography>
                         </MKBox>
-
                         <MKBox p={3}>
                             <Grid container spacing={3}>
                                 <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }} style={{ fontSize: "1.5rem" }} >
@@ -182,25 +154,13 @@ function Content() {
                                     <br />   <br />6.	<strong>Early Signs of Diabetic Foot Complications：</strong> <br />Early diabetic foot symptoms, such as numbness or skin changes, can escalate to severe complications like ulcers or even gangrene if not addressed.
                                 </Grid>
                                 <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }} style={{ fontSize: "1.5rem" }} >
-                                    <Link to="/disabetes/2">
+                                    <DomLink to="/disabetes/2">
                                         <MKButton color="info">More Content</MKButton>
-                                    </Link>
+                                    </DomLink>
                                 </Grid>
 
                             </Grid>
                         </MKBox>
-                        <MKBox p={3}>
-                            <Grid container spacing={3}>
-                                <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }} mt={20} style={{ fontSize: "1rem" }} >
-                                    Reference:
-                                    <br />1.International Working Group on the Diabetic Foot. (2020). Diabetic foot syndrome: Epidemiology, economic impact, and guidelines for management. International Journal of Wound Care, 27(3), 263-271. https://doi.org/10.1111/iwj.13781
-                                    <br />2.Gregg, E. W., Li, Y., Wang, J., Burrows, N. R., Ali, M. K., Rolka, D., Williams, D. E., & Geiss, L. (2016). Changes in diabetes-related complications in the United States, 1990–2010. New England Journal of Medicine, 370(16), 1514-1523. https://www.sciencedirect.com/science/article/abs/pii/S016882271630225X
-                                    <br />3.World Health Organization. (2020). Diabetes. https://www.who.int/zh/news-room/fact-sheets/detail/diabetes
-                                    <br />4.Centers for Disease Control and Prevention. (2020). What is diabetes? https://www.cdc.gov/diabetes/basics/diabetes.html
-                                </Grid>
-                            </Grid>
-                        </MKBox>
-
                     </MKBox>
                 </Grid>
             </Grid >
