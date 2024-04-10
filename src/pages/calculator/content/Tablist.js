@@ -671,7 +671,7 @@ export default function BasicTabs() {
                     },
                   }} 
                   />} label={<MKTypography variant="h1" >Every day</MKTypography>} />
-                <h1>Every day</h1>
+          
                 <FormControlLabel value="1" control={<Radio
                   sx={{
                     '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
@@ -691,7 +691,7 @@ export default function BasicTabs() {
                     },
                   }} 
                   />} label={<MKTypography variant="h1" >Not every day</MKTypography>} />
-                <h1>Not every day</h1>
+               
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -734,8 +734,7 @@ export default function BasicTabs() {
                       strokeWidth: 5,
                     },
                   }} 
-                  />} />
-                <h1>No</h1>
+                  />} label={<MKTypography variant="h1" >No</MKTypography>}/>
                 <FormControlLabel value="2" control={<Radio
                   sx={{
                     '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
@@ -754,8 +753,8 @@ export default function BasicTabs() {
                       strokeWidth: 5,
                     },
                   }} 
-                  />} />
-                <h1>Yes</h1>
+                  />} label={<MKTypography variant="h1" >Yes</MKTypography>}/>
+ 
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -799,8 +798,8 @@ export default function BasicTabs() {
                       strokeWidth: 5,
                     },
                   }} 
-                  />} />
-                <h1>No</h1>
+                  />} label={<MKTypography variant="h1" >No</MKTypography>}/>
+        
                 <FormControlLabel value="6" control={<Radio
                   sx={{
                     '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
@@ -819,8 +818,8 @@ export default function BasicTabs() {
                       strokeWidth: 5,
                     },
                   }} 
-                  />} />
-                <h1>Yes</h1>
+                  />} label={<MKTypography variant="h1" >Yes</MKTypography>}/>
+               
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -863,8 +862,8 @@ export default function BasicTabs() {
                       strokeWidth: 5,
                     },
                   }} 
-                  />} />
-                <h1>No</h1>
+                  />} label={<MKTypography variant="h1" >No</MKTypography>}/>
+            
                 <FormControlLabel value="2" control={<Radio
                   sx={{
                     '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
@@ -883,8 +882,8 @@ export default function BasicTabs() {
                       strokeWidth: 5,
                     },
                   }} 
-                  />} />
-                <h1>Yes</h1>
+                  />} label={<MKTypography variant="h1" >Yes</MKTypography>}/>
+            
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -929,10 +928,10 @@ export default function BasicTabs() {
                       strokeWidth: 5,
                     },
                   }} 
-                  />} />
-                  <h1>{
+                  />} label={<MKTypography variant="h1" >            {
                     score.gender == 0 ? ((score.isEthnicity == 2 || score.country == 2) ? "Less than 80 cm" : ("Less than 88 cm "))
-                      : ((score.isEthnicity == 2 || score.country == 2) ? "Less than 90 cm " : ("Less than 102 cm  "))}</h1>
+                      : ((score.isEthnicity == 2 || score.country == 2) ? "Less than 90 cm " : ("Less than 102 cm  "))}</MKTypography>}/>
+
                   <FormControlLabel value="4" control={<Radio
                   sx={{
                     '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
@@ -951,9 +950,9 @@ export default function BasicTabs() {
                       strokeWidth: 5,
                     },
                   }} 
-                  />} />
-                  <h1>{score.gender == 0 ? ((score.isEthnicity == 2 || score.country == 2) ? "80–90 cm" : ("88–100 cm "))
-                    : ((score.isEthnicity == 2 || score.country == 2) ? "90–100 cm " : ("102–110 cm  "))}</h1>
+                  />} label={<MKTypography variant="h1" >{score.gender == 0 ? ((score.isEthnicity == 2 || score.country == 2) ? "80–90 cm" : ("88–100 cm "))
+                  : ((score.isEthnicity == 2 || score.country == 2) ? "90–100 cm " : ("102–110 cm  "))}</MKTypography>}/>
+                 
                   <FormControlLabel value="7" control={<Radio
                   sx={{
                     '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
@@ -972,9 +971,9 @@ export default function BasicTabs() {
                       strokeWidth: 5,
                     },
                   }} 
-                  />} />
-                  <h1>{score.gender == 0 ? ((score.isEthnicity == 2 || score.country == 2) ? "More than 90 cm" : ("More than 100 cm "))
-                    : ((score.isEthnicity == 2 || score.country == 2) ? "More than 100 cm  " : ("More than 110 cm   "))}</h1>
+                  />} label={<MKTypography variant="h1" >{score.gender == 0 ? ((score.isEthnicity == 2 || score.country == 2) ? "More than 90 cm" : ("More than 100 cm "))
+                  : ((score.isEthnicity == 2 || score.country == 2) ? "More than 100 cm  " : ("More than 110 cm   "))}</MKTypography>}/>
+
                 </RadioGroup>}
             </FormControl>
           </Grid>

@@ -33,13 +33,29 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 
 import Content from 'pages/calculator/content'
+
+import axios from "axios";
+import React from "react";
+const baseURL = "https://backdiagui-affe16e7071c.herokuapp.com/posts";
+
 function Calculator() {
+    const [post, setPost] = React.useState(null);
+
+    React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+            setPost(response.data[0]);
+            console.log(response.data[0])
+        });
+    }, []);
+    if (!post) return null;
     return (
         <>
             <DefaultNavbar routes={routes}
                 transparent
                 relative
             />
+            <h1>{post.creator}</h1>
+            <p>{post.likeCount}</p>
             <MKBox
                 minHeight="75vh"
                 width="100%"

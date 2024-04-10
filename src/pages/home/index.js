@@ -148,7 +148,7 @@ function Home() {
             <MKBox pt={1} px={1} mt={0}>
                 <SimpleFooter content={footerRoutes} />
             </MKBox>
-            
+
             <Fab style={{
                 position: 'fixed',
                 bottom: 16,
