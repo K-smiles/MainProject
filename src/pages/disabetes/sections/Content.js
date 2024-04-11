@@ -330,16 +330,13 @@ function Content() {
                                 <Grid item xs={12} md={3}>
                                     <BackgroundBlogCard
                                         image={symptoms6}
-                                        title="6.Early Signs of Diabetic Foot Complications"
+                                        title="6.Foot Complications"
                                         description="Early diabetic foot symptoms, such as numbness or skin changes, can escalate to severe complications like ulcers or even gangrene if not addressed."
 
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={1.5}></Grid> 
                             </Grid>
-
-                            
-
                         </MKBox>
                     </MKBox>
                 </Grid>

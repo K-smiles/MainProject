@@ -35,7 +35,7 @@ function Places() {
             <Container>
                 <Grid container item xs={12} lg={6}>
                     <MKTypography variant="h3" mb={6} style={{ fontSize: "3rem" }}>
-                        Function card
+                         What can we provide
                     </MKTypography>
                 </Grid>
                 <Grid container spacing={3}>
