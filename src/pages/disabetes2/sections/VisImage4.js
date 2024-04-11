@@ -27,9 +27,9 @@ const VisImage4 = () => {
 
 
   // Set the dimensions and margins of the graph
-  const margin = {top: 110, right: 30, bottom: 40, left: 80},
-      width = 800 - margin.left - margin.right,
-      height = 600 - margin.top - margin.bottom;
+  const margin = {top: 110, right: 30, bottom: 60, left: 80},
+      width = 960 - margin.left - margin.right,
+      height = 650 - margin.top - margin.bottom;
 
     // Clear any previous SVG
     d3.select(chartRef.current).selectAll("*").remove();
@@ -93,6 +93,27 @@ const tickValues = d3.range(-max + 50, max - 50, 100);
   svg.append("g")
   .style("font-size", "20px")
     .call(d3.axisLeft(y));
+
+
+
+
+    // X-axis label
+    svg.append("text")
+      .attr("class", "x axis-label")
+      .attr("text-anchor", "middle")
+      .attr("x", width / 2)
+      .attr("y", height + margin.bottom - 10)
+      .style("font-size", "20px")
+      .text("Incidence Rate");
+
+    // Y-axis label
+    svg.append("text")
+    .attr("class", "y axis-label")
+    .attr("text-anchor", "end") // Align the text to the end to position it nicely on the left side.
+    .attr("x", 50) // Start from the very left edge of the SVG area.
+    .attr("y", -margin.top + 100) // Adjust this to position the label above the y-axis.
+    .style("font-size", "20px")
+    .text("Age Group");
 
     // Add horizontal line at the top to complete the rectangle frame
     svg.append("line")
@@ -246,7 +267,7 @@ const legend = svg.selectAll(".legend")
 
 // Draw legend rectangles
 legend.append("rect")
-  .attr("x", 0) // Start rectangles at the beginning of each group
+  .attr("x", 400) // Start rectangles at the beginning of each group
   .attr("y", 0 - (margin.top / 2)+20)
   .attr("width", 28)
   .attr("height", 28)
@@ -254,7 +275,7 @@ legend.append("rect")
 
 // Draw legend text to the right of the rectangles
 legend.append("text")
-  .attr("x", 34) // Position text to the right of the rectangles
+  .attr("x", 434) // Position text to the right of the rectangles
   .attr("y", 0 - (margin.top / 2)+35)
   .attr("dy", "0.35em") // Fine-tune vertical alignment
   .style("font-size", "30px") // Adjust font size as needed
@@ -352,12 +373,12 @@ legend.append("text")
         {/* Arrow styles would need to be applied to :before and :after pseudo-elements, which cannot be directly manipulated via inline styles in React. Consider using a CSS class or styled-components for complex pseudo-elements. */}
       </div>
       <div style={{
-        maxWidth: "860px", // Match the SVG width
+        maxWidth: "1100px", // Match the SVG width
         marginTop: "10px",
         fontSize: "22px",
         textAlign: "middle"
       }}>
-        After 2008, diabetes incidence rates showed a marked decline, with male rates remaining notably higher. 
+        <strong>After 2008, diabetes incidence rates showed a marked decline, with male rates remaining notably higher. </strong>
       </div>
     </div>
   );

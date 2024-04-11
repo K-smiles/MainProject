@@ -18,7 +18,7 @@ function VisImage(props) {
     const ageToHighlight = age
 
     // set the dimensions and margins of the graph
-    const margin = { top: 50, right: 30, bottom: 90, left: 30 },
+    const margin = { top: 80, right: 30, bottom: 90, left: 50 },
       width = 700 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
     // Clear any previous SVG
@@ -63,6 +63,24 @@ function VisImage(props) {
       .style("font-size", "20px")
       .call(d3.axisLeft(y));
 
+      // X-axis label
+    svg.append("text")
+    .attr("class", "x axis-label")
+    .attr("text-anchor", "middle")
+    .attr("x", width / 2)
+    .attr("y", height + margin.bottom - 40)
+    .style("font-size", "20px")
+    .text("Age Group");
+
+  // Y-axis label
+  svg.append("text")
+  .attr("class", "y axis-label")
+  .attr("text-anchor", "end") // Align the text to the end to position it nicely on the left side.
+  .attr("x", 50) // Start from the very left edge of the SVG area.
+  .attr("y", -margin.top + 60) // Adjust this to position the label above the y-axis.
+  .style("font-size", "20px")
+  .text("Odd Ratio");
+
     // Bars with mouse event handlers for highlighting
     svg.selectAll("mybar")
       .data(data)
@@ -82,6 +100,8 @@ function VisImage(props) {
           <table>
               <tr><td style="text-align: left; padding-right: 10px;">Age:</td><td style="min-width:50px; text-align: left;"><strong>${d.Age}</strong></td></tr>
               <tr><td style="text-align: left; padding-right: 10px;">Odd Ratio:</td><td style="min-width:50px; text-align: left;"><strong>${d.Odd_Ratio}</strong></td></tr>
+              <tr><td style="text-align: left; font-size: 20px;">(eg: Odd Ratio = 2 means twice</td></tr>
+              <tr><td style="text-align: left; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the risk as healthy people)</td></tr>
           </table>
       `)
           .style("left", (event.pageX + 20) + "px")
@@ -159,7 +179,9 @@ function VisImage(props) {
       }}>
                
       </div>
+      <p> <strong>(Odd ratio = 1: means healthy in this factor; Odd ratio = 2 : twice the risk as healthy people)</strong></p>
     </div>
+    
     </>
   )
 };

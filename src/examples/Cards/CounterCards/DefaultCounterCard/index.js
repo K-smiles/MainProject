@@ -27,15 +27,24 @@ function DefaultCounterCard({ color, count, title, description, ...rest }) {
   return (
     <MKBox p={2} textAlign="center" lineHeight={1}>
       <MKTypography variant="h1" color={color} textGradient>
-        <CountUp end={count} duration={1} {...rest} />
+        {count && (
+          <MKTypography variant="h1" mt={2} mb={1}>
+            {count}
+          </MKTypography>
+        )}
       </MKTypography>
       {title && (
-        <MKTypography variant="h5" mt={2} mb={1}>
+        <MKTypography variant="h3" mt={2} mb={1}>
           {title}
         </MKTypography>
       )}
       {description && (
-        <MKTypography variant="body2" color="text">
+        <MKTypography
+          variant="h5"
+          sx={{
+            color: "#919191",
+          }}
+        >
           {description}
         </MKTypography>
       )}
@@ -62,7 +71,7 @@ DefaultCounterCard.propTypes = {
     "light",
     "dark",
   ]),
-  count: PropTypes.number.isRequired,
+  count: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
 };

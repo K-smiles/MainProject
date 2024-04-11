@@ -104,7 +104,7 @@ function Content() {
                     placeItems: "center",
                 }}
             >
-                <h1 style={{ color: "white", fontSize: "90px", opacity: "0.8", position: "middle" }}>Diabetes fact in Au</h1>
+                <h1 style={{ color: "white", fontSize: "90px", opacity: "0.8", position: "middle" }}>Diabetes in Aussie</h1>
                 {/* Navigation Buttons */}
                 <div style={{
                     position: 'absolute',

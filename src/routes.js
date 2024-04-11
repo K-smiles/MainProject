@@ -17,7 +17,7 @@ const routes = [
     component: <Home />,
   },
   {
-    name: "What is Diabetes ?",
+    name: "Introduction to Diabetes",
     icon: <Icon>article</Icon>,
     columns: 1,
     rowsPerColumn: 2,
@@ -26,12 +26,12 @@ const routes = [
         name: "Diabetes",
         collapse: [
           {
-            name: "Learn more about Diabetes",
+            name: "Diabetes: Types & Symptoms",
             route: "/disabetes/1",
             component: <Disabetes />,
           },
           {
-            name: "Diabetes Fact",
+            name: "Diabetes in Aussie",
             route: "/disabetes/2",
             component: <Disabetes2 />,
           },

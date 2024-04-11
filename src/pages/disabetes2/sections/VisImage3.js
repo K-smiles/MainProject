@@ -19,9 +19,9 @@ const VisImage3 = () => {
   const drawChart = (data) => {
 
 // set the dimensions and margins of the graph
-const margin = {top: 80, right: 100, bottom: 30, left: 80},
-    width = 860 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+const margin = {top: 150, right: 100, bottom: 70, left: 140},
+    width = 960 - margin.left - margin.right,
+    height = 650 - margin.top - margin.bottom;
 
     // Clear any previous SVG
     d3.select(chartRef.current).selectAll("*").remove();
@@ -94,10 +94,39 @@ const svg = d3.select(chartRef.current)
         .style("stroke-width", 4)
         .style("fill", "none")
 
+
+    // X-axis label
+    svg.append("text")
+      .attr("class", "x axis-label")
+      .attr("text-anchor", "middle")
+      .attr("x", width / 2)
+      .attr("y", height + margin.bottom - 10)
+      .style("font-size", "20px")
+      .text("Year");
+
+    // Y-axis label
+    svg.append("text")
+    .attr("class", "y axis-label")
+    .attr("text-anchor", "end") // Align the text to the end to position it nicely on the left side.
+    .attr("x", 50) // Start from the very left edge of the SVG area.
+    .attr("y", -margin.top + 120) // Adjust this to position the label above the y-axis.
+    .style("font-size", "20px")
+    .text("Incidence Rate");
+
+    svg.append("text")
+    .attr("class", "y axis-label")
+    .attr("text-anchor", "end")
+    .attr("x", 50) // Keep the x position the same as the first line
+    .attr("y", -margin.top + 145) // Increase y position to place it below the first line
+    .style("font-size", "20px")
+    .text("(per 100,000 People)"); // Example additional text
+
+
+
     // Append a new text element as your title
     svg.append("text")
         .attr("x", width / 2) // Position at half the width of the SVG
-        .attr("y", 0 - (margin.top / 2)) // Position above the chart
+        .attr("y", 0 - (margin.top / 2)-20) // Position above the chart
         .attr("text-anchor", "middle") // Center the text
         .style("font-size", "30px") // Set font size
         .style("text-decoration", "underline")
@@ -121,6 +150,8 @@ const svg = d3.select(chartRef.current)
         .attr("r", 5)
         .attr("stroke", "white")
 
+
+
     // Legend configuration
     const legendSpace = 35; // Spacing between legend items
     const legendRectSize = 35; // The size of the legend colored square
@@ -137,7 +168,7 @@ const svg = d3.select(chartRef.current)
     // Add legend squares
     legend.append("rect")
     .attr("x", legendPosition.x-60)
-    .attr("y", (d, i) => legendPosition.y + i * (legendRectSize + 5) - 70) // 5 is spacing between squares
+    .attr("y", (d, i) => legendPosition.y + i * (legendRectSize + 5) - 170) // 5 is spacing between squares
     .attr("width", legendRectSize)
     .attr("height", legendRectSize)
     .style("fill", d => myColor(d));
@@ -145,7 +176,7 @@ const svg = d3.select(chartRef.current)
     // Add legend text
     legend.append("text")
     .attr("x", legendPosition.x + legendRectSize -55)
-    .attr("y", (d, i) => legendPosition.y + i * (legendRectSize + 5) + (legendRectSize/2) - 70)
+    .attr("y", (d, i) => legendPosition.y + i * (legendRectSize + 5) + (legendRectSize/2) - 170)
     .attr("dy", ".35em") // Vertically center text
     .text(d => d === "Male_Rate" ? "Male" : "Female")
     .style("font-size", "25px")
@@ -221,12 +252,12 @@ const svg = d3.select(chartRef.current)
 
       </div>
             <div style={{
-        maxWidth: "860px", // Match the SVG width
+        maxWidth: "1000px", // Match the SVG width
         marginTop: "10px",
         fontSize: "22px",
         textAlign: "middle"
       }}>
-               This graph shows that people aged 45-80 are the most likely to develop diabetes and that men are more likely to develop diabetes than women.
+              <strong> This graph shows that people aged 45-80 are the most likely to develop diabetes and that men are more likely to develop diabetes than women.</strong>
       </div>
     </div>
     

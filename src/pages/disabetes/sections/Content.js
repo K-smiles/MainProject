@@ -69,14 +69,72 @@ function Content() {
                             p={4}
                             mx={2}
                             mt={-5}>
-                            <MKTypography variant="h2" color="black" ml={27}>
+                            <MKTypography variant="h2" color="black" ml={27} id="what-diabetes">
                                 {"What is Diabetes?"}
                             </MKTypography>
 
+                            {/* Navigation Buttons */}
+                            <div style={{
+                                position: 'absolute',
+                                top: '65%',
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                width: '80%', 
+                                padding: '0 5%', 
+                            }}>
+                                <MKButton
+                                    component="a"
+                                    href="#what-diabetes"
+                                    color="white"
+                                    variant="outlined"
+                                    style={{
+                                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                        color: 'white',
+                                        fontSize: '2rem',
+                                        padding: '12px 36px'
+                                    }}
+                                >
+                                    WHAT IS DIABETES
+                                </MKButton>
+
+                                <MKButton
+                                    component="a"
+                                    href="#diabetes-types"
+                                    color="white"
+                                    variant="outlined"
+                                    style={{
+                                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                        color: 'white',
+                                        fontSize: '2rem',
+                                        padding: '12px 36px'
+                                    }}
+                                >
+                                    DIABETES TYPES
+                                </MKButton>
+                                <MKButton
+                                    component="a"
+                                    href="#diabetes-symptoms"
+                                    color="white"
+                                    variant="outlined"
+                                    style={{
+                                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                        color: 'white',
+                                        fontSize: '2rem',
+                                        padding: '12px 36px'
+                                    }}
+                                >
+                                    DIABETES SYMPTOMS
+                                </MKButton>
+                            </div>
+
                         </MKBox>
+  
                         <MKBox p={3}>
                             <Grid container spacing={3} direction="row" justifyContent="center" alignItems="center">
-                                <Grid item xs={12} md={4} mt={5} ml={{ xs: "auto", lg: 30 }} >
+                            <Grid item xs={2} sm={2} md={2} lg={2} xl={2}></Grid>
+                                <Grid item xs={4} sm={4} md={4} lg={4} xl={4} mt={5}>
                                     <MKBox p={3}>
                                         <MKTypography mb={5} style={{ fontSize: "1.5rem" }} >
                                             Diabetes is a chronic disease of abnormal blood glucose regulation due to insufficient production or poor utilisation of insulin.
@@ -85,7 +143,8 @@ function Content() {
                                     </MKBox>
                                 </Grid>
 
-                                <Grid item xs={12} md={6}>
+                                
+                                <Grid item xs={4} sm={4} md={4} lg={4} xl={4} mt={5}>
                                     <div style={{ width: '450px', height: '460px', marginTop: '0%', marginLeft: '20%' }}>
                                         <Slider {...settings}>
                                             <div>
@@ -122,8 +181,13 @@ function Content() {
                                         </Slider>
                                     </div>
                                 </Grid>
+                                <Grid item xs={2} sm={2} md={2} lg={2} xl={2}></Grid>
                             </Grid>
                         </MKBox>
+
+     
+
+
                         <Element name="DiaType" className="element">
                         </Element>
                         <MKBox
@@ -151,6 +215,7 @@ function Content() {
                                 </Grid>
                             </Grid>
                         </MKBox>
+                        
                         <div style={{ display: "flex", justifyContent: "space-around", gap: "5vh", margin: "5vh", height: "45vh" }}>
                             {/* Type 1 Diabetes Card */}
                             <div style={{ width: "400px" }}>
@@ -274,11 +339,7 @@ function Content() {
                             </Grid>
 
                             
-                            <Grid item xs={12} md={10} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }} style={{ fontSize: "1.5rem" }} >
-                                <Link to="/disabetes/2">
-                                    <MKButton color="primary">More Content</MKButton>
-                                </Link>
-                            </Grid>
+
                         </MKBox>
                     </MKBox>
                 </Grid>

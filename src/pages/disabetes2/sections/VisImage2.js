@@ -17,8 +17,8 @@ const VisImage2 = () => {
   }, []);
 
   const drawChart = () => {
-    const margin = { top: 50, right: 30, bottom: 90, left: 40 },
-          width = 860 - margin.left - margin.right,
+    const margin = { top: 100, right: 30, bottom: 100, left: 40 },
+          width = 960 - margin.left - margin.right,
           height = 650 - margin.top - margin.bottom;
 
     const data = [
@@ -72,8 +72,23 @@ const VisImage2 = () => {
       .call(yAxis);
 
 
+    // X-axis label
+    svg.append("text")
+      .attr("class", "x axis-label")
+      .attr("text-anchor", "middle")
+      .attr("x", width / 2)
+      .attr("y", height + margin.bottom - 40)
+      .style("font-size", "20px")
+      .text("BMI Category");
 
-
+    // Y-axis label
+    svg.append("text")
+    .attr("class", "y axis-label")
+    .attr("text-anchor", "end") // Align the text to the end to position it nicely on the left side.
+    .attr("x", 50) // Start from the very left edge of the SVG area.
+    .attr("y", -margin.top + 80) // Adjust this to position the label above the y-axis.
+    .style("font-size", "20px")
+    .text("Odd Ratio");
 
 
 
@@ -111,10 +126,11 @@ const VisImage2 = () => {
         tooltip.style("opacity", 1);
         tooltip.html(`
       <table>
-          <tr><td style="text-align: left; padding-right: 10px;">BMI:</td><td style="min-width:50px; text-align: left;"><strong>${d.BMI}</strong></td></tr>
-          <tr><td style="text-align: left; padding-right: 10px;">Odd Ratio:</td><td style="min-width:50px; text-align: left;"><strong>${d.Odd_Ratio}</strong></td></tr>
-          <tr><td style="text-align: left;">eg: 2 means twice the risk as normal people</td></tr>
-      </table>
+      <tr><td style="text-align: left; padding-right: 10px;">BMI:</td><td style="min-width:50px; text-align: left;"><strong>${d.BMI}</strong></td></tr>
+      <tr><td style="text-align: left; padding-right: 10px;">Odd Ratio:</td><td style="min-width:50px; text-align: left;"><strong>${d.Odd_Ratio}</strong></td></tr>
+      <tr><td style="text-align: left; font-size: 20px;">(eg: Odd Ratio = 2 means twice</td></tr>
+      <tr><td style="text-align: left; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the risk as healthy people)</td></tr>
+  </table>
   `)})
       .on("mousemove", function (event) {
         tooltip.style("left", (event.pageX + 20) + "px")
@@ -147,13 +163,14 @@ const VisImage2 = () => {
       <div ref={chartRef} />
 
       <div style={{
-        maxWidth: "900px", // Match the SVG width
+        maxWidth: "1000px", // Match the SVG width
         marginTop: "-20px",
         fontSize: "22px",
         textAlign: "middle"
       }}>
-                <p>This graph shows that the higher the BMI, the more likely people are to develop diabetes.</p>
-                <p> (Odd ratio: 1 means no additional risk, eg: 2 means twice the risk as normal people)</p>
+                <p> <strong>(Odd ratio = 1: means healthy in this factor; Odd ratio = 2 : twice the risk as healthy people)</strong></p>
+                <p><strong>This graph shows that the higher the BMI, the more likely people are to develop diabetes.</strong></p>
+                
       </div>
     </>
   );

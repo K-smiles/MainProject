@@ -27,10 +27,10 @@ function NavContent() {
                     placeItems: "center",
                 }}
             >   <MKTypography variant="h1" style={{ color: "white", fontSize: "90px", opacity: "0.8", position: "middle" }}>
-                    Learn more about Diabetes
+                    Learn  about Diabetes
                 </MKTypography>
             </MKBox>
-            <Card
+            {/*<Card
                 sx={{
                     p: 2,
                     mx: { xs: 2, lg: 3 },
@@ -110,7 +110,7 @@ function NavContent() {
                         </Grid>
                     </Grid>
                 </Container>
-            </Card>
+                                </Card>*/}
         </>
     );
 }
