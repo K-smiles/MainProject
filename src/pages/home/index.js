@@ -18,7 +18,7 @@ import footerRoutes from "footer.routes";
 //sub element
 import Places from "pages/home/content/Posts";
 import SimpleFooter from "examples/Footers/SimpleFooter";
-import bgImage from "assets/images/hompage.jpg";
+import bgImage from "assets/images/aobut_us.jpg";
 
 
 

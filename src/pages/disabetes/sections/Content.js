@@ -199,7 +199,7 @@ function Content() {
                             mx={2}
                             mt={3}
                         >
-                            <MKTypography variant="h2" color="gray" ml={27}>
+                            <MKTypography variant="h2" color="gray" ml={27} id="diabetes-types">
                                 {"What are the types of diabetes?"}
                             </MKTypography>
                         </MKBox>
@@ -271,7 +271,7 @@ function Content() {
                             mx={2}
                             mt={3}
                         >
-                            <MKTypography variant="h2" color="gray" ml={27}>
+                            <MKTypography variant="h2" color="gray" ml={27} id="diabetes-symptoms">
                                 {"What are the early symptoms of diabetes?"}
                             </MKTypography>
                         </MKBox>

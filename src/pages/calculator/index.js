@@ -21,7 +21,7 @@ import MKBox from "components/MKBox";
 import Container from "@mui/material/Container";
 
 // Images
-import bgImage from "assets/images/hompage.jpg";
+import bgImage from "assets/images/aobut_us.jpg";
 
 import MKTypography from "components/MKTypography";
 

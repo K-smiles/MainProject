@@ -52,14 +52,14 @@ const routes = [
     route: "/calculator",
     component: <Calculator />,
   },
-  {
-    name: "About",
-    icon: <Icon>dashboard</Icon>,
-    columns: 1,
-    rowsPerColumn: 2,
-    route: "/about",
-    component: <About />,
-  },
+  // {
+  //   name: "About",
+  //   icon: <Icon>dashboard</Icon>,
+  //   columns: 1,
+  //   rowsPerColumn: 2,
+  //   route: "/about",
+  //   component: <About />,
+  // },
 ];
 
 export default routes;
