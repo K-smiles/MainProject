@@ -37,7 +37,7 @@ function RotatingCard({ color, image, title, description, action }) {
       coloredShadow={color}
       position="absolute"
       width="100%"
-      height="100%"
+      height="150%"
       top={0}
       left={0}
       zIndex={5}
@@ -53,10 +53,10 @@ function RotatingCard({ color, image, title, description, action }) {
       }}
     >
       <MKBox pt={12} pb={2} px={2} textAlign="center" lineHeight={1}>
-        <MKTypography variant="h3" color="white" gutterBottom>
+        <MKTypography variant="h2" color="white" gutterBottom>
           {title}
         </MKTypography>
-        <MKTypography variant="body2" color="white" opacity={0.8}>
+        <MKTypography variant="body1" color="white" opacity={0.8}>
           {description}
         </MKTypography>
         {action && (
@@ -87,7 +87,7 @@ function RotatingCard({ color, image, title, description, action }) {
 
 // Setting default props for the RotatingCard
 RotatingCard.defaultProps = {
-  color: "info",
+  color: "dark",
 };
 
 // Typechecking props for the RotatingCard

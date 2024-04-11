@@ -27,7 +27,7 @@ function NavContent() {
                     placeItems: "center",
                 }}
             >   <MKTypography variant="h1" style={{ color: "white", fontSize: "90px", opacity: "0.8", position: "middle" }}>
-                    Introduction to Diabetes
+                    Learn more about Diabetes
                 </MKTypography>
             </MKBox>
             <Card

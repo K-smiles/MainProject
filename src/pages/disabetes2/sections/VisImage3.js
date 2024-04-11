@@ -16,15 +16,7 @@ const VisImage3 = () => {
   }, []);
 
 
-
-
-
-
   const drawChart = (data) => {
-
-
-
-
 
 // set the dimensions and margins of the graph
 const margin = {top: 80, right: 100, bottom: 30, left: 80},
@@ -208,28 +200,6 @@ const svg = d3.select(chartRef.current)
 
     });
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <div>

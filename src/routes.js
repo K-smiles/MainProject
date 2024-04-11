@@ -1,17 +1,16 @@
 // @mui material components
 import Icon from "@mui/material/Icon";
-
 import Home from "layouts/home"
 import About from "layouts/about";
 import Disabetes from "layouts/disabetes";
 import Disabetes2 from "pages/disabetes2";
+import Disabetes3 from "pages/disabetes3";
 import Calculator from "layouts/calculator";
-
 
 const routes = [
   {
     name: "Home",
-    icon: <Icon>dashboard</Icon>,
+    icon: <Icon >home</Icon>,
     columns: 1,
     rowsPerColumn: 2,
     route: "/home",
@@ -19,7 +18,7 @@ const routes = [
   },
   {
     name: "What is Diabetes ?",
-    icon: <Icon>dashboard</Icon>,
+    icon: <Icon>article</Icon>,
     columns: 1,
     rowsPerColumn: 2,
     collapse: [
@@ -27,14 +26,19 @@ const routes = [
         name: "Diabetes",
         collapse: [
           {
-            name: "Diabetes",
+            name: "Learn more about Diabetes",
             route: "/disabetes/1",
             component: <Disabetes />,
           },
           {
-            name: "More content",
+            name: "Diabetes Fact",
             route: "/disabetes/2",
             component: <Disabetes2 />,
+          },
+          {
+            name: "Living with diabetes",
+            route: "/disabetes/3",
+            component: <Disabetes3 />,
           },
         ],
       },
@@ -42,7 +46,7 @@ const routes = [
   },
   {
     name: "Risk Calculator",
-    icon: <Icon>dashboard</Icon>,
+    icon: <Icon>devices</Icon>,
     columns: 1,
     rowsPerColumn: 2,
     route: "/calculator",

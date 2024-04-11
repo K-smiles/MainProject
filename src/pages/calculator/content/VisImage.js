@@ -4,7 +4,8 @@ import * as d3 from "d3";
 function VisImage(props) {
 
   const age = props.age
-
+  const chartRef = useRef(null);
+  const tooltipRef = useRef(null);
   useEffect(() => {
 
     drawChart();
@@ -20,9 +21,11 @@ function VisImage(props) {
     const margin = { top: 50, right: 30, bottom: 90, left: 30 },
       width = 700 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
-
+    // Clear any previous SVG
+    d3.select(chartRef.current).selectAll("*").remove();
     // append the svg object to the body of the page
-    const svg = d3.select("#my_dataviz")
+
+    const svg = d3.select(chartRef.current)
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -30,13 +33,13 @@ function VisImage(props) {
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const data = [
-      { Age: 0, Odd_Ratio: 1 },
-      { Age: 2, Odd_Ratio: 1.7 },
-      { Age: 4, Odd_Ratio: 3.0 },
-      { Age: 6, Odd_Ratio: 4.6 },
-      { Age: 8, Odd_Ratio: 6.5 }
-    ];
 
+      { Age:" < 35 ",value: 0, Odd_Ratio: 1 },
+      { Age:" 35 – 44 ",value: 2, Odd_Ratio: 1.7 },
+      { Age:" 45 – 54 ",value: 4, Odd_Ratio: 3.0 },
+      { Age:" 55 – 64 ",value: 6, Odd_Ratio: 4.6 },
+      { Age:" > 65 ",value: 8, Odd_Ratio: 6.5 }
+    ];
 
     // X axis
     const x = d3.scaleBand()
@@ -124,17 +127,41 @@ function VisImage(props) {
 
     // Add the highlight class to the matching bar and change its fill color
     svg.selectAll("rect")
-      .filter(d => d.Age === ageToHighlight)
+      .filter(d => d.value === ageToHighlight)
       .classed(highlightClass, true)
       .style("fill", "orange");
   };
   return (
     <>
-      <div id="my_dataviz"></div>
-      <div id="tooltip"></div>
+    <div>
+      <div ref={chartRef}></div>
+      <div ref={tooltipRef} id="tooltip" style={{
+        position: "absolute",
+        opacity: 0,
+        background: "rgba(255, 255, 255, 0.9)",
+        border: "1px solid #ddd",
+        borderRadius: "5px",
+        padding: "10px",
+        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+        pointerEvents: "none",
+        fontSize: "1.2em",
+        color: "#333",
+        zIndex: 10,
+        transform: "translate(-50%, -100%)"
+      }}>
+
+      </div>
+            <div style={{
+        maxWidth: "860px", // Match the SVG width
+        marginTop: "10px",
+        fontSize: "22px",
+        textAlign: "middle"
+      }}>
+               
+      </div>
+    </div>
     </>
   )
-
 };
 
 export default VisImage;

@@ -6,7 +6,8 @@ function VisImage(props) {
   const mygender = props.gender
   const mycountry = props.country
   const waist_num = props.waist
-
+  const chartRef = useRef(null);
+  const tooltipRef = useRef(null);
   useEffect(() => {
 
     drawChart();
@@ -82,6 +83,8 @@ function VisImage(props) {
 
 
     const waistToHighlight = Waist_Circumference_Category_convert(waist_num);
+    d3.select(chartRef.current).selectAll("*").remove();
+    // append the svg object to the body of the page
 
     // set the dimensions and margins of the graph
     const margin = { top: 50, right: 30, bottom: 90, left: 40 },
@@ -89,7 +92,7 @@ function VisImage(props) {
       height = 500 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
-    const svg = d3.select("#my_dataviz1")
+    const svg = d3.select(chartRef.current)
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -189,8 +192,33 @@ function VisImage(props) {
 
   return (
     <>
-      <div id="my_dataviz1"></div>
-      <div id="tooltip1"></div>
+    <div>
+      <div ref={chartRef}></div>
+      <div ref={tooltipRef} id="tooltip1" style={{
+        position: "absolute",
+        opacity: 0,
+        background: "rgba(255, 255, 255, 0.9)",
+        border: "1px solid #ddd",
+        borderRadius: "5px",
+        padding: "10px",
+        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+        pointerEvents: "none",
+        fontSize: "1.2em",
+        color: "#333",
+        zIndex: 10,
+        transform: "translate(-50%, -100%)"
+      }}>
+
+      </div>
+            <div style={{
+        maxWidth: "860px", // Match the SVG width
+        marginTop: "10px",
+        fontSize: "22px",
+        textAlign: "middle"
+      }}>
+               
+      </div>
+    </div>
     </>
   );
 }

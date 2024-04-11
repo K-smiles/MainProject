@@ -7,19 +7,43 @@ import Grid from "@mui/material/Grid";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import MKButton from "components/MKButton";
-import AccordionUsage from "pages/disabetes/sections/Aoord";
-
 import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Link as DomLink } from 'react-router-dom'
+// // Image
+// import bgImage1 from "assets/images/illustrations/old_cough.jpg";
+// import bgImage2 from "assets/images/illustrations/old_bones.jpg";
+// import bgImage3 from "assets/images/illustrations/old_papule.png";
 
-// Image
+import { Link, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
+import RotatingCard from "examples/Cards/RotatingCard";
+import RotatingCardFront from "examples/Cards/RotatingCard/RotatingCardFront";
+import RotatingCardBack from "examples/Cards/RotatingCard/RotatingCardBack";
+import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
 import bgImage1 from "assets/images/illustrations/old_cough.jpg";
 import bgImage2 from "assets/images/illustrations/old_bones.jpg";
 import bgImage3 from "assets/images/illustrations/old_papule.png";
-import { Link, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
+import bgImage from "assets/images/epic1background.jpg";
+import symptoms1 from "assets/images/symptoms/1.png";
+import symptoms2 from "assets/images/symptoms/2.png";
+import symptoms3 from "assets/images/symptoms/3.png";
+import symptoms4 from "assets/images/symptoms/4.png";
+import symptoms5 from "assets/images/symptoms/5.png";
+import symptoms6 from "assets/images/symptoms/6.png";
+
+// Type 1 Diabetes Data
+const typeOneDiabetesData = [
+    { name: 'What It Is', description: 'The body’s immune system attacks cells that make insulin.' },
+    { name: 'When It Occurs', description: 'Often starts when one is young but can occur at any age.' },
+    { name: 'Treatment', description: 'Requires taking insulin every day to manage.' },
+];
+// Type 2 Diabetes Data
+const typeTwoDiabetesData = [
+    { name: 'What It Is', description: "The body doesn’t use insulin well and can't keep blood sugar at normal levels." },
+    { name: 'When It Occurs', description: 'It’s more common in adults but can happen at any age.' },
+    { name: 'Treatment', description: 'Often managed with lifestyle changes and medication or insulin as needed.' },
+];
 
 function Content() {
     const settings = {
@@ -115,6 +139,7 @@ function Content() {
                                 {"What are the types of diabetes?"}
                             </MKTypography>
                         </MKBox>
+
                         <MKBox p={3}>
                             <Grid container spacing={3}>
                                 <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }} style={{ fontSize: "1.5rem" }} >
@@ -122,12 +147,54 @@ function Content() {
                                     Type 1, an autoimmune disease that causes insulin deficiency; <br /><br />
                                     Type 2 diabetes, caused by the body's ineffective use of insulin, is often linked to lifestyle factors; Gestational diabetes, which occurs during pregnancy. <br /><br />
                                     However, our web project focuses on type 2 diabetes with an emphasis on prevention and management through lifestyle changes, as type 1 diabetes is largely inherited.
-                                    <AccordionUsage />
+
                                 </Grid>
                             </Grid>
-
                         </MKBox>
+                        <div style={{ display: "flex", justifyContent: "space-around", gap: "5vh", margin: "5vh", height: "45vh" }}>
+                            {/* Type 1 Diabetes Card */}
+                            <div style={{ width: "400px" }}>
+                                <RotatingCard>
+                                    <RotatingCardFront
+                                        title="Type 1 Diabetes"
+                                        description="Learn more about Type 1 Diabetes, its causes, symptoms, and treatments."
+                                    />
+                                    <RotatingCardBack
+                                        image="https://bit.ly/3G5JXJZ"
+                                        title="Type 1 Diabetes"
+                                        description={
+                                            <>
+                                                <strong>{typeOneDiabetesData[0].name}:</strong> {typeOneDiabetesData[0].description}<br /><br />
+                                                <strong>{typeOneDiabetesData[1].name}:</strong> {typeOneDiabetesData[1].description}<br /><br />
+                                                <strong>{typeOneDiabetesData[2].name}:</strong> {typeOneDiabetesData[2].description}
+                                            </>
+                                        }
+                                    />
+                                </RotatingCard>
+                            </div>
 
+                            {/* Type 2 Diabetes Card */}
+                            <div style={{ width: "400px" }}>
+                                <RotatingCard>
+                                    <RotatingCardFront
+                                        title="Type 2 Diabetes"
+                                        description="Learn more about Type 2 Diabetes, its causes, symptoms, and treatments."
+                                    />
+                                    <RotatingCardBack
+                                        image="https://bit.ly/32ZoTGx"
+                                        title="Type 2 Diabetes"
+                                        description={
+                                            <>
+                                                <strong>{typeTwoDiabetesData[0].name}:</strong> {typeTwoDiabetesData[0].description}<br /><br />
+                                                <strong>{typeTwoDiabetesData[1].name}:</strong> {typeTwoDiabetesData[1].description}<br /><br />
+                                                <strong>{typeTwoDiabetesData[2].name}:</strong> {typeTwoDiabetesData[2].description}<br /><br />
+                                                <p>  </p>
+                                            </>
+                                        }
+                                    />
+                                </RotatingCard>
+                            </div>
+                        </div>
                         <Element name="DiaSymptoms" className="element">
                         </Element>
                         <MKBox
@@ -144,21 +211,73 @@ function Content() {
                             </MKTypography>
                         </MKBox>
                         <MKBox p={3}>
-                            <Grid container spacing={3}>
-                                <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }} style={{ fontSize: "1.5rem" }} >
-                                    1.	<strong>Increased Thirst: </strong> <br />Seniors might find themselves more thirsty than usual, which can be a sign that the body is trying to balance sugar levels.
-                                    <br /> <br />2.	<strong>Frequent Urination: </strong> <br />More frequent trips to the bathroom may be a result of the body’s attempt to expel excess sugar.
-                                    <br />  <br />3.	<strong>Increased Hunger: </strong> <br />Despite regular meals, a persistent hunger can indicate that the body isn’t using sugar properly for energy.
-                                    <br />  <br />4.	<strong>Unintended Weight Loss: </strong> <br />Unexpected weight loss may occur as the body uses alternative energy sources due to sugar not being utilized effectively.
-                                    <br /> <br />5.	<strong>Fatigue: </strong> <br />Seniors may feel unusually tired if their body is struggling to convert sugar into energy.
-                                    <br />   <br />6.	<strong>Early Signs of Diabetic Foot Complications：</strong> <br />Early diabetic foot symptoms, such as numbness or skin changes, can escalate to severe complications like ulcers or even gangrene if not addressed.
-                                </Grid>
-                                <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }} style={{ fontSize: "1.5rem" }} >
-                                    <DomLink to="/disabetes/2">
-                                        <MKButton color="info">More Content</MKButton>
-                                    </DomLink>
-                                </Grid>
+                            <Grid container spacing={2}>
+                                
+                                <Grid item xs={12} md={1.5}></Grid> 
+                                <Grid item xs={12} md={3}>
+                                    <BackgroundBlogCard
+                                        image={symptoms1}
+                                        title="1.Increased Thirst"
+                                        description="Seniors might find themselves more thirsty than usual, which can be a sign that the body is trying to balance sugar levels."
 
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={3}>
+                                    <BackgroundBlogCard
+                                        image={symptoms2}
+                                        title="2.Frequent Urination"
+                                        description="More frequent trips to the bathroom may be a result of the body’s attempt to expel excess sugar."
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={3}>
+                                    <BackgroundBlogCard
+                                        image={symptoms3}
+                                        title="3.Increased Hunger"
+                                        description="Despite regular meals, a persistent hunger can indicate that the body isn’t using sugar properly for energy."
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={1.5}></Grid>
+
+                              
+                                <Grid item xs={12} md={1.5}></Grid> 
+                                <Grid item xs={12} md={3}>
+                                    <BackgroundBlogCard
+                                        image={symptoms4}
+                                        title="4.Unintended Weight Loss"
+                                        description="Unexpected weight loss may occur as the body uses alternative energy sources due to sugar not being utilized effectively."
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={3}>
+                                    <BackgroundBlogCard
+                                        image={symptoms5}
+                                        title={
+                                            <span>
+                                                5. Fatigue<br /><br />
+                                            </span>
+                                        }
+                                        description="Seniors may feel unusually tired if their body is struggling to convert sugar into energy."
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={3}>
+                                    <BackgroundBlogCard
+                                        image={symptoms6}
+                                        title="6.Early Signs of Diabetic Foot Complications"
+                                        description="Early diabetic foot symptoms, such as numbness or skin changes, can escalate to severe complications like ulcers or even gangrene if not addressed."
+
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={1.5}></Grid> 
+                            </Grid>
+
+                            
+                            <Grid item xs={12} md={10} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }} style={{ fontSize: "1.5rem" }} >
+                                <Link to="/disabetes/2">
+                                    <MKButton color="primary">More Content</MKButton>
+                                </Link>
                             </Grid>
                         </MKBox>
                     </MKBox>
