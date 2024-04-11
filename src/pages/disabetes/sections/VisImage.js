@@ -15,8 +15,6 @@ import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
-import bgImage from "assets/images/products/product-1-min.jpg";
-
 
 function VisImage(props) {
   const [show, setShow] = useState(false);

@@ -34,7 +34,7 @@ function Content() {
         <>
             <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" mt={-20}>
                 <Grid item ml={{ xs: "auto", lg: 1 }} mr={{ xs: "auto", lg: 1 }}>
-                    <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex" flexDirection="column" justifyContent="center" mt={{ xs: 20, sm: 18, md: 20 }} mb={{ xs: 20, sm: 18, md: 20 }} mx={10}>
+                    <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex" flexDirection="column" justifyContent="center" mt={{ xs: 20, sm: 18, md: 20 }} mb={{ xs: 5, sm: 4, md: 5 }} mx={10}>
                         <Element name="DiaIntroduction" className="element">
                         </Element>
                         <MKBox
@@ -164,7 +164,6 @@ function Content() {
                     </MKBox>
                 </Grid>
             </Grid >
-
         </>
     );
 }

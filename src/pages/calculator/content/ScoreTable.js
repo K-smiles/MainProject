@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, Tag } from 'antd';
-
+import MKTypography from "components/MKTypography";
 function ScoreTable(props) {
 
     const columns = [
@@ -85,6 +85,7 @@ function ScoreTable(props) {
                 }
             `}
         </style>
+        <MKTypography variant="h1" >The Detail of Score is </MKTypography>
         <Table
             pagination={false}
             columns={columns}

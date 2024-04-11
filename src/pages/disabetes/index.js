@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { Link, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
+import { Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 import Fab from '@mui/material/Fab';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 
@@ -46,11 +45,8 @@ function Disabetes() {
     };
     return (
         <>
-            <DefaultNavbar routes={routes}
-                transparent
-                relative
-            />
-            <NavContent/>
+            <DefaultNavbar routes={routes} transparent relative/>
+            <NavContent />
             <Content />
             <MKBox pt={1} px={1} mt={0}>
                 <SimpleFooter content={footerRoutes} />
@@ -66,5 +62,4 @@ function Disabetes() {
         </>
     );
 }
-
 export default Disabetes;

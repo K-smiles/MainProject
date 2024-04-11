@@ -2,79 +2,86 @@ import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 
 function VisImage(props) {
+  // 0 female 3 male
   const mygender = props.gender
-  const myage = props.country
   const mycountry = props.country
-  const mywaist = props.waist
-  
-  const chartRef = useRef(null);
+  const waist_num = props.waist
 
   useEffect(() => {
 
     drawChart();
 
   }, []);
-
+  //waist to column tag
   function Waist_Circumference_Category_convert(num) {
-    if (num == 1) {
+    if (num == 0) {
       return data[0].Waist_Circumference_Category
-    } else if (num == 2) {
+    } else if (num == 4) {
       return data[1].Waist_Circumference_Category
-    } else if (num == 3) {
+    } else if (num == 7) {
       return data[2].Waist_Circumference_Category
     }
   };
-
+  //default  asian boy
   const data = [
     { Waist_Circumference_Category: "< 90", Odd_Ratio: 1 },
     { Waist_Circumference_Category: "90 - 100", Odd_Ratio: 2.8 },
     { Waist_Circumference_Category: "> 100", Odd_Ratio: 5.2 }
   ];
 
+  // re write the tag of column on the input of race and gender
   function Waist_Circumference_Category_data_convert(race, gender) {
-    //race == 1  is asian
-    //gender = 1 is male
-    if (gender == 1) {
-      if (race == 0) {
+    //race == 0  is asian
+    if (race == 0) {
+          //gender = 1 is female
+      if (gender == 1) {
+        //asian female
         data[0].Waist_Circumference_Category = " < 80 ";
         data[1].Waist_Circumference_Category = " 80 - 90 ";
         data[2].Waist_Circumference_Category = " > 90 ";
+      } else
+      //asian male
+      {
+        data[0].Waist_Circumference_Category = " < 90 ";
+        data[1].Waist_Circumference_Category = "90 - 100";
+        data[2].Waist_Circumference_Category = "> 100";
       }
-    } else if (gender == 0) {
-      if (race == 1) {
+    } else 
+    if (race == 1) {
+        //gender = 1 is female
+      if (gender == 0) {
         data[0].Waist_Circumference_Category = " < 102";
         data[1].Waist_Circumference_Category = " 102 - 110 ";
         data[2].Waist_Circumference_Category = " > 110";
-      } else if (race == 0) {
+      } else if (gender == 1) {
+        //gender = 1 is female
         data[0].Waist_Circumference_Category = " < 88";
         data[1].Waist_Circumference_Category = " 88 - 100 ";
         data[2].Waist_Circumference_Category = " > 100";
       }
     }
   }
+
   const drawChart = () => {
 
     const highlightClass = 'highlighted-bar';
 
-    let race = 0
-    let gender = 0
-    //is male
-    if (mygender == 3)
-    {
+    let race = 1 //not asian 
+    let gender = 0 // means male
+
+    //is female?
+    if (mygender == 0) {
       gender = 1
     }
     //is asin
-    if (mycountry == 2)
-    {
-      race  = 1
+    if (mycountry == 2) {
+      race = 0
     }
-    const numToHighlight = props.age
-
-
     // Adjust data categories based on race and gender input
     Waist_Circumference_Category_data_convert(race, gender);
 
-    const waistToHighlight = Waist_Circumference_Category_convert(myage);
+
+    const waistToHighlight = Waist_Circumference_Category_convert(waist_num);
 
     // set the dimensions and margins of the graph
     const margin = { top: 50, right: 30, bottom: 90, left: 40 },

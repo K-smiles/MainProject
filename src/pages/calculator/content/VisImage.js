@@ -5,8 +5,6 @@ function VisImage(props) {
 
   const age = props.age
 
-  const chartRef = useRef(null);
-
   useEffect(() => {
 
     drawChart();
@@ -17,7 +15,6 @@ function VisImage(props) {
 
     const highlightClass = 'highlighted-bar';
     const ageToHighlight = age
-    console.log("ageToHighlight" + age + ageToHighlight)
 
     // set the dimensions and margins of the graph
     const margin = { top: 50, right: 30, bottom: 90, left: 30 },
@@ -33,11 +30,11 @@ function VisImage(props) {
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const data = [
-      { Age: " < 35 ", Odd_Ratio: 1 },
-      { Age: " 35 – 44 ", Odd_Ratio: 1.7 },
-      { Age: " 45 – 54 ", Odd_Ratio: 3.0 },
-      { Age: " 55 – 64 ", Odd_Ratio: 4.6 },
-      { Age: " > 65 ", Odd_Ratio: 6.5 }
+      { Age: 0, Odd_Ratio: 1 },
+      { Age: 2, Odd_Ratio: 1.7 },
+      { Age: 4, Odd_Ratio: 3.0 },
+      { Age: 6, Odd_Ratio: 4.6 },
+      { Age: 8, Odd_Ratio: 6.5 }
     ];
 
 
@@ -46,6 +43,7 @@ function VisImage(props) {
       .range([0, width])
       .domain(data.map(d => d.Age))
       .padding(0.2);
+
     svg.append("g")
       .attr("transform", `translate(0,${height})`)
       .call(d3.axisBottom(x))
@@ -57,6 +55,7 @@ function VisImage(props) {
     const y = d3.scaleLinear()
       .domain([0, 8])
       .range([height, 0]);
+
     svg.append("g")
       .style("font-size", "20px")
       .call(d3.axisLeft(y));
@@ -129,8 +128,6 @@ function VisImage(props) {
       .classed(highlightClass, true)
       .style("fill", "orange");
   };
-
-
   return (
     <>
       <div id="my_dataviz"></div>

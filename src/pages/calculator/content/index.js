@@ -22,7 +22,7 @@ import MKTypography from "components/MKTypography";
 import BasicTabs from "./Tablist";
 function Content() {
     return (
-        <Grid container spacing={3} alignItems="center">
+        <Grid container alignItems="center">
             <Grid
                 item
                 xs={12}
@@ -30,8 +30,8 @@ function Content() {
                 md={12}
                 lg={12}
                 xl={12}
-                ml={{ xs: "auto", lg: 6 }}
-                mr={{ xs: "auto", lg: 6 }}
+                ml={{ xs: "auto", lg: 1 }}
+                mr={{ xs: "auto", lg: 1 }}
             >
                 <MKBox
                     bgColor="white"
@@ -40,8 +40,8 @@ function Content() {
                     display="flex"
                     flexDirection="column"
                     justifyContent="center"
-                    mt={{ xs: 20, sm: 18, md: 20 }}
-                    mb={{ xs: 20, sm: 18, md: 20 }}
+                    mt={{ xs: 5, sm: 5, md: 5 }}
+                    mb={{ xs: 5, sm: 5, md: 5 }}
                     mx={3}
                 >
                     <MKBox

@@ -26,17 +26,9 @@ function NavContent() {
                     display: "grid",
                     placeItems: "center",
                 }}
-            >
-                <Container>
-                    <Grid container alignItems="center">
-                        <Grid item xs={12} lg={12}>
-                            <MKTypography variant="h1" my={1} style={{ color: "white", fontSize: "90px", opacity: "0.8", position: "middle" }}>
-                                Introduction to Diabetes
-                            </MKTypography>
-                        </Grid>
-                    </Grid>
-                </Container>
-
+            >   <MKTypography variant="h1" style={{ color: "white", fontSize: "90px", opacity: "0.8", position: "middle" }}>
+                    Introduction to Diabetes
+                </MKTypography>
             </MKBox>
             <Card
                 sx={{
@@ -63,8 +55,7 @@ function NavContent() {
                                     variant="gradient"
                                     color="info"
                                     icon="flag"
-                                    title="DiaIntroduction"
-                                    description="DiaIntroduction"
+                                    title="Diabetes Introduction"
                                     action={{
                                         type: "external",
                                         route: "#",
@@ -83,10 +74,10 @@ function NavContent() {
                                 duration={500}
                             >
                                 <FilledInfoCard
+                                    variant="gradient"
                                     color="info"
                                     icon="precision_manufacturing"
-                                    title="DiaType "
-                                    description="DiaType"
+                                    title="Diabetes Type "
                                     action={{
                                         type: "external",
                                         route: "#",
@@ -105,10 +96,10 @@ function NavContent() {
                                 duration={500}
                             >
                                 <FilledInfoCard
+                                    variant="gradient"
                                     color="info"
                                     icon="apps"
-                                    title="DiaSymptoms"
-                                    description="DiaSymptoms"
+                                    title="Diabetes Symptoms"
                                     action={{
                                         type: "external",
                                         route: "#",
