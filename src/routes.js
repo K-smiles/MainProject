@@ -6,6 +6,7 @@ import Disabetes from "layouts/disabetes";
 import Disabetes2 from "pages/disabetes2";
 import Disabetes3 from "pages/disabetes3";
 import Calculator from "layouts/calculator";
+import Model3d from "pages/model3d";
 
 const routes = [
   {
@@ -51,6 +52,14 @@ const routes = [
     rowsPerColumn: 2,
     route: "/calculator",
     component: <Calculator />,
+  },
+  {
+    name: "3D",
+    icon: <Icon>devices</Icon>,
+    columns: 1,
+    rowsPerColumn: 2,
+    route: "/model",
+    component: <Model3d />,
   },
   // {
   //   name: "About",
