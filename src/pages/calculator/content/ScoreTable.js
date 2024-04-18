@@ -92,7 +92,6 @@ function ScoreTable(props) {
             dataSource={data}
             className="custom-table"
         />
-
     </>)
 };
 

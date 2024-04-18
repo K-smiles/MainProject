@@ -68,7 +68,7 @@ const data = [
 
 function CateTable(props) {
     const score = props.score
-    const result = (data.filter((item) => item.min <= score && item.max > score))
+    const result = (data.filter((item) => item.min <= score && item.max >= score))
     return (
         <>
             <style>

@@ -1,23 +1,23 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+
+//React 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Grid from "@mui/material/Grid";
-import CateTable from 'pages/calculator/content/CateTable';
 import MKButton from "components/MKButton";
-// Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import MKAlert from "components/MKAlert";
 
+//image
 import Icon from "@mui/material/Icon";
 import age from "assets/riskpicture/age.png"
 import gender from "assets/riskpicture/gender.png"
@@ -30,11 +30,43 @@ import glu from "assets/riskpicture/glu.png"
 import smo from "assets/riskpicture/smo.png"
 import highp from "assets/riskpicture/highp.png"
 import waist from "assets/riskpicture/waist.png"
+
+//sub element
 import ScoreTable from './ScoreTable';
 import VisImage from './VisImage';
 import VisImage2 from './VisImage2';
-
-
+import CateTable from 'pages/calculator/content/CateTable';
+const OptionCssVar = {
+  fontSize: {
+    xs: 20,
+    sm: 30,
+    md: 40,
+    xl: 50,
+  },
+  opacity: "0.8",
+  position: "middle",
+  '&:hover': {
+    color: 'red',
+    backgroundColor: 'white',
+  
+}}
+const radioVar = <Radio sx={{
+  '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
+  {
+    color: 'blue',
+  },
+  '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
+    color: 'blue',
+  },
+  '&, &.Mui-checked': {
+    color: 'blue',
+  },
+  '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
+  {
+    stroke: 'blue',
+    strokeWidth: 5,
+  },
+}} />
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -75,6 +107,7 @@ export default function BasicTabs() {
   const handleTabChange = (event, tabValue) => {
     setTabValue(tabValue);
   };
+
   //country chose
   const [countryValue, setCountryValue] = React.useState(0);
 
@@ -105,11 +138,13 @@ export default function BasicTabs() {
     setScore({ ...score, age: Number(event.target.value) })
     setTabValue(2)
   };
+
   //isEthnicity change
   const handleIsEthnicityChange = (event) => {
     setScore({ ...score, isEthnicity: Number(event.target.value) })
     setTabValue(3)
   };
+
   //country change
   const handleCountryChange = (event) => {
     setCountryValue(event.target.value)
@@ -121,42 +156,49 @@ export default function BasicTabs() {
     }
     setTabValue(4)
   };
+
   //country change
   const handlePareChange = (event) => {
     setScore({ ...score, pare: Number(event.target.value) })
     setTabValue(5)
   };
+
   // is smoke change
   const handleIsSmokeChange = (event) => {
     setScore({ ...score, isSmoke: Number(event.target.value) })
     setTabValue(6)
   };
+
   // is veg
   const handleIsVeChange = (event) => {
     setScore({ ...score, isVe: Number(event.target.value) })
     setTabValue(7)
   };
+
   // is exercise
   const handleIsExerciseChange = (event) => {
     setScore({ ...score, isExercise: Number(event.target.value) })
     setTabValue(8)
   };
+
   // HGB change
   const handleHBGChange = (event) => {
     setScore({ ...score, high_blood_glucose: Number(event.target.value) })
     setTabValue(9)
   };
+
   // is medi
   const handleIsMedicationChange = (event) => {
     setScore({ ...score, isMedication: Number(event.target.value) })
     setTabValue(10)
   };
+
   // waist
   const handleWaisteChange = (event) => {
     setScore({ ...score, waist: Number(event.target.value) })
     setTabValue(11)
   };
-
+  //Go to detail
   const onClickToDetail = (event) => {
     setTabValue(12)
   };
@@ -179,59 +221,39 @@ export default function BasicTabs() {
           <Tab label="Detail" aria-label="phone" {...a11yProps(12)} />
         </Tabs>
       </MKBox>
+
       <CustomTabPanel value={tabValue} index={0} >
         <Grid container >
-          <Grid item xs={6} md={8} >
+          <Grid item xs={8} md={8}>
             <FormControl >
               <FormLabel id="demo-controlled-radio-buttons-group" >
-                <MKTypography variant="h1" mb={3}>
-                  Your Gender</MKTypography></FormLabel>
+                <MKTypography variant="h1" mb={3} sx={{
+                  fontSize: {
+                    xs: 20,
+                    sm: 30,
+                    md: 40,
+                    xl: 50,
+                  },
+                  opacity: "0.8",
+                  position: "middle"
+                }}>
+                  Your Gender
+                </MKTypography>
+              </FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 onChange={handleGenderChange}
-                value={score.gender}
+                value={score.gender} 
               >
-                <FormControlLabel value="3" control={<Radio sx={{
-                  '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                  {
-                    color: 'blue',
-                  },
-                  '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                    color: 'blue',
-                  },
-                  '&, &.Mui-checked': {
-                    color: 'blue',
-                  },
-                  '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                  {
-                    stroke: 'blue',
-                    strokeWidth: 5,
-                  },
-                }} />} label={<MKTypography variant="h1" >Male</MKTypography>} />
-                <FormControlLabel value="0" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Female</MKTypography>} />
+            
+                <FormControlLabel value="3" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Male</MKTypography>} />
+          
+                <FormControlLabel value="0" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar}>Female</MKTypography>} />
               </RadioGroup>
             </FormControl>
           </Grid>
-          <Grid item xs={6} md={4}>
+          <Grid item xs={4} md={4}>
             <img src={gender} alt="Image 1" style={{
               width: '100%',
               height: 'auto',
@@ -241,12 +263,22 @@ export default function BasicTabs() {
           </Grid>
         </Grid>
       </CustomTabPanel>
+
       <CustomTabPanel value={tabValue} index={1}>
         <Grid container >
           <Grid item xs={6} md={8}>
             <FormControl>
               <FormLabel id="demo-controlled-radio-buttons-group">
-                <MKTypography variant="h1" mb={3}>
+                <MKTypography variant="h1" sx={{
+                  fontSize: {
+                    xs: 20,
+                    sm: 30,
+                    md: 40,
+                    xl: 50,
+                  },
+                  opacity: "0.8",
+                  position: "middle"
+                }} mb={3}>
                   What's your age range?
                 </MKTypography>
               </FormLabel>
@@ -256,101 +288,11 @@ export default function BasicTabs() {
                 onChange={handleAgeChange}
                 value={score.age}
               >
-                <FormControlLabel value="0" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Under 35</MKTypography>} />
-                <FormControlLabel value="2" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >35-44</MKTypography>} />
-                <FormControlLabel value="4" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >45-54 </MKTypography>} />
-                <FormControlLabel value="6" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >55-64</MKTypography>} />
-                <FormControlLabel value="8" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >65 and above</MKTypography>} />
+                <FormControlLabel value="0" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Under 35</MKTypography>} />
+                <FormControlLabel value="2" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >35-44</MKTypography>} />
+                <FormControlLabel value="4" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >45-54 </MKTypography>} />
+                <FormControlLabel value="6" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >55-64</MKTypography>} />
+                <FormControlLabel value="8" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >65 and above</MKTypography>} />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -369,7 +311,16 @@ export default function BasicTabs() {
           <Grid item xs={6} md={8}>
             <FormControl>
               <FormLabel id="demo-controlled-radio-buttons-group">
-                <MKTypography variant="h1" mb={3}>
+                <MKTypography variant="h1" sx={{
+                  fontSize: {
+                    xs: 20,
+                    sm: 30,
+                    md: 40,
+                    xl: 50,
+                  },
+                  opacity: "0.8",
+                  position: "middle"
+                }} mb={3}>
                   Your heritage: Do you identify
                   with any of the following descents: Aboriginal,
                   Torres Strait Islander, Pacific Islander or
@@ -382,44 +333,8 @@ export default function BasicTabs() {
                 onChange={handleIsEthnicityChange}
                 value={score.isEthnicity}
               >
-                <FormControlLabel value="0" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >No</MKTypography>} />
-                <FormControlLabel value="2" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Yes</MKTypography>} />
+                <FormControlLabel value="0" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >No</MKTypography>} />
+                <FormControlLabel value="2" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Yes</MKTypography>} />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -438,7 +353,16 @@ export default function BasicTabs() {
           <Grid item xs={6} md={8}>
             <FormControl>
               <FormLabel id="demo-controlled-radio-buttons-group">
-                <MKTypography variant="h1" mb={3}>
+                <MKTypography variant="h1" sx={{
+                  fontSize: {
+                    xs: 20,
+                    sm: 30,
+                    md: 40,
+                    xl: 50,
+                  },
+                  opacity: "0.8",
+                  position: "middle"
+                }} mb={3}>
                   Birthplace: Where were you born?
                 </MKTypography>
               </FormLabel>
@@ -448,63 +372,9 @@ export default function BasicTabs() {
                 onChange={handleCountryChange}
                 value={countryValue}
               >
-                <FormControlLabel value="aus" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Australia</MKTypography>} />
-                <FormControlLabel value="asi" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h2" >Asia (including the Indian sub-continent), Middle East, North Africa, Southern Europe</MKTypography>} />
-                <FormControlLabel value="oth" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Other</MKTypography>} />
+                <FormControlLabel value="aus" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Australia</MKTypography>} />
+                <FormControlLabel value="asi" control={radioVar} label={<MKTypography variant="h2" sx={OptionCssVar} >Asia (including the Indian sub-continent), Middle East, North Africa, Southern Europe</MKTypography>} />
+                <FormControlLabel value="oth" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Other</MKTypography>} />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -524,51 +394,24 @@ export default function BasicTabs() {
         <Grid container >
           <Grid item xs={6} md={8}>
             <FormControl>
-              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" mb={3}>Family history of diabetes?</MKTypography></FormLabel>
+              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" sx={{
+                  fontSize: {
+                    xs: 20,
+                    sm: 30,
+                    md: 40,
+                    xl: 50,
+                  },
+                  opacity: "0.8",
+                  position: "middle"
+                }} mb={3}>Family history of diabetes?</MKTypography></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 onChange={handlePareChange}
                 value={score.pare}
               >
-                <FormControlLabel value="0" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >No</MKTypography>} />
-                <FormControlLabel value="3" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Yes</MKTypography>} />
+                <FormControlLabel value="0" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >No</MKTypography>} />
+                <FormControlLabel value="3" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Yes</MKTypography>} />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -588,51 +431,24 @@ export default function BasicTabs() {
         <Grid container >
           <Grid item xs={6} md={8}>
             <FormControl>
-              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" mb={3}>Do you smoke?</MKTypography></FormLabel>
+              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" sx={{
+                  fontSize: {
+                    xs: 20,
+                    sm: 30,
+                    md: 40,
+                    xl: 50,
+                  },
+                  opacity: "0.8",
+                  position: "middle"
+                }} mb={3}>Do you smoke?</MKTypography></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 onChange={handleIsSmokeChange}
                 value={score.isSmoke}
               >
-                <FormControlLabel value="0" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >No</MKTypography>} />
-                <FormControlLabel value="2" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Yes</MKTypography>} />
+                <FormControlLabel value="0" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >No</MKTypography>} />
+                <FormControlLabel value="2" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Yes</MKTypography>} />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -651,52 +467,25 @@ export default function BasicTabs() {
         <Grid container >
           <Grid item xs={6} md={8}>
             <FormControl>
-              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" mb={3}>Daily intake of vegetables or fruit?</MKTypography></FormLabel>
+              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" sx={{
+                  fontSize: {
+                    xs: 20,
+                    sm: 30,
+                    md: 40,
+                    xl: 50,
+                  },
+                  opacity: "0.8",
+                  position: "middle"
+                }} mb={3}>Daily intake of vegetables or fruit?</MKTypography></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 onChange={handleIsVeChange}
                 value={score.isVe}
               >
-                <FormControlLabel value="0" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Every day</MKTypography>} />
+                <FormControlLabel value="0" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Every day</MKTypography>} />
 
-                <FormControlLabel value="1" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Not every day</MKTypography>} />
+                <FormControlLabel value="1" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Not every day</MKTypography>} />
 
               </RadioGroup>
             </FormControl>
@@ -715,51 +504,24 @@ export default function BasicTabs() {
         <Grid container >
           <Grid item xs={6} md={8}>
             <FormControl>
-              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" mb={3}>What is your weekly physical activity level? (for example, 30 minutes a day on 5 or more days a week）?</MKTypography></FormLabel>
+              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" sx={{
+                  fontSize: {
+                    xs: 20,
+                    sm: 30,
+                    md: 40,
+                    xl: 50,
+                  },
+                  opacity: "0.8",
+                  position: "middle"
+                }} mb={3}>What is your weekly physical activity level? (for example, 30 minutes a day on 5 or more days a week）?</MKTypography></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 onChange={handleIsExerciseChange}
                 value={score.isExercise}
               >
-                <FormControlLabel value="0" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >No</MKTypography>} />
-                <FormControlLabel value="2" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Yes</MKTypography>} />
+                <FormControlLabel value="0" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >No</MKTypography>} />
+                <FormControlLabel value="2" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Yes</MKTypography>} />
 
               </RadioGroup>
             </FormControl>
@@ -779,52 +541,25 @@ export default function BasicTabs() {
         <Grid container >
           <Grid item xs={6} md={8}>
             <FormControl>
-              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" mb={3}>Ever had high blood glucose levels?</MKTypography></FormLabel>
+              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" sx={{
+                  fontSize: {
+                    xs: 20,
+                    sm: 30,
+                    md: 40,
+                    xl: 50,
+                  },
+                  opacity: "0.8",
+                  position: "middle"
+                }} mb={3}>Ever had high blood glucose levels?</MKTypography></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 onChange={handleHBGChange}
                 value={score.high_blood_glucose}
               >
-                <FormControlLabel value="0" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >No</MKTypography>} />
+                <FormControlLabel value="0" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >No</MKTypography>} />
 
-                <FormControlLabel value="6" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Yes</MKTypography>} />
+                <FormControlLabel value="6" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Yes</MKTypography>} />
 
               </RadioGroup>
             </FormControl>
@@ -843,52 +578,25 @@ export default function BasicTabs() {
         <Grid container >
           <Grid item xs={6} md={8}>
             <FormControl>
-              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" mb={3}>Taking medication for hypertension?</MKTypography></FormLabel>
+              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" sx={{
+                  fontSize: {
+                    xs: 20,
+                    sm: 30,
+                    md: 40,
+                    xl: 50,
+                  },
+                  opacity: "0.8",
+                  position: "middle"
+                }} mb={3}>Taking medication for hypertension?</MKTypography></FormLabel>
               <RadioGroup
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 onChange={handleIsMedicationChange}
                 value={score.isMedication}
               >
-                <FormControlLabel value="0" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >No</MKTypography>} />
+                <FormControlLabel value="0" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >No</MKTypography>} />
 
-                <FormControlLabel value="2" control={<Radio
-                  sx={{
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                    {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                      color: 'blue',
-                    },
-                    '&, &.Mui-checked': {
-                      color: 'blue',
-                    },
-                    '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                    {
-                      stroke: 'blue',
-                      strokeWidth: 5,
-                    },
-                  }}
-                />} label={<MKTypography variant="h1" >Yes</MKTypography>} />
+                <FormControlLabel value="2" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >Yes</MKTypography>} />
 
               </RadioGroup>
             </FormControl>
@@ -907,7 +615,16 @@ export default function BasicTabs() {
         <Grid container >
           <Grid item xs={6} md={8}>
             <FormControl>
-              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" mb={3}>Do you know your waist size?</MKTypography></FormLabel>
+              <FormLabel id="demo-controlled-radio-buttons-group"><MKTypography variant="h1" sx={{
+                  fontSize: {
+                    xs: 20,
+                    sm: 30,
+                    md: 40,
+                    xl: 50,
+                  },
+                  opacity: "0.8",
+                  position: "middle"
+                }} mb={3}>Do you know your waist size?</MKTypography></FormLabel>
               {(score.gender == -1 || score.country == -1 || score.isEthnicity == -1) ?
                 <div><br />You have to chose your country and gender</div> :
                 <RadioGroup
@@ -916,68 +633,14 @@ export default function BasicTabs() {
                   onChange={handleWaisteChange}
                   value={score.waist}
                 >
-                  <FormControlLabel value="0" control={<Radio
-                    sx={{
-                      '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                      {
-                        color: 'blue',
-                      },
-                      '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                        color: 'blue',
-                      },
-                      '&, &.Mui-checked': {
-                        color: 'blue',
-                      },
-                      '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                      {
-                        stroke: 'blue',
-                        strokeWidth: 5,
-                      },
-                    }}
-                  />} label={<MKTypography variant="h1" > {//gender is 0 means female country = 2 means asian
-                    score.gender == 0 ? (( score.country == 2) ? "Less than 80 cm" : ("Less than 88 cm "))
-                      : (( score.country == 2) ? "Less than 90 cm " : ("Less than 102 cm  "))}</MKTypography>} />
+                  <FormControlLabel value="0" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} > {//gender is 0 means female country = 2 means asian
+                    score.gender == 0 ? ((score.country == 2) ? "Less than 80 cm" : ("Less than 88 cm "))
+                      : ((score.country == 2) ? "Less than 90 cm " : ("Less than 102 cm  "))}</MKTypography>} />
 
-                  <FormControlLabel value="4" control={<Radio
-                    sx={{
-                      '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                      {
-                        color: 'blue',
-                      },
-                      '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                        color: 'blue',
-                      },
-                      '&, &.Mui-checked': {
-                        color: 'blue',
-                      },
-                      '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                      {
-                        stroke: 'blue',
-                        strokeWidth: 5,
-                      },
-                    }}
-                  />} label={<MKTypography variant="h1" >{score.gender == 0 ? (( score.country == 2) ? "80–90 cm" : ("88–100 cm "))
-                    : (( score.country == 2) ? "90–100 cm " : ("102–110 cm  "))}</MKTypography>} />
+                  <FormControlLabel value="4" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >{score.gender == 0 ? ((score.country == 2) ? "80–90 cm" : ("88–100 cm "))
+                    : ((score.country == 2) ? "90–100 cm " : ("102–110 cm  "))}</MKTypography>} />
 
-                  <FormControlLabel value="7" control={<Radio
-                    sx={{
-                      '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                      {
-                        color: 'blue',
-                      },
-                      '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                        color: 'blue',
-                      },
-                      '&, &.Mui-checked': {
-                        color: 'blue',
-                      },
-                      '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root) path':
-                      {
-                        stroke: 'blue',
-                        strokeWidth: 5,
-                      },
-                    }}
-                  />} label={<MKTypography variant="h1" >{score.gender == 0 ? (( score.country == 2) ? "More than 90 cm" : ("More than 100 cm "))
+                  <FormControlLabel value="7" control={radioVar} label={<MKTypography variant="h1" sx={OptionCssVar} >{score.gender == 0 ? ((score.country == 2) ? "More than 90 cm" : ("More than 100 cm "))
                     : ((score.country == 2) ? "More than 100 cm  " : ("More than 110 cm   "))}</MKTypography>} />
                 </RadioGroup>}
             </FormControl>
@@ -992,6 +655,7 @@ export default function BasicTabs() {
           </Grid>
         </Grid>
       </CustomTabPanel>
+      
       <CustomTabPanel value={tabValue} index={11}>
         <Grid container >
           <Grid item
@@ -1032,6 +696,7 @@ export default function BasicTabs() {
           </Grid>
         </Grid>
       </CustomTabPanel>
+
       <CustomTabPanel value={tabValue} index={12}>
         <Grid container >
           <Grid
@@ -1057,7 +722,7 @@ export default function BasicTabs() {
                 <Grid xs={7} lg={7}>
                   <VisImage age={score.age} />
                   {/* gen = 0 means wo gender  =3 mean female  country = 2 mean asi */}
-                  <VisImage2  gender={score.gender} country={score.country} waist={score.waist} />
+                  <VisImage2 gender={score.gender} country={score.country} waist={score.waist} />
                 </Grid>
               </Grid>)
               : <MKAlert color="error" ><MKTypography variant="h1" >Your have to fill the form before</MKTypography></MKAlert>}

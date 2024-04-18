@@ -462,7 +462,7 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
         color={light ? "white" : "dark"}
         position={relative ? "relative" : "absolute"}
         left={0}
-        zIndex={3}
+        zIndex={99}
         sx={({ palette: { transparent: transparentColor, white }, functions: { rgba } }) => ({
           backgroundColor: transparent ? transparentColor.main : rgba(white.main, 0.8),
           backdropFilter: transparent ? "none" : `saturate(200%) blur(30px)`,
@@ -476,10 +476,11 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
             py={transparent ? 1.5 : 0.75}
             pl={relative || transparent ? 0 : { xs: 0, lg: 1 }}
           >
-            <MKTypography variant="button" fontWeight="bold" color={light ? "white" : "dark"}>
+            <MKTypography variant="body1" fontWeight="bold" color={light ? "white" : "dark"}>
               {brand}
             </MKTypography>
           </MKBox>
+          
           <MKBox
             color="inherit"
             display={{ xs: "none", lg: "flex" }}
@@ -488,6 +489,7 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
           >
             {renderNavbarItems}
           </MKBox>
+
           <MKBox ml={{ xs: "auto", lg: 0 }}>
             {action &&
               (action.type === "internal" ? (
@@ -522,6 +524,7 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
                 </MKButton>
               ))}
           </MKBox>
+
           <MKBox
             display={{ xs: "inline-block", lg: "none" }}
             lineHeight={0}
@@ -533,7 +536,9 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
           >
             <Icon fontSize="default">{mobileNavbar ? "close" : "menu"}</Icon>
           </MKBox>
+
         </MKBox>
+
         <MKBox
           bgColor={transparent ? "white" : "transparent"}
           shadow={transparent ? "lg" : "none"}

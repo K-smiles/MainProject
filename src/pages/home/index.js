@@ -1,68 +1,50 @@
-import React, { useEffect } from 'react';
-import { Link, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
-
-// Material Kit 2 React examples
+import React, { useState, useEffect } from 'react';
+// Material Kit 2 React 
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+import SimpleFooter from "examples/Footers/SimpleFooter";
+import MKBox from "components/MKBox";
+import MKButton from "components/MKButton";
+import MKTypography from "components/MKTypography";
+
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import MKBox from "components/MKBox";
-import MKTypography from "components/MKTypography";
 import Card from "@mui/material/Card";
-import Fab from '@mui/material/Fab';
-import UpIcon from '@mui/icons-material/KeyboardArrowUp';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
 // Routes
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
 //sub element
-import Places from "pages/home/content/Posts";
-import SimpleFooter from "examples/Footers/SimpleFooter";
+import Posts from "./content/Posts";
 import bgImage from "assets/images/aobut_us.jpg";
-
-
 
 /**
  * Home page, includes header, and sections.
  * @returns 
  */
-
 function Home() {
+    const [isVisible, setIsVisible] = useState(false);
 
+    // 显示按钮的逻辑
     useEffect(() => {
-
-        // Registering the 'begin' event and logging it to the console when triggered.
-        Events.scrollEvent.register('begin', (to, element) => {
-            console.log('begin', to, element);
-        });
-
-        // Registering the 'end' event and logging it to the console when triggered.
-        Events.scrollEvent.register('end', (to, element) => {
-            console.log('end', to, element);
-        });
-
-        // Updating scrollSpy when the component mounts.
-        scrollSpy.update();
-
-        // Returning a cleanup function to remove the registered events when the component unmounts.
-        return () => {
-            Events.scrollEvent.remove('begin');
-            Events.scrollEvent.remove('end');
+        const toggleVisibility = () => {
+            if (window.pageYOffset > 300) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
         };
+        window.addEventListener("scroll", toggleVisibility);
+        return () => window.removeEventListener("scroll", toggleVisibility);
     }, []);
-    // Defining functions to perform different types of scrolling.
+
+    // 滚动到顶部的方法
     const scrollToTop = () => {
-        scroll.scrollToTop();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     };
-
-    const scrollToBottom = () => {
-        scroll.scrollToBottom();
-    };
-    const handleSetActive = (to) => {
-        console.log(to);
-    };
-
-
 
     return (
         <>
@@ -89,8 +71,6 @@ function Home() {
                     <Grid
                         container
                         item
-                        xs={12}
-                        lg={8}
                         justifyContent="center"
                         alignItems="center"
                         flexDirection="column"
@@ -99,65 +79,72 @@ function Home() {
                         <MKTypography
                             variant="h1"
                             color="white"
-                            sx={({ breakpoints, typography: { size } }) => ({
-                                [breakpoints.down("md")]: {
-                                    fontSize: size["3xl"],
-                                },
-                            })}
+                            sx={{fontSize:{  xs: 40,
+                            sm: 60, 
+                            md: 80,
+                            xl: 100, }}}
                         >
-                            <h1 style={{ fontSize: "6rem", textAlign: "left" }}>DiabeticGuardian</h1>
+                            DiabeticGuardian
                         </MKTypography>
-                        <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
-                            <h3>Dive into understanding diabetes, a chronic condition that can impact our lives as we age.
-                                Here, you'll receive a clear introduction to what diabetes is,
-                                how it progresses, and its common symptoms.
-                                We cover different types of diabetes and provide easy-to-understand information,
-                                empowering you to manage your health effectively.</h3>
-                            <Link
-                                activeClass="active"
-                                to="test1"
-                                spy={true}
-                                smooth={true}
-                                offset={50}
-                                duration={500}
-                                onSetActive={handleSetActive}
+                        <MKTypography variant="h3" color="white" opacity={0.8} mt={1} mb={3}>
+                            Dive into understanding diabetes, a chronic condition that can impact our lives as we age.
+                            Here, you'll receive a clear introduction to what diabetes is,
+                            how it progresses, and its common symptoms.
+                            We cover different types of diabetes and provide easy-to-understand information,
+                            empowering you to manage your health effectively.<br />
+                            <MKButton
+                                component="a"
+                                href="#content-post"
+                                color="white"
+                                variant="outlined"
+                                style={{
+                                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                    color: 'white',
+                                    fontSize: '2rem',
+                                    padding: '12px 36px'
+                                }}
                             >
-                                <Fab color="info">
-                                    <ArrowDownwardIcon />
-                                </Fab>
-                            </Link>
+                                Let's Go
+                            </MKButton>
                         </MKTypography>
-
                     </Grid>
                 </Container>
             </MKBox>
+
             <Card
                 sx={{
                     p: 2,
                     mx: { xs: 2, lg: 3 },
-                    mt: -8,
+                    mt: -5,
                     mb: 4,
                     boxShadow: ({ boxShadows: { xxl } }) => xxl,
                 }}
+                id="content-post"
             >
-                <Element name="test1" className="element">
-                    <Places />
-                </Element>
-
+                <Posts />
             </Card>
-            <MKBox pt={1} px={1} mt={0}>
-                <SimpleFooter content={footerRoutes} />
-            </MKBox>
-
-            <Fab style={{
-                position: 'fixed',
-                bottom: 16,
-                right: 16,
-            }} aria-label="sad" color='primary'
-                onClick={scrollToTop}>
-                <UpIcon />
-            </Fab>
-
+            <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0}/>
+            <>
+                {isVisible && (
+                    <MKButton
+                        onClick={scrollToTop}
+                        style={{
+                            position: 'fixed',
+                            bottom: '20px',
+                            right: '10px',
+                            backgroundColor: 'rgba(33, 37, 41, 0.65)',
+                            color: 'white',
+                            minWidth: '50px',
+                            height: '50px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <i className="fas fa-arrow-up"></i>
+                    </MKButton>
+                )}
+            </>
         </>
     );
 }

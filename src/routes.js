@@ -1,12 +1,14 @@
 // @mui material components
 import Icon from "@mui/material/Icon";
-import Home from "layouts/home"
-import About from "layouts/about";
-import Disabetes from "layouts/disabetes";
-import Disabetes2 from "pages/disabetes2";
-import Disabetes3 from "pages/disabetes3";
-import Calculator from "layouts/calculator";
+
+
+import Home from "FirstPage"
+import TypeAndSymptom from "pages/diabetes/TypeAndSymptom";
+import DiabetesInAus from "pages/diabetes/DiabetesInAus";
+import LiveWithDia from "pages/diabetes/LiveWithDia";
+import Calculator from "pages/calculator";
 import Model3d from "pages/model3d";
+import DiabeticMap from "pages/diabetesmap";
 
 const routes = [
   {
@@ -28,18 +30,18 @@ const routes = [
         collapse: [
           {
             name: "Diabetes: Types & Symptoms",
-            route: "/disabetes/1",
-            component: <Disabetes />,
+            route: "/diabetes/type",
+            component: <TypeAndSymptom />,
           },
           {
             name: "Diabetes in Aussie",
-            route: "/disabetes/2",
-            component: <Disabetes2 />,
+            route: "/diabetes/diabetesinaus",
+            component: <DiabetesInAus />,
           },
           {
             name: "Living with diabetes",
-            route: "/disabetes/3",
-            component: <Disabetes3 />,
+            route: "/diabetes/livewithdia",
+            component: <LiveWithDia />,
           },
         ],
       },
@@ -53,21 +55,21 @@ const routes = [
     route: "/calculator",
     component: <Calculator />,
   },
-  {
-    name: "3D",
-    icon: <Icon>devices</Icon>,
-    columns: 1,
-    rowsPerColumn: 2,
-    route: "/model",
-    component: <Model3d />,
-  },
   // {
-  //   name: "About",
-  //   icon: <Icon>dashboard</Icon>,
+  //   name: "3D",
+  //   icon: <Icon>devices</Icon>,
   //   columns: 1,
   //   rowsPerColumn: 2,
-  //   route: "/about",
-  //   component: <About />,
+  //   route: "/model",
+  //   component: <Model3d />,
+  // },
+  // {
+  //   name: "Map",
+  //   icon: <Icon>map</Icon>,
+  //   columns: 1,
+  //   rowsPerColumn: 2,
+  //   route: "/map",
+  //   component: <DiabeticMap />,
   // },
 ];
 

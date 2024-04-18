@@ -7,7 +7,7 @@ import { Popconfirm } from 'antd'
 
 
 function MyModel(props) {
-    const gltf = useGLTF('/model/cute_anime_girl_mage/scene.gltf')
+    const gltf = useGLTF('/model/Animated Full Human Body Anatomy18/Animated Full Human Body Anatomy.gltf')
     return <primitive object={gltf.scene} />
 }
 function Dome({ name, position, onClick }) {
@@ -28,11 +28,11 @@ function Dome({ name, position, onClick }) {
 
 const store = [
     { name: 'outside', color: 'lightpink', position: [20, 20, 20], link: 1 },
-  ]
+]
 
 function Portals() {
-  const { link, ...props } = store[0]
-  return <Dome {...props} />
+    const { link, ...props } = store[0]
+    return <Dome {...props} />
 }
 
 export default function Viewer() {

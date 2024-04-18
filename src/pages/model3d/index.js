@@ -18,8 +18,7 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
-import Content from 'pages/model3d/content'
-
+import Content from './content'
 
 function Model3d() {
     return (

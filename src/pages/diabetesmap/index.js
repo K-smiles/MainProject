@@ -1,25 +1,29 @@
-import React, { useState, useEffect, useRef } from 'react';
-// @mui material 
-import Grid from "@mui/material/Grid";
+import React, { useState, useEffect } from 'react';
+// Material Kit 2 React 
+import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+import SimpleFooter from "examples/Footers/SimpleFooter";
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
-import Container from "@mui/material/Container";
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
-import SimpleFooter from "examples/Footers/SimpleFooter";
 
-// Images
-import bgImage from "assets/images/aobut_us.jpg";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 
 // Routes
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
-import Content from 'pages/calculator/content'
+//sub element
+import Content from './content';
+import bgImage from "assets/images/aobut_us.jpg";
 
-
-function Calculator() {
+/**
+ * Home page, includes header, and sections.
+ * @returns 
+ */
+function DiabeticMap() {
     const [isVisible, setIsVisible] = useState(false);
+
     // 显示按钮的逻辑
     useEffect(() => {
         const toggleVisibility = () => {
@@ -29,9 +33,7 @@ function Calculator() {
                 setIsVisible(false);
             }
         };
-
         window.addEventListener("scroll", toggleVisibility);
-
         return () => window.removeEventListener("scroll", toggleVisibility);
     }, []);
 
@@ -42,6 +44,7 @@ function Calculator() {
             behavior: "smooth"
         });
     };
+
     return (
         <>
             <DefaultNavbar routes={routes}
@@ -63,48 +66,30 @@ function Calculator() {
                     placeItems: "center",
                 }}
             >
-                <MKTypography variant="h1"
-                    color="white"
-                    sx={{
-                        fontSize: {
-                            xs: 40,
-                            sm: 60,
-                            md: 80,
-                            xl: 100,
-                        },
-                        opacity: "0.8",
-                        position: "middle"
-                    }}
-                >
-                    DiabeticGuardian
-                </MKTypography>
-            </MKBox>
-            <Grid container direction="row" justifyContent="center" alignItems="center" >
-                <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex" flexDirection="column" justifyContent="center" >
-                    <MKBox
-                        variant="gradient"
-                        bgColor="white"
-                        coloredShadow="info"
-                        borderRadius="lg"
-                        p={4}
-                        mx={2}
-                        mt={-10}
+                <Container>
+                    <Grid
+                        container
+                        item
+                        justifyContent="center"
+                        alignItems="center"
+                        flexDirection="column"
+                        sx={{ mx: "auto", textAlign: "center" }}
                     >
-                        <MKTypography variant="h2" color="black" >
-                            Introduction
+                        <MKTypography
+                            variant="h1"
+                            color="white"
+                            sx={{fontSize:{  xs: 40,
+                            sm: 60, 
+                            md: 80,
+                            xl: 100, }}}
+                        >
+                            DiabeticMap
                         </MKTypography>
-                    </MKBox>
-                    <MKBox p={4} mx={2}>
-                        <MKTypography variant="body1" fontWeight="bold" >
-                            Welcome to the diabetes risk calculator
-                            Diabetes is one of the fastest growing chronic condition in Australia.
-                            To find out your risk of developing diabetes, complete the following 11 short questions.
-                        </MKTypography>
-                    </MKBox>
-                </MKBox>
-            </Grid>
-            <Content />
-            <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0} />
+                    </Grid>
+                </Container>
+            </MKBox>
+            <Content/>
+            <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0}/>
             <>
                 {isVisible && (
                     <MKButton
@@ -130,4 +115,4 @@ function Calculator() {
     );
 }
 
-export default Calculator;
+export default DiabeticMap;
