@@ -1,6 +1,9 @@
 // @mui material components
 import Grid from "@mui/material/Grid";
 
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
@@ -49,7 +52,9 @@ function Content() {
         slidesToShow: 1,
         slidesToScroll: 1,
     };
-
+    // 在组件内部
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // 使用theme.breakpoints.down检查当前屏幕尺寸是否为移动端尺寸
     return (
         <>
             <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" mt={-15}>
@@ -73,15 +78,15 @@ function Content() {
                         </MKBox>
 
                         <MKBox p={3}>
-                            <Grid container spacing={3} direction="row" justifyContent="center" alignItems="center">
-                                <Grid item xs={12} sm={12} md={12} lg={6} xl={6} xxl={6} mt={1}>
+                            <Grid container spacing={3} justifyContent="center" alignItems="center">
+                                <Grid item xs={12} md={6} lg={5} mt={1} ml={{ xs: 0, lg: 3 }}> {/* ml属性在小屏幕时为0，在大屏幕时增加边距 */}
                                     <MKTypography variant="body1">
                                         Diabetes is a chronic disease of abnormal blood glucose regulation due to insufficient production or poor utilisation of insulin.
                                         <br /><br />Chronic high blood glucose levels not only cause serious damage to the nerves, skin, immune system and vascular system, but also lead to a significant increase in the incidence of heart disease, kidney disease, cataracts and other diseases.
                                     </MKTypography>
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={6} xl={6} xxl={6} mt={1}>
-                                    <MKBox style={{ width: '350px', height: '360px'}}>
+                                <Grid item xs={12} md={6} lg={5} mt={1}>
+                                    <MKBox style={{ width: '100%', maxWidth: '350px', height: '360px', margin: '0 auto' }}> {/* 在大屏幕时图片居中且最大宽度为350px */}
                                         <Slider {...settings}>
                                             <MKBox>
                                                 <img src={bgImage1} alt="Image 1" style={{
@@ -130,7 +135,7 @@ function Content() {
                         <MKBox p={3}>
                             <Grid container spacing={3}>
                                 <Grid item mt={1}
-                                    style={{ fontSize: "1.5rem" }} >
+                                    sx={{ ml: { xs: 4, sm: 6, md: 10 }, fontSize: "1.5rem" }} >
                                     There are three main types of diabetes: <br /><br />
                                     Type 1, an autoimmune disease that causes insulin deficiency; <br /><br />
                                     Type 2 diabetes, caused by the body's ineffective use of insulin, is often linked to lifestyle factors; Gestational diabetes, which occurs during pregnancy. <br /><br />
@@ -139,10 +144,11 @@ function Content() {
                             </Grid>
                         </MKBox>
 
-                        <MKBox p={3} mb={20}>
+                        <MKBox p={3} mb={isMobile ? 5 : 20}> {/* 移动端时较小的外边距 */}
                             <Grid container direction="row" spacing={3}>
-                                <Grid item xs={12} sm={6} md={6} lg={6} xl={6} xxl={6}>
-                                    <RotatingCard >
+                                {/* 如果是移动端，增加垂直空间 */}
+                                <Grid item xs={12} sm={6} md={6} lg={6} xl={6} xxl={6} mb={isMobile ? 20 : 2}>
+                                    <RotatingCard>
                                         <RotatingCardFront
                                             title="Type 1 Diabetes"
                                             description="Learn more about Type 1 Diabetes, its causes, symptoms, and treatments."
@@ -161,8 +167,8 @@ function Content() {
                                     </RotatingCard>
                                 </Grid>
 
-                                <Grid item xs={12} sm={6} md={6} lg={6} xl={6} xxl={6}>
-                                    <RotatingCard >
+                                <Grid item xs={12} sm={6} md={6} lg={6} xl={6} xxl={6} mb={isMobile ? 10 : 2}>
+                                    <RotatingCard>
                                         <RotatingCardFront
                                             title="Type 2 Diabetes"
                                             description="Learn more about Type 2 Diabetes, its causes, symptoms, and treatments."
@@ -199,14 +205,14 @@ function Content() {
 
                         <MKBox p={3}>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} md={3}>
+                                <Grid item xs={12} md={4}>
                                     <BackgroundBlogCard
                                         image={symptoms1}
                                         title="1.Increased Thirst"
                                         description="Seniors might find themselves more thirsty than usual, which can be a sign that the body is trying to balance sugar levels."
                                     />
                                 </Grid>
-                                <Grid item xs={12} md={3}>
+                                <Grid item xs={12} md={4}>
                                     <BackgroundBlogCard
                                         image={symptoms2}
                                         title="2.Frequent Urination"
@@ -214,7 +220,7 @@ function Content() {
 
                                     />
                                 </Grid>
-                                <Grid item xs={12} md={3}>
+                                <Grid item xs={12} md={4}>
                                     <BackgroundBlogCard
                                         image={symptoms3}
                                         title="3.Increased Hunger"
@@ -222,7 +228,7 @@ function Content() {
 
                                     />
                                 </Grid>
-                                <Grid item xs={12} md={3}>
+                                <Grid item xs={12} md={4}>
                                     <BackgroundBlogCard
                                         image={symptoms4}
                                         title="4.Unintended Weight Loss"
@@ -230,7 +236,7 @@ function Content() {
 
                                     />
                                 </Grid>
-                                <Grid item xs={12} md={3}>
+                                <Grid item xs={12} md={4}>
                                     <BackgroundBlogCard
                                         image={symptoms5}
                                         title={
@@ -242,7 +248,7 @@ function Content() {
 
                                     />
                                 </Grid>
-                                <Grid item xs={12} md={3}>
+                                <Grid item xs={12} md={4}>
                                     <BackgroundBlogCard
                                         image={symptoms6}
                                         title="6.Foot Complications"
@@ -256,9 +262,6 @@ function Content() {
 
                         <MKBox p={3} >
                             <Grid spacing={2} container>
-                                <MKButton variant="gradient" color="warning" >
-                                    <Link to="/diabetes/diabetesinaus">Pre</Link>
-                                </MKButton>
                                 <MKButton variant="gradient" color="info" >
                                     <Link to="/diabetes/diabetesinaus">Next</Link>
                                 </MKButton>
