@@ -42,6 +42,7 @@ function Calculator() {
             behavior: "smooth"
         });
     };
+    
     return (
         <>
             <DefaultNavbar routes={routes}

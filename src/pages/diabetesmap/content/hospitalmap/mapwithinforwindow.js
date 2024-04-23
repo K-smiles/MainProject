@@ -4,6 +4,7 @@ import {
     InfoWindow,
     useAdvancedMarkerRef
 } from '@vis.gl/react-google-maps';
+import MKTypography from 'components/MKTypography';
 
 export const MarkerWithInfowindow = (props) => {
 
@@ -22,9 +23,12 @@ export const MarkerWithInfowindow = (props) => {
             {infowindowOpen && (
                 <InfoWindow
                     anchor={marker}
-                    maxWidth={200}
+                    maxWidth={400}
                     onCloseClick={() => setInfowindowOpen(false)}>
-                        {props.desc}
+                        <MKTypography variant="h6">{props.name}</MKTypography>
+                        <MKTypography variant="body2">{props.sector}</MKTypography>
+                        <MKTypography variant="body3">State: {props.state}</MKTypography>
+                        <MKTypography variant="body3">Phone: {props.phone}</MKTypography>
                 </InfoWindow>
             )}
         </>

@@ -1,11 +1,10 @@
 
-// @mui material components
-import Grid from "@mui/material/Grid";
+import React, { useState, useEffect } from 'react';
 
-// Material Kit 2 React components
+import Grid from "@mui/material/Grid";
 import MKBox from "components/MKBox";
 import Container from "@mui/material/Container";
-
+import MKButton from 'components/MKButton';
 // Images
 import bgImage from "assets/images/aobut_us.jpg";
 
@@ -21,6 +20,29 @@ import footerRoutes from "footer.routes";
 import Content from './content'
 
 function Model3d() {
+    const [isVisible, setIsVisible] = useState(false);
+    // 显示按钮的逻辑
+    useEffect(() => {
+        const toggleVisibility = () => {
+            if (window.pageYOffset > 300) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
+        };
+
+        window.addEventListener("scroll", toggleVisibility);
+
+        return () => window.removeEventListener("scroll", toggleVisibility);
+    }, []);
+
+    // 滚动到顶部的方法
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
     return (
         <>
             <DefaultNavbar routes={routes}
@@ -93,6 +115,27 @@ function Model3d() {
             </Grid>
             <Content />
             <SimpleFooter pt={1} px={1} mt={0} content={footerRoutes} />
+            <>
+                {isVisible && (
+                    <MKButton
+                        onClick={scrollToTop}
+                        style={{
+                            position: 'fixed',
+                            bottom: '20px',
+                            right: '10px',
+                            backgroundColor: 'rgba(33, 37, 41, 0.65)',
+                            color: 'white',
+                            minWidth: '50px',
+                            height: '50px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <i className="fas fa-arrow-up"></i>
+                    </MKButton>
+                )}
+            </>
         </>
     );
 }

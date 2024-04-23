@@ -9,7 +9,7 @@ const SearchGoogleMap = () => {
     const [selectedPlace, setSelectedPlace] =
         useState(null);
 
-    return (<APIProvider apiKey="AIzaSyDPKLutsxSa78IFodEqzbZTncyZZB7jovM" libraries={['marker']}>
+    return (<APIProvider apiKey="AIzaSyDPKLutsxSa78IFodEqzbZTncyZZB7jovM" language="en" libraries={['marker']}>
         <Map
             mapId={'bf51a910020fa25a'}
             style={{ width: '100%', height: '100%' }}
