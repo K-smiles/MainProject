@@ -5,9 +5,9 @@ import {
     useAdvancedMarkerRef
 } from '@vis.gl/react-google-maps';
 
-export const MarkerWithInfowindow = () => {
+export const MarkerWithInfowindow = (props) => {
 
-    const [infowindowOpen, setInfowindowOpen] = useState(true);
+    const [infowindowOpen, setInfowindowOpen] = useState(false);
     
     const [markerRef, marker] = useAdvancedMarkerRef();
 
@@ -16,17 +16,15 @@ export const MarkerWithInfowindow = () => {
             <AdvancedMarker
                 ref={markerRef}
                 onClick={() => setInfowindowOpen(true)}
-                position={{ lat: 28, lng: -82 }}
-                title={'AdvancedMarker that opens an Infowindow when clicked.'}
+                position={{ lat: props.lat, lng: props.lng }}
+                title={props.name}
             />
             {infowindowOpen && (
                 <InfoWindow
                     anchor={marker}
                     maxWidth={200}
                     onCloseClick={() => setInfowindowOpen(false)}>
-                    This is an example for the{' '}
-                    <code style={{ whiteSpace: 'nowrap' }}>&lt;AdvancedMarker /&gt;</code>{' '}
-                    combined with an Infowindow.
+                        {props.desc}
                 </InfoWindow>
             )}
         </>

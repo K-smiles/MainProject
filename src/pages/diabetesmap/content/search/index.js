@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { APIProvider, ControlPosition, Map, MapControl } from '@vis.gl/react-google-maps';
-import { MarkerWithInfowindow } from './mapwithinforwindow';
 import MapHandler from './maphandler'
 
 import { PlaceAutocompleteClassic } from './autocomplete-classic';
-const MyGoogleMap = () => {
 
-    // const [selectedPlace, setSelectedPlace] =
-    // useState<google.maps.places.PlaceResult>(null);
+const SearchGoogleMap = () => {
 
     const [selectedPlace, setSelectedPlace] =
         useState(null);
@@ -21,17 +18,14 @@ const MyGoogleMap = () => {
             gestureHandling={'greedy'}
             disableDefaultUI
         >
-
             <MapControl position={ControlPosition.TOP}>
                 <div className="autocomplete-control">
                     <PlaceAutocompleteClassic onPlaceSelect={setSelectedPlace} />
                 </div>
             </MapControl>
-
-            {/* <MarkerWithInfowindow /> */}
         </Map>
         <MapHandler place={selectedPlace} />
     </APIProvider>);
 };
 
-export default MyGoogleMap
+export default SearchGoogleMap

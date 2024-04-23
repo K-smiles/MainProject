@@ -55,22 +55,22 @@ const routes = [
     route: "/calculator",
     component: <Calculator />,
   },
-  // {
-  //   name: "3D",
-  //   icon: <Icon>devices</Icon>,
-  //   columns: 1,
-  //   rowsPerColumn: 2,
-  //   route: "/model",
-  //   component: <Model3d />,
-  // },
-  // {
-  //   name: "Map",
-  //   icon: <Icon>map</Icon>,
-  //   columns: 1,
-  //   rowsPerColumn: 2,
-  //   route: "/map",
-  //   component: <DiabeticMap />,
-  // },
+  {
+    name: "3D",
+    icon: <Icon>devices</Icon>,
+    columns: 1,
+    rowsPerColumn: 2,
+    route: "/model",
+    component: <Model3d />,
+  },
+  {
+    name: "Map",
+    icon: <Icon>map</Icon>,
+    columns: 1,
+    rowsPerColumn: 2,
+    route: "/map",
+    component: <DiabeticMap />,
+  },
 ];
 
 export default routes;

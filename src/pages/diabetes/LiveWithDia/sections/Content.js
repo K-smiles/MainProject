@@ -43,7 +43,6 @@ function Content() {
                 </MKTypography>
             </MKBox>
 
-
             <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" mt={-15}>
                 <Grid item ml={{ xs: "auto", lg: 1 }} mr={{ xs: "auto", lg: 1 }}>
                     <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex"

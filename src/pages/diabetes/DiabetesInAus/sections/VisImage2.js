@@ -1,11 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 
-// Material Kit 2 React components and other imports
-import MKBox from "components/MKBox";
-import MKTypography from "components/MKTypography"; 
-import MKButton from "components/MKButton";
-
 const VisImage2 = () => {
 
   const chartRef = useRef(null);

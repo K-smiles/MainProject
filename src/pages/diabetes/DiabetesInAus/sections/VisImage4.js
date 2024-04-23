@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
 const VisImage4 = () => {
-  const [data, setData] = useState([]);
   const chartRef = useRef(null);
   const tooltipRef = useRef(null);
 

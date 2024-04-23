@@ -1,5 +1,5 @@
 import { useMap } from '@vis.gl/react-google-maps';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 const MapHandler = ({ place }) => {
     const map = useMap();

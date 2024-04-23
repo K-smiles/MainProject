@@ -92,9 +92,7 @@ function Model3d() {
                 </MKBox>
             </Grid>
             <Content />
-            <MKBox pt={1} px={1} mt={0}>
-                <SimpleFooter content={footerRoutes} />
-            </MKBox>
+            <SimpleFooter pt={1} px={1} mt={0} content={footerRoutes} />
         </>
     );
 }

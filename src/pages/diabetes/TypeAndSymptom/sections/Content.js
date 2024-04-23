@@ -253,7 +253,6 @@ function Content() {
                                         image={symptoms6}
                                         title="6.Foot Complications"
                                         description="Early diabetic foot symptoms, such as numbness or skin changes, can escalate to severe complications like ulcers or even gangrene if not addressed."
-
                                     />
                                 </Grid>
 
