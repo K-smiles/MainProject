@@ -13,14 +13,13 @@ import stomach from "assets/images/3d/stomach.jpg"
 import kidney from "assets/images/3d/kidney.jpg"
 function TextDisplay(props) {
     const data = props.des
-    console.log(props.src)
     return <>
         {data.map(item => {
-            return <Typography fontSize={10}>{item}</Typography>
+            return <Typography variant='body1'>{item}</Typography>
         })}
         <br />
         <Image
-            width={70}
+            width={150}
             src={props.src}
         />
     </>
@@ -34,9 +33,9 @@ function Portals(props) {
                 lineWidth={3}
             />
             <mesh position={props.end} >
-                <Html>
-                    <Tooltip zIndex={999} placement={props.placement} className="annotation" title={<TextDisplay des={props.des} src={props.src} />}>
-                        <Typography zIndex={1} variant='body1'>{props.type}</Typography>
+                <Html zIndexRange={[100,0]}>
+                    <Tooltip  placement={props.placement} className="annotation" title={<TextDisplay des={props.des} src={props.src} />}>
+                        <Typography variant='body1'>{props.type}</Typography>
                     </Tooltip>
                 </Html>
             </mesh>

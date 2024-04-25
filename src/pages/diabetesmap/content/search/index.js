@@ -3,7 +3,7 @@ import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import MKTypography from "components/MKTypography";
 import MKBox from 'components/MKBox';
 import MapHandler from './maphandler'
-
+import { Grid } from '@mui/material';
 import { useEffect } from 'react';
 
 const SearchGoogleMap = () => {
@@ -31,11 +31,14 @@ const SearchGoogleMap = () => {
 
     return (
         <>
-            <MKTypography variant="h3" fontWeight="bold" >
+        <Grid item>
+        <MKTypography variant="h3" fontWeight="bold" >
                 How can I quickly find all the GPs near me？
                 Don't worry about it. We can find them for you automatically!
             </MKTypography>
-            <MKBox
+        </Grid>
+        <Grid item>
+        <MKBox
                 mx={-1}
                 sx={{
                     width: {
@@ -70,6 +73,8 @@ const SearchGoogleMap = () => {
                     )}
                 </APIProvider>
             </MKBox>
+        </Grid>
+
         </>
     );
 };

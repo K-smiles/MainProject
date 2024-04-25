@@ -26,9 +26,7 @@ function CustomTabPanel(props) {
       {value === index && (
         <MKBox sx={{ p: 4 }} >
           <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" >
-            <Grid item>
               {children}
-            </Grid>
           </Grid>
         </MKBox>
       )}
