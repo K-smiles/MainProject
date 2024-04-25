@@ -101,19 +101,24 @@ const VisImage = () => {
       .style("transform", "translate(-50%, -100%)")
       .style("z-index", "10");
 
-    // Adding animations with .transition()
+
+    // Define a color scale
+    const colorScale = d3.scaleLinear()
+      .domain([0, data.length - 1])
+      .range(["#8fbc8f", "#006400"]); // light green to dark green
+
+    // Adding bars with dynamic color
     svg.selectAll(".bar")
       .data(data)
-      .enter()
-      .append("rect")
+      .join("rect")
       .attr("class", "bar")
       .attr("x", d => x(d.Age))
       .attr("width", x.bandwidth())
-      .attr("fill", "#69b3a2")
-      .attr("y", y(0)) // Start animation from the bottom
-      .attr("height", 0) // Start with a height of 0
-      .on("mouseover", function (event, d) {
-        d3.select(this).attr("fill", "lightsteelblue");
+      .attr("y", d => y(d.Odd_Ratio))
+      .attr("height", d => height - y(d.Odd_Ratio))
+      .attr("fill", (d, i) => colorScale(i))
+      .on("mouseover", (event, d) => {
+        d3.select(event.currentTarget).attr("fill", "#ffff66");
         tooltip.style("opacity", 1);
         tooltip.html(`
         <table>
@@ -130,10 +135,12 @@ const VisImage = () => {
         tooltip.style("left", (event.pageX + 20) + "px")
           .style("top", (event.pageY - 30) + "px");
       })
-      .on("mouseout", function () {
-        d3.select(this).attr("fill", "#69b3a2");
+      .on("mouseout", (event, d, i) => {
+        d3.select(event.currentTarget).attr("fill", colorScale(data.indexOf(d)));
         tooltip.style("opacity", 0);
       })
+
+
       // Animate the bars growing in height
       .transition()
       .duration(800)

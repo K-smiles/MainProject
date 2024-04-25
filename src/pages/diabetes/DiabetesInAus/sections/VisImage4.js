@@ -1,9 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
+import axios from "axios";
 
+// const baseURL = "https://backdiagui-affe16e7071c.herokuapp.com/posts";
 const VisImage4 = () => {
+  const [data, setData] = useState([])
   const chartRef = useRef(null);
   const tooltipRef = useRef(null);
+
+//   React.useEffect(() => {
+//     axios.get(baseURL).then((response) => {
+//       console.log(response.data)
+//         setData(response.data)
+//         drawChart(data);
+//     }, []);
+// }, [])
 
   useEffect(() => {
     // Load CSV data
@@ -14,16 +25,7 @@ const VisImage4 = () => {
       });
   }, []);
 
-
-
-
-
-
   const drawChart = (data) => {
-
-
-
-
 
   // Set the dimensions and margins of the graph
   const margin = {top: 110, right: 30, bottom: 60, left: 80},
@@ -32,10 +34,6 @@ const VisImage4 = () => {
 
     // Clear any previous SVG
     d3.select(chartRef.current).selectAll("*").remove();
-
-
-
-
 
 // append the svg object to the body of the page
 const svg = d3.select(chartRef.current)

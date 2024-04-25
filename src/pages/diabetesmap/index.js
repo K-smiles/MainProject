@@ -100,13 +100,7 @@ function DiabeticMap() {
                         mt={-10}
                     >
                         <MKTypography variant="h2" color="black" >
-                            Introduction
-                        </MKTypography>
-                    </MKBox>
-                    <MKBox p={4} mx={2}>
-                        <MKTypography variant="h3" fontWeight="bold" >
-                        How can I quickly find all the GPs near me？
-                        Don't worry about it. We can find them for you automatically!
+                            Map
                         </MKTypography>
                     </MKBox>
                     <Content/>

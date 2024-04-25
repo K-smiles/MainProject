@@ -11,6 +11,7 @@ import SearchMap from './search';
 import HospitalGoogleMap from './hospitalmap'
 import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
 
+
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -26,30 +27,7 @@ function CustomTabPanel(props) {
         <MKBox sx={{ p: 4 }} >
           <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" >
             <Grid item>
-              <MKBox
-                mx={-1}
-                mt={-3}
-                sx={{
-                  width: {
-                    xs: 300, // theme.breakpoints.up('xs')
-                    sm: 500, // theme.breakpoints.up('sm')
-                    md: 700, // theme.breakpoints.up('md')
-                    lg: 900, // theme.breakpoints.up('lg')
-                    xl: 1000, // theme.breakpoints.up('xl')
-                    xxl: 1200
-                  },
-                  height: {
-                    xs: 150, // theme.breakpoints.up('xs')
-                    sm: 250, // theme.breakpoints.up('sm')
-                    md: 350, // theme.breakpoints.up('md')
-                    lg: 450, // theme.breakpoints.up('lg')
-                    xl: 500, // theme.breakpoints.up('xl')
-                    xxl: 600
-                  },
-                }}
-              >
-                {children}
-              </MKBox>
+              {children}
             </Grid>
           </Grid>
         </MKBox>
