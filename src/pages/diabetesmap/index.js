@@ -15,7 +15,7 @@ import footerRoutes from "footer.routes";
 
 //sub element
 import Content from './content';
-import bgImage from "assets/images/aobut_us.jpg";
+import bgImage from "assets/images/epic3background.jpg";
 
 /**
  * Home page, includes header, and sections.
@@ -88,7 +88,31 @@ function DiabeticMap() {
                     </Grid>
                 </Container>
             </MKBox>
-            <Content/>
+            <Grid container direction="row" justifyContent="center" alignItems="center" >
+                <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex" flexDirection="column" justifyContent="center" >
+                    <MKBox
+                        variant="gradient"
+                        bgColor="white"
+                        coloredShadow="info"
+                        borderRadius="lg"
+                        p={4}
+                        mx={2}
+                        mt={-10}
+                    >
+                        <MKTypography variant="h2" color="black" >
+                            Introduction
+                        </MKTypography>
+                    </MKBox>
+                    <MKBox p={4} mx={2}>
+                        <MKTypography variant="h3" fontWeight="bold" >
+                        How can I quickly find all the GPs near me？
+                        Don't worry about it. We can find them for you automatically!
+                        </MKTypography>
+                    </MKBox>
+                    <Content/>
+                </MKBox>
+            </Grid>
+            
             <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0}/>
             <>
                 {isVisible && (

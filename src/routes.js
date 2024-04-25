@@ -1,6 +1,6 @@
 // @mui material components
 import Icon from "@mui/material/Icon";
-
+import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
 
 import Home from "FirstPage"
 import TypeAndSymptom from "pages/diabetes/TypeAndSymptom";
@@ -56,8 +56,8 @@ const routes = [
     component: <Calculator />,
   },
   {
-    name: "3D",
-    icon: <Icon>devices</Icon>,
+    name: "Model",
+    icon: <ThreeDRotationIcon/>,
     columns: 1,
     rowsPerColumn: 2,
     route: "/model",

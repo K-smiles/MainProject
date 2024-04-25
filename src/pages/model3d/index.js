@@ -6,7 +6,7 @@ import MKBox from "components/MKBox";
 import Container from "@mui/material/Container";
 import MKButton from 'components/MKButton';
 // Images
-import bgImage from "assets/images/aobut_us.jpg";
+import bgImage from "assets/images/epic4backg.jpg";
 
 import MKTypography from "components/MKTypography";
 
@@ -83,7 +83,7 @@ function Model3d() {
                                 },
                             })}
                             fontSize='7.5rem'>
-                            DiabeticGuardian
+                            Diabetic3DModel
                         </MKTypography>
                     </Grid>
                 </Container>
@@ -99,16 +99,13 @@ function Model3d() {
                         mx={2}
                         mt={-10}
                     >
-                        <MKTypography variant="h1" color="black">
+                        <MKTypography variant="h2" color="black">
                             Introduction
                         </MKTypography>
                     </MKBox>
                     <MKBox p={4} mx={2}>
-                        <MKTypography variant="h2" >
-                            Start
-                            Welcome to the diabetes risk calculator
-                            Diabetes is one of the fastest growing chronic condition in Australia.
-                            To find out your risk of developing diabetes, complete the following 11 short questions.
+                        <MKTypography variant="h3" >
+                        Clicking on different parts of the model to see how diabetes can harm your body at different stages.Please slide to the bottom for more Q&A sections.
                         </MKTypography>
                     </MKBox>
                 </MKBox>

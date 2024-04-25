@@ -27,23 +27,26 @@ function AccordionExpand(props) {
     );
 }
 
-
 function QAcontent() {
     const data = [{
-        question: "question 1",
-        answer: "answer 2"
+        question: "Q1: What can l get this body model?",
+        answer: " A:  This model allows you to: a. Understand the damage that diabetes causes to the human body b. Help you to check if you have similar symptoms"
     },
     {
-        question: "question 2",
-        answer: "answer 2"
+        question: "Q2: I feel like I already have some early symptoms, what do I need to do?",
+        answer: "A: We recommend that you use Hospitals and GPs to find a hospital or GP near you for a direct consultation."
+    },
+    {
+        question: "Q3: Can I be able to prevent diabetes effectively?",
+        answer: "A: Functional card 5 and Functional card 6 will help you to create a personalised recipe and exercise programme, which will help you to prevent diabetes."
     }]
     return <MKBox
         mx={-1}
         mt={-3}
     >
         {
-            data.map(item =>{
-                return <AccordionExpand question={item.question} answer={item.answer}/>
+            data.map(item => {
+                return <AccordionExpand question={item.question} answer={item.answer} />
             })
         }
     </MKBox>

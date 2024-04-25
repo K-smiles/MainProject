@@ -157,7 +157,15 @@ function Content() {
                                 </Grid>
                             </Grid>
                         </MKBox>
-
+                        <MKBox
+                            variant="gradient"
+                            bgColor="white"
+                            borderRadius="lg"
+                            p={4}
+                            mx={2}
+                            mt={3}
+                        >
+                        </MKBox>
                         <MKBox p={3} >
                             <Grid spacing={2} container>
                                 <MKButton variant="gradient" color="warning" >
@@ -173,10 +181,3 @@ function Content() {
 }
 
 export default Content;
-
-
-
-
-
-
-

@@ -9,7 +9,7 @@ import MKTypography from 'components/MKTypography';
 export const MarkerWithInfowindow = (props) => {
 
     const [infowindowOpen, setInfowindowOpen] = useState(false);
-    
+
     const [markerRef, marker] = useAdvancedMarkerRef();
 
     return (
@@ -25,10 +25,11 @@ export const MarkerWithInfowindow = (props) => {
                     anchor={marker}
                     maxWidth={400}
                     onCloseClick={() => setInfowindowOpen(false)}>
-                        <MKTypography variant="h6">{props.name}</MKTypography>
-                        <MKTypography variant="body2">{props.sector}</MKTypography>
-                        <MKTypography variant="body3">State: {props.state}</MKTypography>
-                        <MKTypography variant="body3">Phone: {props.phone}</MKTypography>
+                    <MKTypography variant="h6">{props.name}</MKTypography>
+                    <MKTypography variant="body2">{props.sector}</MKTypography>
+                    <MKTypography variant="body3">State: {props.state}</MKTypography>
+                    <br/>
+                    <MKTypography variant="body3">Phone: {props.phone}</MKTypography>
                 </InfoWindow>
             )}
         </>

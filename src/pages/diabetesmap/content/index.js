@@ -8,7 +8,6 @@ import MKBox from "components/MKBox";
 import MapPanel from "./mappanel";
 function Content() {
     return (
-
         <MKBox
             bgColor="white"
             borderRadius="xl"

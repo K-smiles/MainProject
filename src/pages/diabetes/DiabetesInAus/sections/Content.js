@@ -17,6 +17,11 @@ import VisImage4 from './VisImage4'
 
 import bgImage from "assets/images/epic1background.jpg";
 
+import axios from "axios";
+
+// web back end api接口
+const baseURL = "https://backdiagui-affe16e7071c.herokuapp.com/";
+
 function Content() {
 
     const [activeChart, setActiveChart] = useState('none');
@@ -60,6 +65,11 @@ function Content() {
             behavior: "smooth"
         });
     };
+
+    React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+        });
+    }, []);
 
     return (
         <>
@@ -221,20 +231,21 @@ function Content() {
                                 {"What are the factors associated with diabetes?"}
                             </MKTypography>
                         </MKBox>
-
-                        <MKBox p={3}>
-                                    <MKTypography variant="body1" color="black" ml={5} >
+                        <Grid item mt={1}
+                            sx={{ ml: { xs: 4, sm: 6, md: 10 }, fontSize: "1.5rem" }} >
+                            <MKBox p={3}>
+                                <MKTypography variant="body1" color="black" ml={5} >
                                     Factors associated with diabetes include lifestyle choices such as diet and exercise, as well as environmental factors.<br />
                                     Age, BMI and gender have a particularly strong impact on the risk of developing diabetes.
-                                    <br />First, aging increases the risk of reduced insulin sensitivity.
-                                    <br />A high body mass index means being overweight or obese, which significantly increases the likelihood of developing diabetes because excess fat impairs insulin
+                                    <br /><br />First, aging increases the risk of reduced insulin sensitivity.
+                                    <br /><br />A high body mass index means being overweight or obese, which significantly increases the likelihood of developing diabetes because excess fat impairs insulin
                                     function.
-                                    <br />These factors highlight the importance of healthy lifestyle choices in managing diabetes
-                                    </MKTypography>
-                        </MKBox>
+                                    <br /><br />These factors highlight the importance of healthy lifestyle choices in managing diabetes
+                                </MKTypography>
+                            </MKBox>
+                        </Grid>
 
-
-                        <Grid container justifyContent="center" spacing={0} mt={{ xs: 2, sm: 2, md: 2 }} mb={{ xs: 2, sm: 2, md: 2 }}>
+                        <Grid container justifyContent="center" spacing={0} mt={{ xs: 2, sm: 2, md: 2 }} mb={{ xs: 2, sm: 2, md: 2 }} >
                             <Grid item>
                                 <MKButton variant="gradient" color="info" size="large" onClick={showChart1} sx={{ width: '220px', marginX: 2 }}>Age Influence</MKButton>
                             </Grid>
@@ -248,16 +259,31 @@ function Content() {
                                 <MKButton variant="gradient" color="info" size="large" onClick={showChart4} sx={{ width: '220px', marginX: 2 }}>Incidence by Year</MKButton>
                             </Grid>
                         </Grid>
-                        
-                        <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 10 }} mr={{ xs: "auto", lg: 2 }} p={2} mx={2} mt={1} alignItems="center">
-                            <div>
-                                {activeChart === 'VisImage' && <VisImage />}
-                                {activeChart === 'VisImage2' && <VisImage2 />}
-                                {activeChart === 'VisImage3' && <VisImage3 />}
-                                {activeChart === 'VisImage4' && <VisImage4 />}
-                            </div>
+                        <Grid container justifyContent="center" alignItems="center">
+                            <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 10 }} mr={{ xs: "auto", lg: 2 }} p={2} mx={2} mt={1} sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                width: '100%', // 确保 Grid 项宽度为100%
+                                overflow: 'hidden' // 防止内容溢出
+                            }}>
+                                <div>
+                                    {activeChart === 'VisImage' && <VisImage />}
+                                    {activeChart === 'VisImage2' && <VisImage2 />}
+                                    {activeChart === 'VisImage3' && <VisImage3 />}
+                                    {activeChart === 'VisImage4' && <VisImage4 />}
+                                </div>
+                            </Grid>
                         </Grid>
-
+                        <MKBox
+                            variant="gradient"
+                            bgColor="white"
+                            borderRadius="lg"
+                            p={4}
+                            mx={2}
+                            mt={3}
+                        >
+                        </MKBox>
                         <MKBox p={3} >
                             <Grid spacing={2} container>
                                 <MKButton variant="gradient" color="warning" >

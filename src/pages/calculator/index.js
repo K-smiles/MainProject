@@ -42,7 +42,6 @@ function Calculator() {
             behavior: "smooth"
         });
     };
-    
     return (
         <>
             <DefaultNavbar routes={routes}
@@ -96,7 +95,7 @@ function Calculator() {
                         </MKTypography>
                     </MKBox>
                     <MKBox p={4} mx={2}>
-                        <MKTypography variant="body1" fontWeight="bold" >
+                        <MKTypography variant="h3" fontWeight="bold" >
                             Welcome to the diabetes risk calculator
                             Diabetes is one of the fastest growing chronic condition in Australia.
                             To find out your risk of developing diabetes, complete the following 11 short questions.

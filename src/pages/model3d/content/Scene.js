@@ -19,7 +19,7 @@ export default function Viewer() {
 
                 <OrbitControls />
                 <SceneLabel/>
-                <Line points={[[100, 0, 0], [-100, 0, 0]]}
+                {/* <Line points={[[100, 0, 0], [-100, 0, 0]]}
                     color="black"
                     lineWidth={10}
                 />
@@ -30,7 +30,7 @@ export default function Viewer() {
                 <Line points={[[0, 0, 100], [0, 0, -100]]}
                     color="blue"
                     lineWidth={10}
-                />
+                /> */}
             </Canvas>
             <Loader />
         </>

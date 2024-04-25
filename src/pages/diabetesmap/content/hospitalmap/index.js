@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import { MarkerWithInfowindow } from './mapwithinforwindow';
 import axios from "axios";
-const baseURL = "http://localhost:5000/hospitals";
+
+const baseURL = "https://backdiagui-affe16e7071c.herokuapp.com/hospitals";
 
 const HospitalGoogleMap = () => {
 
@@ -10,7 +11,6 @@ const HospitalGoogleMap = () => {
     React.useEffect(() => {
         axios.get(baseURL).then((response) => {
             setData(response.data)
-            console.log(data)
         }, []);
     }, [])
 

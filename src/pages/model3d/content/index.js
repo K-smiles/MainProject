@@ -34,11 +34,11 @@ function Content() {
                                 },
                                 height: {
                                     xs: 300, // theme.breakpoints.up('xs')
-                                    sm: 500, // theme.breakpoints.up('sm')
-                                    md: 700, // theme.breakpoints.up('md')
-                                    lg: 900, // theme.breakpoints.up('lg')
-                                    xl: 1000, // theme.breakpoints.up('xl')
-                                    xxl: 1200
+                                    sm: 300, // theme.breakpoints.up('sm')
+                                    md: 400, // theme.breakpoints.up('md')
+                                    lg:500, // theme.breakpoints.up('lg')
+                                    xl: 600, // theme.breakpoints.up('xl')
+                                    xxl: 700
                                 },
                             }}
                         >
