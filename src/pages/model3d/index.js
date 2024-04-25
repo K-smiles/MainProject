@@ -105,7 +105,7 @@ function Model3d() {
                     </MKBox>
                     <MKBox p={4} mx={2}>
                         <MKTypography variant="h3" >
-                        Clicking on different parts of the model to see how diabetes can harm your body at different stages.Please slide to the bottom for more Q&A sections.
+                            Clicking on different parts of the model to see how diabetes can harm your body at different stages.Please slide to the bottom for more Q&A sections.
                         </MKTypography>
                     </MKBox>
                 </MKBox>

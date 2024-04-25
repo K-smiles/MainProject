@@ -7,6 +7,7 @@ import axios from "axios";
 import ClosestHosTable from './ClosestHosTable';
 
 import { useEffect } from 'react';
+import { Typography } from '@mui/material';
 
 const baseURL = "https://backdiagui-affe16e7071c.herokuapp.com/hospitals";
 
@@ -96,8 +97,11 @@ const HospitalGoogleMap = () => {
                 </APIProvider>
             </MKBox>
             <MKBox
-                mx={-1}
             >
+                <Typography variant='h1' mb={1}>
+                    There are the 10 closest hospitals with you!
+                </Typography>
+
                 {isLocationLoaded && <ClosestHosTable lat={currentPosition.lat} lon={currentPosition.lng}/>}
             </MKBox></>
     );

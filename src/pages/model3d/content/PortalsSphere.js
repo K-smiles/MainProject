@@ -9,20 +9,21 @@ import eye from "assets/images/3d/eye.png"
 import teeth from "assets/images/3d/teeth.png"
 import foot from "assets/images/3d/foot.png"
 import skin from "assets/images/3d/skin.png"
-import MKTypography from 'components/MKTypography';
-
+import stomach from "assets/images/3d/stomach.jpg"
+import kidney from "assets/images/3d/kidney.jpg"
 function TextDisplay(props) {
     const data = props.des
     console.log(props.src)
-    return <div>
+    return <>
         {data.map(item => {
-            return <Typography variant='body1'>{item}</Typography>
+            return <Typography fontSize={10}>{item}</Typography>
         })}
+        <br />
         <Image
-            width={150}
+            width={70}
             src={props.src}
         />
-    </div>
+    </>
 }
 
 function Portals(props) {
@@ -34,8 +35,8 @@ function Portals(props) {
             />
             <mesh position={props.end} >
                 <Html>
-                    <Tooltip className="annotation" title={<TextDisplay des={props.des} src={props.src} />}>
-                        <Typography variant='body1'>{props.type}</Typography>
+                    <Tooltip zIndex={999} placement={props.placement} className="annotation" title={<TextDisplay des={props.des} src={props.src} />}>
+                        <Typography zIndex={1} variant='body1'>{props.type}</Typography>
                     </Tooltip>
                 </Html>
             </mesh>
@@ -48,7 +49,8 @@ export default function SceneLabel() {
         type: 'Eyes',
         begin: [5, 80, 25],
         end: [10, 85, 35],
-        color:'black',
+        color: 'black',
+        placement: 'right',
         des: ["Early stage: blood accumulation in the eyes, red eyes, and frequent tears", "Late stage: cataracts, loss of visual field, severe vision loss"],
         src: eye
     },
@@ -56,7 +58,8 @@ export default function SceneLabel() {
         type: 'Foot',
         begin: [-10, -80, 1],
         end: [30, -50, 50],
-        color:'yellow',
+        color: 'yellow',
+        placement: 'top',
         des: ["Early stage: blisters, ulcers, yellow plaques", "Mid stage: osteomyelitis, ligament damage", "Late stage: tissue necrosis, amputation"],
         src: foot
     },
@@ -64,17 +67,37 @@ export default function SceneLabel() {
         type: 'Oral cavity',
         begin: [-5, 70, 25],
         end: [-50, 70, 0],
-        color:'blue',
+        color: 'blue',
+        placement: 'left',
         des: ["Early stage: swollen and bleeding gums and recurrent oral ulcers", "Advanced stage: periodontitis, dental caries, loosening and loss of teeth"],
         src: teeth
     },
     {
         type: 'Skin',
-        begin: [0, 0, 0],
-        end: [30, 30, 30],
-        color:'red',
+        begin: [0, 60, 0],
+        end: [30, 60, 30],
+        color: 'red',
+        placement: 'right',
         des: ["Early stage: dry skin, increased dandruff, eczema", "Late stage: skin itching all over the body, skin blackening, erythema, fungal infection"],
         src: skin
+    },
+    {
+        type: 'kidney',
+        begin: [-5, 20, 0],
+        end: [-30, 30, 30],
+        color: 'pink',
+        placement: 'bottom',
+        des: ["Early stage: impaired glucose metabolism, glomerular fibrosis", "Late stage: proteinuria, edema, renal failure"],
+        src: kidney
+    },
+    {
+        type: 'stomach',
+        begin: [10, 30, 10],
+        end: [10, 30, 40],
+        color: 'yellowgreen',
+        placement: 'bottom',
+        des: ["Mild: loss of appetite, nausea, vomiting", "Severe: gastric ulcer, chronic gastritis"],
+        src: stomach
     },
     ]
     return (<>
@@ -82,7 +105,7 @@ export default function SceneLabel() {
             data.map(item => {
                 return <Portals type={item.type}
                     begin={item.begin} end={item.end}
-                    color={item.color}
+                    color={item.color} placement={item.placement}
                     des={item.des} src={item.src} />
             })
         }

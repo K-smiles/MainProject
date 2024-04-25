@@ -15,7 +15,7 @@ import footerRoutes from "footer.routes";
 
 //sub element
 import Content from './content';
-import bgImage from "assets/images/epic3background.jpg";
+import bgImage from "assets/images/epic2mapbg.jpg";
 
 /**
  * Home page, includes header, and sections.

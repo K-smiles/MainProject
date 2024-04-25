@@ -228,12 +228,10 @@ function Content() {
                             sx={{ ml: { xs: 4, sm: 6, md: 10 }, fontSize: "1.5rem" }} >
                             <MKBox p={3}>
                                 <MKTypography variant="body1" color="black" ml={5} >
-                                    Factors associated with diabetes include lifestyle choices such as diet and exercise, as well as environmental factors.<br />
-                                    Age, BMI and gender have a particularly strong impact on the risk of developing diabetes.
-                                    <br /><br />First, aging increases the risk of reduced insulin sensitivity.
-                                    <br /><br />A high body mass index means being overweight or obese, which significantly increases the likelihood of developing diabetes because excess fat impairs insulin
-                                    function.
-                                    <br /><br />These factors highlight the importance of healthy lifestyle choices in managing diabetes
+                                    The 3 elements that have the greatest impact on the risk of developing diabetes are:
+                                    <br /> Age: increases the risk of reduced insulin sensitivity
+                                    <br />  Body mass index: increases the risk of reduced insulin sensitivity
+                                    <br />  Gender: the risk of developing diabetes varies by gender
                                 </MKTypography>
                             </MKBox>
                         </Grid>

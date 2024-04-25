@@ -28,7 +28,7 @@ const columns = [
         render: (text) => <div>{text}</div>,
     },
     {
-        title: 'Distance',
+        title: 'Distance(km)',
         key: 'Distance',
         dataIndex: 'Distance',
         render: (text) => <div>{text}</div>,
