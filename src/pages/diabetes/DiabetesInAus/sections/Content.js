@@ -17,11 +17,6 @@ import VisImage4 from './VisImage4'
 
 import bgImage from "assets/images/epic1background.jpg";
 
-import axios from "axios";
-
-// web back end api接口
-const baseURL = "https://backdiagui-affe16e7071c.herokuapp.com/";
-
 function Content() {
 
     const [activeChart, setActiveChart] = useState('none');
@@ -67,8 +62,6 @@ function Content() {
     };
 
     React.useEffect(() => {
-        axios.get(baseURL).then((response) => {
-        });
     }, []);
 
     return (

@@ -25,6 +25,3 @@ package-lock.json
 yarn.lock
 
 commit.sh
-
-# material 
-/public/model
