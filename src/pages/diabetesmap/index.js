@@ -78,10 +78,14 @@ function DiabeticMap() {
                         <MKTypography
                             variant="h1"
                             color="white"
-                            sx={{fontSize:{  xs: 40,
-                            sm: 60, 
-                            md: 80,
-                            xl: 100, }}}
+                            sx={{
+                                fontSize: {
+                                    xs: 40,
+                                    sm: 60,
+                                    md: 80,
+                                    xl: 100,
+                                }
+                            }}
                         >
                             DiabeticMap
                         </MKTypography>
@@ -103,11 +107,11 @@ function DiabeticMap() {
                             Map
                         </MKTypography>
                     </MKBox>
-                    <Content/>
+                    <Content />
                 </MKBox>
             </Grid>
-            
-            <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0}/>
+
+            <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0} />
             <>
                 {isVisible && (
                     <MKButton

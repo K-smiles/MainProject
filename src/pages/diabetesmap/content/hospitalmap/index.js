@@ -9,7 +9,7 @@ import ClosestHosTable from './ClosestHosTable';
 
 import { useEffect } from 'react';
 import { Typography } from '@mui/material';
-
+import Sidebar from '../Sidebar';
 const baseURL = "https://backdiagui-affe16e7071c.herokuapp.com/hospitals";
 
 const HospitalGoogleMap = () => {
@@ -47,6 +47,7 @@ const HospitalGoogleMap = () => {
     return (
         <>
             <Grid item>
+                <Sidebar />
                 <MKTypography variant="h3" fontWeight="bold" >
                     Can I quickly find all the hospitals in Australia that have diabetes department?
                     Don't worry about it. We can find them for you automatically!

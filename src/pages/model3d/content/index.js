@@ -58,7 +58,7 @@ function Content() {
                         mt={-5}
                     >
                         <MKTypography variant="h1" color="black">
-                            QA
+                            Q&A
                         </MKTypography>
                     </MKBox>
                     <MKBox p={4} mx={2}>

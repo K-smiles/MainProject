@@ -27,7 +27,7 @@ function AccordionExpand(props) {
 
 function QAcontent() {
     const data = [{
-        question: "Q1: What can l get this body model?",
+        question: "Q1: what useful information can I get?",
         answer: " A:  This model allows you to: a. Understand the damage that diabetes causes to the human body b. Help you to check if you have similar symptoms"
     },
     {

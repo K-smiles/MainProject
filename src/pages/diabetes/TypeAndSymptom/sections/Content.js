@@ -136,7 +136,7 @@ function Content() {
                             <Grid container spacing={3}>
                                 <Grid item mt={1}
                                     sx={{ ml: { xs: 4, sm: 6, md: 10 }, fontSize: "1.5rem" }} >
-                                    There are three main types of diabetes: <br /><br />
+                                    There are two main types of diabetes: <br /><br />
                                     Type 1, an autoimmune disease that causes insulin deficiency; <br /><br />
                                     Type 2 diabetes, caused by the body's ineffective use of insulin, is often linked to lifestyle factors; Gestational diabetes, which occurs during pregnancy. <br /><br />
                                     However, our web project focuses on type 2 diabetes with an emphasis on prevention and management through lifestyle changes, as type 1 diabetes is largely inherited.

@@ -5,7 +5,7 @@ import MKBox from 'components/MKBox';
 import MapHandler from './maphandler'
 import { Grid } from '@mui/material';
 import { useEffect } from 'react';
-
+import Sidebar from '../Sidebar';
 const SearchGoogleMap = () => {
     const [currentPosition, setCurrentPosition] = useState(null);
     const [isLocationLoaded, setLocationLoaded] = useState(false);
@@ -31,49 +31,50 @@ const SearchGoogleMap = () => {
 
     return (
         <>
-        <Grid item>
-        <MKTypography variant="h3" fontWeight="bold" >
-                How can I quickly find all the GPs near me？
-                Don't worry about it. We can find them for you automatically!
-            </MKTypography>
-        </Grid>
-        <Grid item>
-        <MKBox
-                mx={-1}
-                sx={{
-                    width: {
-                        xs: 300, // theme.breakpoints.up('xs')
-                        sm: 500, // theme.breakpoints.up('sm')
-                        md: 700, // theme.breakpoints.up('md')
-                        lg: 900, // theme.breakpoints.up('lg')
-                        xl: 1000, // theme.breakpoints.up('xl')
-                        xxl: 1200
-                    },
-                    height: {
-                        xs: 150, // theme.breakpoints.up('xs')
-                        sm: 250, // theme.breakpoints.up('sm')
-                        md: 350, // theme.breakpoints.up('md')
-                        lg: 450, // theme.breakpoints.up('lg')
-                        xl: 500, // theme.breakpoints.up('xl')
-                        xxl: 600
-                    },
-                }}
-            >
-                <APIProvider apiKey="AIzaSyDPKLutsxSa78IFodEqzbZTncyZZB7jovM" language="en" libraries={['places']}>
-                    {isLocationLoaded && (
-                        <Map
-                            style={{ width: '100%', height: '90%' }}
-                            defaultCenter={currentPosition || { lat: -37.745, lng: 144.523 }}
-                            defaultZoom={15}
-                            gestureHandling={'greedy'}
-                            disableDefaultUI
-                        >
-                            {currentPosition && <MapHandler currentPosition={currentPosition} />}
-                        </Map>
-                    )}
-                </APIProvider>
-            </MKBox>
-        </Grid>
+            <Grid item>
+                <Sidebar />
+                <MKTypography variant="h3" fontWeight="bold" >
+                    How can I quickly find all the GPs near me？
+                    Don't worry about it. We can find them for you automatically!
+                </MKTypography>
+            </Grid>
+            <Grid item>
+                <MKBox
+                    mx={-1}
+                    sx={{
+                        width: {
+                            xs: 300, // theme.breakpoints.up('xs')
+                            sm: 500, // theme.breakpoints.up('sm')
+                            md: 700, // theme.breakpoints.up('md')
+                            lg: 900, // theme.breakpoints.up('lg')
+                            xl: 1000, // theme.breakpoints.up('xl')
+                            xxl: 1200
+                        },
+                        height: {
+                            xs: 150, // theme.breakpoints.up('xs')
+                            sm: 250, // theme.breakpoints.up('sm')
+                            md: 350, // theme.breakpoints.up('md')
+                            lg: 450, // theme.breakpoints.up('lg')
+                            xl: 500, // theme.breakpoints.up('xl')
+                            xxl: 600
+                        },
+                    }}
+                >
+                    <APIProvider apiKey="AIzaSyDPKLutsxSa78IFodEqzbZTncyZZB7jovM" language="en" libraries={['places']}>
+                        {isLocationLoaded && (
+                            <Map
+                                style={{ width: '100%', height: '90%' }}
+                                defaultCenter={currentPosition || { lat: -37.745, lng: 144.523 }}
+                                defaultZoom={15}
+                                gestureHandling={'greedy'}
+                                disableDefaultUI
+                            >
+                                {currentPosition && <MapHandler currentPosition={currentPosition} />}
+                            </Map>
+                        )}
+                    </APIProvider>
+                </MKBox>
+            </Grid>
 
         </>
     );
