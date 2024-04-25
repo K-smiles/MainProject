@@ -32,10 +32,6 @@ function QAcontent() {
     },
     {
         question: "Q2: I feel like I already have some early symptoms, what do I need to do?",
-        answer: "   "
-    },
-    {
-        question: "Q2: I feel like I already have some early symptoms, what do I need to do?",
         answer: <Typography variant="body1">A: We recommend that you use&nbsp;
             <NavLink to="/map"
                 activeStyle={{
@@ -46,6 +42,10 @@ function QAcontent() {
             >
                 Hospitals and GPs
             </NavLink> to find a hospital or GP near you for a direct consultation.</Typography>
+    },
+    {
+        question: "Q3: Can I be able to prevent diabetes effectively?",
+        answer: "A: Functional card 5 and Functional card 6 will help you to create a personalised recipe and exercise programme, which will help you to prevent diabetes."
     },
     {
         question: " Q4:Can l use this model to track my health?",
