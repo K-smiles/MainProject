@@ -4,7 +4,6 @@ import Grid from "@mui/material/Grid";
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
-import Container from "@mui/material/Container";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import SimpleFooter from "examples/Footers/SimpleFooter";
 
@@ -79,30 +78,6 @@ function Calculator() {
                     DiabeticGuardian
                 </MKTypography>
             </MKBox>
-            <Grid container direction="row" justifyContent="center" alignItems="center" >
-                <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex" flexDirection="column" justifyContent="center" >
-                    <MKBox
-                        variant="gradient"
-                        bgColor="white"
-                        coloredShadow="info"
-                        borderRadius="lg"
-                        p={4}
-                        mx={2}
-                        mt={-10}
-                    >
-                        <MKTypography variant="h2" color="black" >
-                            Introduction
-                        </MKTypography>
-                    </MKBox>
-                    <MKBox p={4} mx={2}>
-                        <MKTypography variant="h3" fontWeight="bold" >
-                            Welcome to the diabetes risk calculator
-                            Diabetes is one of the fastest growing chronic condition in Australia.
-                            To find out your risk of developing diabetes, complete the following 11 short questions.
-                        </MKTypography>
-                    </MKBox>
-                </MKBox>
-            </Grid>
             <Content />
             <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0} />
             <>

@@ -50,7 +50,6 @@ function TransparentBlogCard({ image, title, description, action }) {
       <MKBox
         component="img"
         src={image}
-        alt={title}
         borderRadius="lg"
         shadow="md"
         width="100%"
@@ -144,7 +143,7 @@ function TransparentBlogCard({ image, title, description, action }) {
 // Typechecking props for the TransparentBlogCard
 TransparentBlogCard.propTypes = {
   image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.object.isRequired,
   description: PropTypes.string.isRequired,
   action: PropTypes.shape({
     type: PropTypes.oneOf(["external", "internal"]),

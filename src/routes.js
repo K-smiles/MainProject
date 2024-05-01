@@ -1,4 +1,4 @@
-// @mui material components
+// @mui material 
 import Icon from "@mui/material/Icon";
 import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
 
@@ -17,6 +17,7 @@ const routes = [
     columns: 1,
     rowsPerColumn: 2,
     route: "/home",
+    prefix: "/home",
     component: <Home />,
   },
   {
@@ -24,6 +25,7 @@ const routes = [
     icon: <Icon>article</Icon>,
     columns: 1,
     rowsPerColumn: 2,
+    prefix: "/diabetes",
     collapse: [
       {
         name: "Diabetes",
@@ -53,14 +55,16 @@ const routes = [
     columns: 1,
     rowsPerColumn: 2,
     route: "/calculator",
+    prefix: "/calculator",
     component: <Calculator />,
   },
   {
     name: "Model",
-    icon: <ThreeDRotationIcon/>,
+    icon: <ThreeDRotationIcon />,
     columns: 1,
     rowsPerColumn: 2,
     route: "/model",
+    prefix: "/model",
     component: <Model3d />,
   },
   {
@@ -69,6 +73,7 @@ const routes = [
     columns: 1,
     rowsPerColumn: 2,
     route: "/map",
+    prefix: "/map",
     component: <DiabeticMap />,
   },
 ];

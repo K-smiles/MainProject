@@ -18,7 +18,7 @@ import store from './store'
 import { Provider } from 'react-redux'
 
 export default function App() {
-  console.log(process.env.REACT_APP_NOT_SECRET_CODE)
+
   const { pathname } = useLocation();
 
   // Setting page scroll to 0 when changing the route

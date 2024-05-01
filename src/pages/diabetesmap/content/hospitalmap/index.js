@@ -4,24 +4,28 @@ import { MarkerWithInfowindow } from './mapwithinforwindow';
 import MKTypography from "components/MKTypography";
 import MKBox from 'components/MKBox';
 import { Grid } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
+
 import axios from "axios";
 import ClosestHosTable from './ClosestHosTable';
-
 import { useEffect } from 'react';
 import { Typography } from '@mui/material';
 import Sidebar from '../Sidebar';
-const baseURL = "https://backdiagui-affe16e7071c.herokuapp.com/hospitals";
 
-const HospitalGoogleMap = () => {
+// process.env.REACT_APP_BASEURL
+const baseURL = "http://localhost:5000/hospitals";
+
+const HospitalGoogleMap = ({ updateOpen }) => {
 
     const [data, setData] = useState([])
     const [currentPosition, setCurrentPosition] = useState(null);
     const [isLocationLoaded, setLocationLoaded] = useState(false);
 
+
     useEffect(() => {
         if (!navigator.geolocation) {
             alert('Geolocation is not supported by your browser');
-            setLocationLoaded(true);  // 设置为 true 即使位置获取失败也能加载地图
+            setLocationLoaded(true);
         } else {
             navigator.geolocation.getCurrentPosition(
                 position => {
@@ -32,26 +36,33 @@ const HospitalGoogleMap = () => {
                 },
                 error => {
                     alert(`Location error: ${error.message}`);
-                    setLocationLoaded(true);  // 同样设置为 true，允许地图加载
+                    setLocationLoaded(true);
                 }
             );
         }
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
         axios.get(baseURL).then((response) => {
             setData(response.data)
+            updateOpen();
         }, []);
     }, [])
 
     return (
         <>
             <Grid item>
-                <Sidebar />
-                <MKTypography variant="h3" fontWeight="bold" >
-                    Can I quickly find all the hospitals in Australia that have diabetes department?
-                    Don't worry about it. We can find them for you automatically!
-                </MKTypography>
+            <Grid container spacing={2}>
+                    <Grid item xs={4} md={2}>
+                        <Sidebar />
+                    </Grid>
+                    <Grid item xs={8} md={10}>
+                        <MKTypography variant="h3" fontWeight="bold" >
+                            How can I quickly find all the GPs near me？
+                            Don't worry about it. We can find them for you automatically!
+                        </MKTypography>
+                    </Grid>
+                </Grid>
             </Grid>
             <Grid item>
                 <MKBox
@@ -76,7 +87,7 @@ const HospitalGoogleMap = () => {
                     }}
                 >
                     <APIProvider apiKey="AIzaSyDPKLutsxSa78IFodEqzbZTncyZZB7jovM" language="en" libraries={['places']}>
-                        {isLocationLoaded && (
+                        {isLocationLoaded ? (
                             <Map
                                 mapId={'bf51a910020fa25a'}
                                 style={{ width: '100%', height: '90%' }}
@@ -88,7 +99,8 @@ const HospitalGoogleMap = () => {
                                 <div>
                                     {
                                         data.map((item) => {
-                                            return <MarkerWithInfowindow lat={parseFloat(item.Latitude)} lng={parseFloat(item.Longitude)}
+                                            return <MarkerWithInfowindow
+                                                lat={parseFloat(item.Latitude)} lng={parseFloat(item.Longitude)}
                                                 name={item.Name}
                                                 sector={item.Sector}
                                                 state={item.State}
@@ -98,17 +110,15 @@ const HospitalGoogleMap = () => {
                                     }
                                 </div>
                             </Map>
-                        )}
+                        ) : <CircularProgress />}
                     </APIProvider>
                 </MKBox>
             </Grid>
             <Grid item>
-                <MKBox
-                >
+                <MKBox>
                     <Typography variant='h1' mb={1}>
                         There are the 10 closest hospitals with you!
                     </Typography>
-
                     {isLocationLoaded && <ClosestHosTable lat={currentPosition.lat} lon={currentPosition.lng} />}
                 </MKBox>
             </Grid>

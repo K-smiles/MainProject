@@ -11,18 +11,26 @@ import QAcontent from "./QAcontent";
 
 function Content() {
     return (
-        <>
-            <MKBox sx={{ p: 4 }} bgColor="white" shadow="lg"
-                mt={{ xs: 1, sm: -1, md: -1 }}
+        <MKBox bgColor="white" borderRadius="xl" shadow="lg"
+            display="flex" flexDirection="column" justifyContent="center"
+            mx={2}
+            mt={-5} >
+
+            <MKBox p={4} mx={2} borderRadius="xl" shadow="lg">
+                <MKTypography variant="h3" fontWeight="bold">
+                    Clicking on different parts of the model to see how diabetes can harm your body at different stages.Please slide to the bottom for more Q&A sections.
+                </MKTypography>
+            </MKBox>
+
+            <MKBox bgColor="white" shadow="lg"
+                mt={{ xs: 1, sm: 2, md: 3 }}
                 mb={{ xs: 1, sm: 2, md: 3 }}
-                mx={3}
+                mx={2}
                 display="flex"
                 borderRadius="xl">
                 <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" >
                     <Grid item>
                         <MKBox
-                            mx={-1}
-                            mt={-1}
                             sx={{
                                 width: {
                                     xs: 300, // theme.breakpoints.up('xs')
@@ -36,36 +44,37 @@ function Content() {
                                     xs: 300, // theme.breakpoints.up('xs')
                                     sm: 300, // theme.breakpoints.up('sm')
                                     md: 400, // theme.breakpoints.up('md')
-                                    lg:500, // theme.breakpoints.up('lg')
+                                    lg: 500, // theme.breakpoints.up('lg')
                                     xl: 600, // theme.breakpoints.up('xl')
                                     xxl: 700
                                 },
                             }}
+                            mb={{ xs: 1, sm: 2, md: 3 }}
                         >
                             <Viewer />
                         </MKBox>
                     </Grid>
                 </Grid>
             </MKBox>
+
             <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex" flexDirection="column" justifyContent="center" >
-                    <MKBox
-                        variant="gradient"
-                        bgColor="white"
-                        coloredShadow="info"
-                        borderRadius="lg"
-                        p={4}
-                        mx={2}
-                        mt={-5}
-                    >
-                        <MKTypography variant="h1" color="black">
-                            Q&A
-                        </MKTypography>
-                    </MKBox>
-                    <MKBox p={4} mx={2}>
-                            <QAcontent/>
-                    </MKBox>
+                <MKBox
+                    mt={{ xs: 1, sm: 2, md: 3 }}
+                    mb={{ xs: 1, sm: 2, md: 3 }}
+                    mx={2}
+                >
+                    <MKTypography variant="h1" color="black">
+                        Q&A
+                    </MKTypography>
                 </MKBox>
-        </>
+
+                <MKBox mt={{ xs: 1, sm: 2, md: 3 }}
+                    mb={{ xs: 1, sm: 2, md: 3 }}
+                    mx={2}>
+                    <QAcontent />
+                </MKBox>
+            </MKBox>
+        </MKBox>
     );
 }
 

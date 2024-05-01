@@ -23,7 +23,6 @@ function NavContent() {
                     placeItems: "center",
                 }}
             >
-
                 <MKTypography variant="h1"
                     color="white"
                     sx={{
@@ -119,7 +118,6 @@ function NavContent() {
 
                     </MKButton>
                 </Grid>
-
             </MKBox>
         </>
     );

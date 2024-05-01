@@ -7,10 +7,8 @@ import { useTheme } from '@mui/material/styles';
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-import MKButton from "components/MKButton";
 
 import React from 'react';
-import { Link } from "react-router-dom";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -30,6 +28,7 @@ import symptoms3 from "assets/images/symptoms/3.png";
 import symptoms4 from "assets/images/symptoms/4.png";
 import symptoms5 from "assets/images/symptoms/5.png";
 import symptoms6 from "assets/images/symptoms/6.png";
+import NavigationButton from "components/NavigationButton";
 
 // Type 1 Diabetes Data
 const typeOneDiabetesData = [
@@ -55,14 +54,19 @@ function Content() {
     // 在组件内部
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // 使用theme.breakpoints.down检查当前屏幕尺寸是否为移动端尺寸
+
     return (
-        <>
-            <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" mt={-15}>
-                <Grid item ml={{ xs: "auto", lg: 1 }} mr={{ xs: "auto", lg: 1 }}>
+        <MKBox bgColor="white" borderRadius="xl" shadow="lg"
+            display="flex" flexDirection="column" justifyContent="center"
+            mx={2}
+            mt={-5} >
+            <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" >
+                <Grid item>
                     <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex"
                         flexDirection="column" justifyContent="center"
-                        mt={{ xs: 20, sm: 18, md: 20 }}
-                        mb={{ xs: 5, sm: 4, md: 5 }}>
+                        mt={{ xs: 1, sm: 2, md: 3 }}
+                        mb={{ xs: 1, sm: 2, md: 3 }}
+                    >
 
                         <MKBox
                             variant="gradient"
@@ -70,22 +74,22 @@ function Content() {
                             coloredShadow="info"
                             borderRadius="lg"
                             p={4}
-                            mx={2}
-                            mt={-5}>
-                            <MKTypography variant="h2" color="black" ml={5} id="what-diabetes">
+                            mx={2}>
+                            <MKTypography variant="h2" color="black" id="what-diabetes">
                                 {"What is Diabetes?"}
                             </MKTypography>
                         </MKBox>
 
-                        <MKBox p={3}>
+                        <MKBox mt={{ xs: 1, sm: 2, md: 3 }}
+                            mb={{ xs: 1, sm: 2, md: 3 }}>
                             <Grid container spacing={3} justifyContent="center" alignItems="center">
-                                <Grid item xs={12} md={6} lg={5} mt={1} ml={{ xs: 0, lg: 3 }}> {/* ml属性在小屏幕时为0，在大屏幕时增加边距 */}
+                                <Grid item xs={12} md={6} lg={5}>
                                     <MKTypography variant="body1">
                                         Diabetes is a chronic disease of abnormal blood glucose regulation due to insufficient production or poor utilisation of insulin.
                                         <br /><br />Chronic high blood glucose levels not only cause serious damage to the nerves, skin, immune system and vascular system, but also lead to a significant increase in the incidence of heart disease, kidney disease, cataracts and other diseases.
                                     </MKTypography>
                                 </Grid>
-                                <Grid item xs={12} md={6} lg={5} mt={1}>
+                                <Grid item xs={12} md={6} lg={5} >
                                     <MKBox style={{ width: '100%', maxWidth: '350px', height: '360px', margin: '0 auto' }}> {/* 在大屏幕时图片居中且最大宽度为350px */}
                                         <Slider {...settings}>
                                             <MKBox>
@@ -267,18 +271,11 @@ function Content() {
                             mt={3}
                         >
                         </MKBox>
-                        <MKBox p={3} >
-                            <Grid spacing={2} container>
-                                <MKButton variant="gradient" color="info" >
-                                    <Link to="/diabetes/diabetesinaus">Next</Link>
-                                </MKButton>
-                            </Grid>
-                        </MKBox>
-
+                        <NavigationButton right="/diabetes/diabetesinaus" />
                     </MKBox>
                 </Grid>
             </Grid >
-        </>
+        </MKBox>
     );
 }
 

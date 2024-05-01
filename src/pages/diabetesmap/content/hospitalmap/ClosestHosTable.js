@@ -36,15 +36,13 @@ const columns = [
 ];
 
 
-
-
 function ClosestHosTable(props) {
     const [data, setData] = useState([])
-    let baseURL = "https://backdiagui-affe16e7071c.herokuapp.com/closest/"+props.lat+"/"+props.lon;
-    console.log(baseURL)
+    let baseURL = "http://localhost:5000" + "/closest/" + props.lat + "/" + props.lon;
+
     React.useEffect(() => {
         axios.get(baseURL).then((response) => {
-            console.log(response.data[0])
+            //console.log(response)
             setData(response.data)
         }, []);
     }, [])

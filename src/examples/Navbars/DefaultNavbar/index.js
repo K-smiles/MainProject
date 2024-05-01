@@ -42,7 +42,8 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
-
+//react dom dependency
+import { useLocation } from 'react-router-dom';
 function DefaultNavbar({ brand, routes, transparent, light, action, sticky, relative, center }) {
   const [dropdown, setDropdown] = useState("");
   const [dropdownEl, setDropdownEl] = useState("");
@@ -80,14 +81,17 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
     // Remove event listener on cleanup
     return () => window.removeEventListener("resize", displayMobileNavbar);
   }, []);
+  const location = useLocation();
+  const currentUrl = location.pathname;
 
-  const renderNavbarItems = routes.map(({ name, icon, href, route, collapse }) => (
-    <DefaultNavbarDropdown
+  const renderNavbarItems = routes.map(({ name, icon, href, route, collapse, prefix }) => {
+    return <DefaultNavbarDropdown
       key={name}
       name={name}
       icon={icon}
       href={href}
       route={route}
+      isInfo={currentUrl.startsWith(prefix)}
       collapse={Boolean(collapse)}
       onMouseEnter={({ currentTarget }) => {
         if (collapse) {
@@ -99,7 +103,7 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
       onMouseLeave={() => collapse && setDropdown(null)}
       light={light}
     />
-  ));
+  });
 
   // Render the routes on the dropdown menu
   const renderRoutes = routes.map(({ name, collapse, columns, rowsPerColumn }) => {
@@ -480,7 +484,7 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
               {brand}
             </MKTypography>
           </MKBox>
-          
+
           <MKBox
             color="inherit"
             display={{ xs: "none", lg: "flex" }}

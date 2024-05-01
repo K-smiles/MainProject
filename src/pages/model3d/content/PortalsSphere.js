@@ -102,7 +102,7 @@ export default function SceneLabel() {
     return (<>
         {
             data.map(item => {
-                return <Portals type={item.type}
+                return <Portals key={item.type} type={item.type}
                     begin={item.begin} end={item.end}
                     color={item.color} placement={item.placement}
                     des={item.des} src={item.src} />

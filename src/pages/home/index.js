@@ -5,6 +5,7 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
+import SpeedDial from 'components/SpeedDial/index.js';
 
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -15,43 +16,21 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 
 //sub element
-import Posts from "./content/Posts";
+import Features from "./content/Features";
 import bgImage from "assets/images/aobut_us.jpg";
 
 /**
  * Home page, includes header, and sections.
  * @returns 
  */
+
 function Home() {
-    const [isVisible, setIsVisible] = useState(false);
-
-    // 显示按钮的逻辑
-    useEffect(() => {
-        const toggleVisibility = () => {
-            if (window.pageYOffset > 300) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
-        window.addEventListener("scroll", toggleVisibility);
-        return () => window.removeEventListener("scroll", toggleVisibility);
-    }, []);
-
-    // 滚动到顶部的方法
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    };
-
     return (
         <>
             <DefaultNavbar routes={routes}
                 transparent
-                relative
-            />
+                relative />
+
             <MKBox
                 minHeight="75vh"
                 width="100%"
@@ -79,10 +58,14 @@ function Home() {
                         <MKTypography
                             variant="h1"
                             color="white"
-                            sx={{fontSize:{  xs: 40,
-                            sm: 60, 
-                            md: 80,
-                            xl: 100, }}}
+                            sx={{
+                                fontSize: {
+                                    xs: 40,
+                                    sm: 60,
+                                    md: 80,
+                                    xl: 100,
+                                }
+                            }}
                         >
                             DiabeticGuardian
                         </MKTypography>
@@ -109,6 +92,7 @@ function Home() {
                         </MKTypography>
                     </Grid>
                 </Container>
+
             </MKBox>
 
             <Card
@@ -121,30 +105,11 @@ function Home() {
                 }}
                 id="content-post"
             >
-                <Posts />
+                <Features />
             </Card>
-            <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0}/>
-            <>
-                {isVisible && (
-                    <MKButton
-                        onClick={scrollToTop}
-                        style={{
-                            position: 'fixed',
-                            bottom: '20px',
-                            right: '10px',
-                            backgroundColor: 'rgba(33, 37, 41, 0.65)',
-                            color: 'white',
-                            minWidth: '50px',
-                            height: '50px',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}
-                    >
-                        <i className="fas fa-arrow-up"></i>
-                    </MKButton>
-                )}
-            </>
+
+            <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0} />
+            <SpeedDial/>
         </>
     );
 }

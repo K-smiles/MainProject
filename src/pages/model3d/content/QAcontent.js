@@ -6,6 +6,8 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { NavLink } from "react-router-dom";
+import { Button } from "@mui/material";
+
 function AccordionExpand(props) {
     return (
         <Accordion >
@@ -32,16 +34,12 @@ function QAcontent() {
     },
     {
         question: "Q2: I feel like I already have some early symptoms, what do I need to do?",
-        answer: <Typography variant="body1">A: We recommend that you use&nbsp;
-            <NavLink to="/map"
-                activeStyle={{
-                    fontWeight: "bold",
-                    color: "red"
-                }}
-                replace
-            >
-                Hospitals and GPs
-            </NavLink> to find a hospital or GP near you for a direct consultation.</Typography>
+        answer: <>
+            <Typography variant="body1">A: We recommend that you use Hospitals and GPs to find a hospital or GP near you for a direct consultation.</Typography>
+            <NavLink to="/map">
+                <Button variant="contained" color="black">Hospitals and GPs</Button>
+            </NavLink>
+        </>
     },
     {
         question: "Q3: Can I be able to prevent diabetes effectively?",

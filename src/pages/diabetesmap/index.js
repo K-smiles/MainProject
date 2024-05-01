@@ -92,25 +92,7 @@ function DiabeticMap() {
                     </Grid>
                 </Container>
             </MKBox>
-            <Grid container direction="row" justifyContent="center" alignItems="center" >
-                <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex" flexDirection="column" justifyContent="center" >
-                    <MKBox
-                        variant="gradient"
-                        bgColor="white"
-                        coloredShadow="info"
-                        borderRadius="lg"
-                        p={4}
-                        mx={2}
-                        mt={-10}
-                    >
-                        <MKTypography variant="h2" color="black" >
-                            Map
-                        </MKTypography>
-                    </MKBox>
-                    <Content />
-                </MKBox>
-            </Grid>
-
+            <Content />
             <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0} />
             <>
                 {isVisible && (

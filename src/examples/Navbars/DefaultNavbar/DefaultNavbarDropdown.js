@@ -27,6 +27,7 @@ import Icon from "@mui/material/Icon";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
+
 function DefaultNavbarDropdown({
   name,
   icon,
@@ -36,6 +37,7 @@ function DefaultNavbarDropdown({
   href,
   route,
   collapse,
+  isInfo,
   ...rest
 }) {
   const linkComponent = {
@@ -49,6 +51,7 @@ function DefaultNavbarDropdown({
     component: Link,
     to: route,
   };
+
 
   return (
     <>
@@ -76,7 +79,7 @@ function DefaultNavbarDropdown({
           variant="body1"
           fontWeight="regular"
           textTransform="capitalize"
-          color={light ? "white" : "dark"}
+          color={isInfo ? "info" : "dark"}
           sx={{ fontWeight: "100%", ml: 1, mr: 0.25 }}
         >
           {name}

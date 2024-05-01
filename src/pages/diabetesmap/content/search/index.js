@@ -6,14 +6,15 @@ import MapHandler from './maphandler'
 import { Grid } from '@mui/material';
 import { useEffect } from 'react';
 import Sidebar from '../Sidebar';
-const SearchGoogleMap = () => {
+
+const SearchGoogleMap = ({ updateOpen }) => {
     const [currentPosition, setCurrentPosition] = useState(null);
     const [isLocationLoaded, setLocationLoaded] = useState(false);
 
     useEffect(() => {
         if (!navigator.geolocation) {
             alert('Geolocation is not supported by your browser');
-            setLocationLoaded(true);  // 设置为 true 即使位置获取失败也能加载地图
+            setLocationLoaded(true);
         } else {
             navigator.geolocation.getCurrentPosition(
                 position => {
@@ -29,14 +30,23 @@ const SearchGoogleMap = () => {
         }
     }, []);
 
+    useEffect(() => {
+        updateOpen();
+    }, [])
     return (
         <>
             <Grid item>
-                <Sidebar />
-                <MKTypography variant="h3" fontWeight="bold" >
-                    How can I quickly find all the GPs near me？
-                    Don't worry about it. We can find them for you automatically!
-                </MKTypography>
+                <Grid container spacing={2}>
+                    <Grid item xs={4} md={2}>
+                        <Sidebar />
+                    </Grid>
+                    <Grid item xs={8} md={10}>
+                        <MKTypography variant="h3" fontWeight="bold" >
+                            How can I quickly find all the GPs near me？
+                            Don't worry about it. We can find them for you automatically!
+                        </MKTypography>
+                    </Grid>
+                </Grid>
             </Grid>
             <Grid item>
                 <MKBox

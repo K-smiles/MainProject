@@ -1,16 +1,12 @@
 // MapHandler.js
 import { useMap } from '@vis.gl/react-google-maps';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-import olderIcon from 'assets/images/locationicon.png'; // 你自己的位置的图标
-import hospitalIcon from 'assets/images/hospital.png'; // GP的图标
-
-
+import olderIcon from 'assets/images/locationicon.png'; // location
+import hospitalIcon from 'assets/images/hospital.png'; // hospital 
 
 const MapHandler = ({ currentPosition }) => {
   const map = useMap();
-  const [markers, setMarkers] = useState([]);
-  const [infoWindows, setInfoWindows] = useState([]);
 
   useEffect(() => {
     if (!map || !currentPosition) return;
@@ -113,9 +109,6 @@ const MapHandler = ({ currentPosition }) => {
 
             newMarkers.push(placeMarker);
           });
-
-          setMarkers(newMarkers);
-          setInfoWindows(newInfoWindows);
         }
       });
     });

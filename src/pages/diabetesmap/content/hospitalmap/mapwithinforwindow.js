@@ -28,7 +28,7 @@ export const MarkerWithInfowindow = (props) => {
                     <MKTypography variant="h6">{props.name}</MKTypography>
                     <MKTypography variant="body2">{props.sector}</MKTypography>
                     <MKTypography variant="body3">State: {props.state}</MKTypography>
-                    <br/>
+                    <br />
                     <MKTypography variant="body3">Phone: {props.phone}</MKTypography>
                 </InfoWindow>
             )}

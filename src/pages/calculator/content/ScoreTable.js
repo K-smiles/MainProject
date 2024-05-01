@@ -60,7 +60,6 @@ function ScoreTable(props) {
             que: "Exervise",
             poi: props.isExercise
         },
- 
         {
             key: '9',
             que: "Blood glucose level",
