@@ -8,43 +8,42 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { Link } from "react-router-dom";
 
-export default function NavDrawer({ open, updateOpen }) {
+export default function NavDrawer({ open, updateOpen, routes }) {
 
     const DrawerList = (
         <Box sx={{ width: 250 }} role="presentation" onClick={() => updateOpen(false)}>
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <Link to="/diabetes/diabetesinaus">
+
+                {routes.map((item) => (item.collapse ?
+                    <Link to={item.prefix}>
+                        <ListItem key={item.name} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon >
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                    {item.icon}
                                 </ListItemIcon>
-
-                                <ListItemText primary={text} />
+                                <ListItemText primary={item.name} />
                             </ListItemButton>
-                        </Link>
-                    </ListItem>
+                        </ListItem>
+                        <Divider />
+                    </Link>
+                    :
+                    <Link to={item.route}>
+                        <ListItem key={item.name} disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon >
+                                    {item.icon}
+                                </ListItemIcon>
+                                <ListItemText primary={item.name} />
+                            </ListItemButton>
+                        </ListItem>
+                        <Divider />
+                    </Link>
                 ))}
             </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
+
         </Box>
     );
 
@@ -57,3 +56,4 @@ export default function NavDrawer({ open, updateOpen }) {
         </div>
     );
 }
+

@@ -6,44 +6,63 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Stack } from '@mui/material';
 import { Pagination } from '@mui/material';
-import FoodCard from 'components/FoodCard';
+import RecipeCard from 'components/RecipeCard';
 import axios from 'axios';
 import Select from 'components/DGSelect'
 
 function Content() {
     const [name, setName] = React.useState('')
-    const [category, setCategory] = React.useState('');
-    const [subcategory, setSubCategory] = React.useState('');
+    const [collections, setCollections] = React.useState('');
+    const [cuisines, setCuisines] = React.useState('');
 
-    const searchIndex = [
+    const searchIndex1 = [
         {
-            label: 'category',
+            label: 'collections',
             labels: [
-                { value: 'Dairy products and alternatives', label: 'Dairy products and alternatives' },
-                { value: 'Breads', label: 'Breads' }],
-            value: category,
-            updateValue: setCategory
+                { value: 'Steam', label: 'Steam' },
+                { value: 'Lactose', label: 'Lactose' }],
+            value: collections,
+            updateValue: setCollections
         },
         {
-            label: 'subcategory',
+            label: 'cuisines',
             labels: [
-                { value: 'Reduced-fat yoghurt', label: 'Reduced-fat yoghurt' },
-                { value: 'Burgen Mixed Grain bread (Tip Top Bakeries, Chatswood, Australia)', label: 'Burgen Mixed Grain bread (Tip Top Bakeries, Chatswood, Australia)' }],
-            value: subcategory,
-            updateValue: setSubCategory
+                { value: 'Austrian', label: 'Austrian' },
+                { value: 'New Zealand', label: 'New Zealand' }],
+            value: cuisines,
+            updateValue: setCuisines
         },
     ]
+    const [course, setCourse] = React.useState('');
+    const [ingredients, setIngredients] = React.useState('');
+
+    const searchIndex2 = [
+        {
+            label: 'Course',
+            labels: [
+                { value: 'Frozen Desserts', label: 'Frozen Desserts' },
+                { value: 'Lunch/Snacks', label: 'Lunch/Snacks' }],
+            value: course,
+            updateValue: setCourse
+        },
+        {
+            label: 'Ingredients',
+            labels: [
+                { value: 'Acorns', label: 'Acorns' },
+                { value: 'Almond', label: 'Almond' }],
+            value: ingredients,
+            updateValue: setIngredients
+        },
+    ]
+
     const [page, setPage] = React.useState(1);
     const pageNumber = 10
 
     const handleChange = (event, value) => {
-        setPage(value, () => {
-
-            //searchFood()
-        });
+        setPage(value);
 
     };
-    let baseURL = "http://localhost:5000/foods";
+    let baseURL = "http://localhost:5000/recipes";
 
     const [data, setData] = React.useState([]);
 
@@ -53,15 +72,15 @@ function Content() {
     }, [page]);
 
     const searchFood = () => {
-        let search = { name: name, category: category, subcategory: subcategory, page: page, pageNumber: pageNumber }
-        console.log("page")
-        //mock axios to get data
+        let search = {name:name, collection: collections, cuisine: cuisines, course: course, ingredient:ingredients,page: page, pageNumber: pageNumber }
+    
         axios({
             method: 'get',
             url: baseURL,
             params: search,
         }).then((response) => {
             setData(response.data)
+        
         }, []);
     }
 
@@ -105,8 +124,17 @@ function Content() {
                         />
                     </Grid>
                     <Grid item xs={1} />
+
                     <Grid item xs={1} />
-                    {searchIndex.map((item) => {
+                    {searchIndex1.map((item) => {
+                        return (<Grid item xs={5}>
+                            <Select label={item.label} labels={item.labels} value={item.value} updateValue={item.updateValue} />
+                        </Grid>)
+                    })}
+                    <Grid item xs={1} />
+
+                    <Grid item xs={1} />
+                    {searchIndex2.map((item) => {
                         return (<Grid item xs={5}>
                             <Select label={item.label} labels={item.labels} value={item.value} updateValue={item.updateValue} />
                         </Grid>)
@@ -130,7 +158,7 @@ function Content() {
                         <MKBox xs={12}>
                             <Stack spacing={2} mb={2}>
                                 {data.map((item) => {
-                                    return <FoodCard data={item} />
+                                    return <RecipeCard data={item} />
                                 })}
                                 <Pagination count={10} page={page} onChange={handleChange} />
                             </Stack>

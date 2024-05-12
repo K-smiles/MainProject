@@ -17,7 +17,11 @@ const config = {
     user: 'admin',
     password: PASSWORD,
     database: 'fit5120_main_pro' // Specify your database (schema) name here }
+  },
+  db3:{
+    url:'mongodb+srv://fit5120mongodb:fit5120mongodb@cluster0.ajc78dd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
   }
 }
+
 console.log(PASSWORD)
 export default config;

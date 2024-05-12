@@ -23,9 +23,9 @@ const { size } = typography;
 export default {
   styleOverrides: {
     root: {
-      fontSize: size.sm,
+      fontSize: size.md,
       color: text.main,
-      lineHeight: 0.9,
+      lineHeight: 1.1,
 
       "&.Mui-focused": {
         color: info.main,

@@ -2,7 +2,8 @@
 import Icon from "@mui/material/Icon";
 import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
 import FoodBankIcon from '@mui/icons-material/FoodBank';
-
+import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
+import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 import Home from "FirstPage"
 import TypeAndSymptom from "pages/diabetes/TypeAndSymptom";
 import DiabetesInAus from "pages/diabetes/DiabetesInAus";
@@ -10,8 +11,9 @@ import LiveWithDia from "pages/diabetes/LiveWithDia";
 import Calculator from "pages/calculator";
 import Model3d from "pages/model3d";
 import DiabeticMap from "pages/diabetesmap";
+import DiabeticRecipe from "pages/recipe";
 import DiabeticDiet from "pages/diet";
-
+import DiabeticExercise from "pages/exercise";
 const routes = [
   {
     name: "Home",
@@ -79,13 +81,31 @@ const routes = [
     component: <DiabeticMap />,
   },
   {
+    name: "Recipe",
+    icon: <FoodBankIcon />,
+    columns: 1,
+    rowsPerColumn: 2,
+    route: "/recipe",
+    prefix: "/recipe",
+    component: <DiabeticRecipe />,
+  },
+  {
     name: "Diet",
-    icon: <FoodBankIcon/>,
+    icon: <BakeryDiningIcon />,
     columns: 1,
     rowsPerColumn: 2,
     route: "/diet",
     prefix: "/diet",
     component: <DiabeticDiet />,
+  },
+  {
+    name: "Exercise",
+    icon: <SportsBasketballIcon />,
+    columns: 1,
+    rowsPerColumn: 2,
+    route: "/exercise",
+    prefix: "/exercise",
+    component: <DiabeticExercise />,
   },
 ];
 

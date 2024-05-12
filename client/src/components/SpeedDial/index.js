@@ -8,7 +8,8 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import { IconButton } from '@mui/material';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 
-export default function BasicSpeedDial() {
+
+export default function BasicSpeedDial({ routes }) {
 
     const [isVisible, setIsVisible] = useState(false);
     const [open, setOpen] = React.useState(false);
@@ -37,7 +38,7 @@ export default function BasicSpeedDial() {
     }
 
     const actions = [
-        { icon: <Drawer open={open} updateOpen={updateOpen} />, name: 'Menu' },
+        { icon: <Drawer routes={routes} open={open} updateOpen={updateOpen} />, name: 'Menu' },
         { icon: <IconButton color="info" children={<ArrowCircleUpIcon />} onClick={() => scrollToTop()} />, name: 'Go up' },
     ];
 

@@ -2,8 +2,19 @@ import mysql from 'mysql2'
 import config from './config.js'
 
 
-const connection = mysql.createConnection(config.db2)
+const pool = mysql.createPool(config.db2)
 
+let queryData = function (sql, callback) {
+    pool.getConnection(function (err, coon) {
+        if (err) {
+            callback(err, null, null)
+        } else {
+            coon.query(sql, function (qer, val, field) {
+                coon.release();
+                callback(qer, val, field)
+            })
+        }
+    })
+}
 
-
-export default connection  // mysql.createConnection 方法创建连接实例
+export default queryData  // mysql.createConnection 方法创建连接实例

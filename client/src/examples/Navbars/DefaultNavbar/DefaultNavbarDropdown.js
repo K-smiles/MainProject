@@ -76,11 +76,12 @@ function DefaultNavbarDropdown({
           {icon}
         </MKTypography>
         <MKTypography
-          variant="body2"
           fontWeight="regular"
           textTransform="capitalize"
           color={isInfo ? "info" : "dark"}
-          sx={{ fontWeight: "100%", ml: 1, mr: 0.25 }}
+          sx={{ fontWeight: "100%", ml: 0.25, mr: 0.25,
+            fontSize:15
+           }}
         >
           {name}
         </MKTypography>

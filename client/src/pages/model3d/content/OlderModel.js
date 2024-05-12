@@ -6,4 +6,4 @@ export default function Model(props) {
     return <primitive  position={props.position} rotation={[0, Math.PI / 6, 0]} object={gltf.scene} />
 }
 
-useGLTF.preload('/model/HumanBody.gltf')
+// useGLTF.preload('/model/HumanBody.gltf')
