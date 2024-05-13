@@ -113,7 +113,7 @@ function Features() {
                             )}
                             action={{
                                 type: "internal",
-                                route: "/model",
+                                route: "/diet/recipe",
                                 color: "info",
                                 label: "read more",
                             }}
@@ -136,7 +136,7 @@ function Features() {
                             )}
                             action={{
                                 type: "internal",
-                                route: "/exercise",
+                                route: "/exercise/outline",
                                 color: "info",
                                 label: "read more",
                             }}

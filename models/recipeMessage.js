@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const recipeSchema = mongoose.Schema({
-    RecipeId: String,
+    RecipeId: Number,
     Name: String,
     Images: String,
     AuthorId: String,

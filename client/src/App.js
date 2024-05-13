@@ -14,6 +14,7 @@ import Home from 'pages/home'
 // Material Kit 2 React routes
 import routes from "routes";
 import store from './store'
+import DiabeticDetail from 'pages/exercise/detail'
 //redux 
 import { Provider } from 'react-redux'
 
@@ -47,7 +48,9 @@ export default function App() {
           {getRoutes(routes)}
           <Route path="/home" element={<Home />} />
           <Route path="/diabetes" element={<Navigate to="/diabetes/type" />} />
+          <Route path="/recipe/detail/:id" element={<DiabeticDetail/>} />
           <Route path="*" element={<Navigate to="/home" />} />
+          
         </Routes>
       </ThemeProvider>
     </Provider>

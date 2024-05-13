@@ -44,7 +44,6 @@ function BackgroundBlogCard({ title, image, met, weight, time }) {
               />
             </Grid>
           </Container>
-
         </MKBox>
       </MKBox>
     </Card>

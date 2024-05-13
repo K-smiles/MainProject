@@ -72,22 +72,22 @@ function Content() {
                         <Select label={searchIndex[0].label} labels={searchIndex[0].labels} value={searchIndex[0].value} updateValue={searchIndex[0].updateValue} />
                     </Grid>
                     <Grid item xs={5}>
-                        <DGInput label="age" updateValue={setAge} />
+                        <DGInput label="age/year" updateValue={setAge} />
                     </Grid>
                     <Grid item xs={1} />
 
                     <Grid item xs={1} />
                     <Grid item xs={5}>
-                        <DGInput label="Weight" updateValue={setWeight} />
+                        <DGInput label="Weight/kg" updateValue={setWeight} />
                     </Grid>
                     <Grid item xs={5}>
-                        <DGInput label="Height" updateValue={setHeight} />
+                        <DGInput label="Height/cm" updateValue={setHeight} />
                     </Grid>
                     <Grid item xs={1} />
 
                     <Grid item xs={1} />
                     <Grid item xs={10}>
-                        <DGInput label="Frequency" updateValue={setFrequency} />
+                        <DGInput label="Frequency(from 1 to 14)" updateValue={setFrequency} />
                     </Grid>
                     <Grid item xs={1} />
 
@@ -101,7 +101,7 @@ function Content() {
                             component="span" onClick={() => {
                                 setIsVisible(true)
                             }}><Typography variant='h2' color='blue'>
-                                Get your calorie</Typography></MKButton>
+                                Get your calorie consume and Exercise plan</Typography></MKButton>
                     </Grid>
 
                 </Grid>

@@ -36,9 +36,6 @@ app.get('/api', function (req, res) {
 });
 
 app.get('/posts', (req, res, next) => {
-  /* 使用 connection.query 来执行 sql 语句 */
-  // 第一个参数为 sql 语句，可以透过 js 自由组合
-  // 第二个参数为回调函数，err 表示查询异常、第二个参数则为查询结果（这里的查询结果为多个用户行）
   queryData('select * from diabetes_incidence_by_year', (err, users) => {
     console.log(err)
     if (err) {

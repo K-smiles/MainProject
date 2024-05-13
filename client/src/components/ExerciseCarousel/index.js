@@ -56,7 +56,7 @@ function ExerciseCarousel({ weight, option, data }) {
                     step={1}
                     marks={marks}
                     min={1}
-                    max={100}
+                    max={120}
                 />
             </Box>
             <div className="slider-container">

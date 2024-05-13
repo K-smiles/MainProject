@@ -56,8 +56,9 @@ export const getRecipe = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const recipe = await RecipeMessage.findById(id);
-
+        const recipe = await RecipeMessage.findOne({
+            "RecipeId": parseInt(id)
+        })
         res.status(200).json(recipe);
     } catch (error) {
         res.status(404).json({ message: error.message });
