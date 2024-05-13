@@ -10,7 +10,8 @@ import post1 from "assets/images/examples/epic1.jpg";
 import post2 from "assets/images/examples/epic2.jpg";
 import post4 from "assets/images/examples/epic4.jpg";
 import post5 from "assets/images/examples/epic5.jpg";
-
+import post6 from "assets/images/examples/meal_plan.jpg";
+import post7 from "assets/images/examples/exercise_epic.jpg";
 function Features() {
 
     return (
@@ -91,6 +92,51 @@ function Features() {
                             action={{
                                 type: "internal",
                                 route: "/model",
+                                color: "info",
+                                label: "read more",
+                            }}
+                            style={{ fontSize: "5rem" }}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={8} lg={4}>
+                        <TransparentBlogCard
+                            image={post6}
+                            title={<span style={{ fontSize: "2rem" }}>Healthy meals</span>}
+                            description={(
+                                <>
+                                    we provide nutritionally balanced recipes and food identification
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                </>
+                            )}
+                            action={{
+                                type: "internal",
+                                route: "/model",
+                                color: "info",
+                                label: "read more",
+                            }}
+                            style={{ fontSize: "5rem" }}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={8} lg={4}>
+                        <TransparentBlogCard
+                            image={post7}
+                            title={<span style={{ fontSize: "2rem" }}>Exercise guide</span>}
+                            description={(
+                                <>
+                                    we help you find the best exercise for you
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                </>
+                            )}
+                            action={{
+                                type: "internal",
+                                route: "/exercise",
                                 color: "info",
                                 label: "read more",
                             }}

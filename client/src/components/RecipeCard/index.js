@@ -22,7 +22,7 @@ export default function RecipeCard({ data }) {
                     alt="imag loading"
                 />
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }} >
-                    <Typography component="div" variant="h5">
+                    <Typography component="div" variant="h4">
                         {data['Name']}
                     </Typography>
                 </CardContent>

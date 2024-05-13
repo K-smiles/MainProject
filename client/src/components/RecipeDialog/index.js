@@ -38,9 +38,9 @@ export default function RecipeDialog({ data }) {
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
                         {/* //data display */}
-                         {data['Name']}
-                         {data['Keywards']}
-                         {data['Name']}
+                        {data['Name']}
+                        {data['Keywards']}
+                        {data['Name']}
                         {/* GI_index+ {data['GI_index']}<br />
                         GI_error_range{data['GI_error_range']}<br />
                         Carbohydrate     {data['Carbohydrate']}<br />

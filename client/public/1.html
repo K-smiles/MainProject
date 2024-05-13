@@ -1,0 +1,102 @@
+<!-- Styles -->
+<style>
+    #chartdiv {
+      width: 100%;
+      height: 70%;
+      margin: 0;
+    padding: 0;
+    overflow: hidden; /* 防止页面本身滚动 */
+    }
+    </style>
+    
+    <!-- Resources -->
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/wc.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    
+    <!-- Chart code -->
+    <script>
+    am5.ready(function() {
+    
+    // Create root element
+    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+    var root = am5.Root.new("chartdiv");
+    
+    
+    // Set themes
+    // https://www.amcharts.com/docs/v5/concepts/themes/
+    root.setThemes([
+      am5themes_Animated.new(root)
+    ]);
+    
+    
+    // Add wrapper container
+    var container = root.container.children.push(am5.Container.new(root, {
+      width: am5.percent(100),
+      height: am5.percent(100),
+      layout: root.verticalLayout
+    }));
+    
+
+    
+    
+    // Add series
+    // https://www.amcharts.com/docs/v5/charts/word-cloud/
+    var series = container.children.push(am5wc.WordCloud.new(root, {
+      categoryField: "tag",
+      valueField: "weight",
+      calculateAggregates: true // this is needed for heat rules to work
+    }));
+    
+    
+    // Set up heat rules
+    // https://www.amcharts.com/docs/v5/charts/word-cloud/#Via_heat_rules
+    series.set("heatRules", [{
+  target: series.labels.template,
+  dataField: "value",
+  min: am5.color("#66CCFF"),  // 深蓝色
+  max: am5.color("#003366F"),  // 浅蓝色
+  key: "fill"
+}]);
+    
+    
+    // Configure labels
+    series.labels.template.setAll({
+      paddingTop: 5,
+      paddingBottom: 5,
+      paddingLeft: 5,
+      paddingRight: 5,
+      fontFamily: "Courier New",
+      cursorOverStyle: "pointer"
+    });
+    
+    
+ 
+    
+    
+    // Data from:
+    // https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-programming-scripting-and-markup-languages
+    series.data.setAll([
+    { tag: "Walking (recreational)", weight: Math.log10(1887000 + 1) * 10 },
+  { tag: "Fitness/gym", weight: Math.log10(952000 + 1) * 10 },
+  { tag: "Bushwalking", weight: Math.log10(245000 + 1) * 10 },
+  { tag: "Yoga", weight: Math.log10(70000 + 1) * 10 },
+  { tag: "Exergaming", weight: Math.log10(56000 + 1) * 10 },
+  { tag: "Pilates", weight: Math.log10(56000 + 1) * 10 },
+  { tag: "Cycling", weight: Math.log10(619000 + 1) * 10 },
+  { tag: "Swimming", weight: Math.log10(542000 + 1) * 10 },
+  { tag: "Golf", weight: Math.log10(474000 + 1) * 10 },
+  { tag: "Running/athletics", weight: Math.log10(259000 + 1) * 10 },
+  { tag: "Tennis", weight: Math.log10(190000 + 1) * 10 },
+  { tag: "Fishing", weight: Math.log10(143000 + 1) * 10 },
+  { tag: "Bowls", weight: Math.log10(123000 + 1) * 10 },
+  { tag: "Surfing", weight: Math.log10(119000 + 1) * 10 },
+  { tag: "Canoeing/kayaking", weight: Math.log10(76000 + 1) * 10 },
+  { tag: "Sailing", weight: Math.log10(72000 + 1) * 10 }
+    ]);
+    
+    }); // end am5.ready()
+    </script>
+    
+    <!-- HTML -->
+    <div id="chartdiv"></div>

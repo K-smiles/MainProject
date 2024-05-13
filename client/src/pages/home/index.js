@@ -10,6 +10,7 @@ import SpeedDial from 'components/SpeedDial/index.js';
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
+
 // Routes
 import routes from "routes";
 import footerRoutes from "footer.routes";
@@ -24,8 +25,6 @@ import bgImage from "assets/images/aobut_us.jpg";
  */
 
 function Home() {
-
-
     return (
         <>
             <DefaultNavbar routes={routes}
@@ -70,7 +69,6 @@ function Home() {
                         >
                             DiabeticGuardian
                         </MKTypography>
-
                         <MKTypography variant="h3" color="white" opacity={0.8} mt={1} mb={3}>
                             Dive into understanding diabetes, a chronic condition that can impact our lives as we age.
                             Here, you'll receive a clear introduction to what diabetes is,

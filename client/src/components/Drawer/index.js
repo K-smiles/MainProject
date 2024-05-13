@@ -16,7 +16,6 @@ export default function NavDrawer({ open, updateOpen, routes }) {
     const DrawerList = (
         <Box sx={{ width: 250 }} role="presentation" onClick={() => updateOpen(false)}>
             <List>
-
                 {routes.map((item) => (item.collapse ?
                     <Link to={item.prefix}>
                         <ListItem key={item.name} disablePadding>

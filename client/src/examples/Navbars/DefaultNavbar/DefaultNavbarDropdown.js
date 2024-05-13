@@ -58,7 +58,6 @@ function DefaultNavbarDropdown({
       <MKBox
         {...rest}
         mx={1}
-        p={1}
         display="flex"
         alignItems="baseline"
         color={light ? "white" : "dark"}
@@ -79,9 +78,12 @@ function DefaultNavbarDropdown({
           fontWeight="regular"
           textTransform="capitalize"
           color={isInfo ? "info" : "dark"}
-          sx={{ fontWeight: "100%", ml: 0.25, mr: 0.25,
-            fontSize:15
-           }}
+          sx={{
+            fontWeight: "100%", ml: 0.25, mr: 0.25,
+            fontSize: {
+              sm: 15
+            }
+          }}
         >
           {name}
         </MKTypography>

@@ -11,9 +11,11 @@ import LiveWithDia from "pages/diabetes/LiveWithDia";
 import Calculator from "pages/calculator";
 import Model3d from "pages/model3d";
 import DiabeticMap from "pages/diabetesmap";
-import DiabeticRecipe from "pages/recipe";
-import DiabeticDiet from "pages/diet";
-import DiabeticExercise from "pages/exercise";
+import DiabeticRecipe from "pages/diet/recipe";
+import DiabeticFood from "pages/diet/food";
+
+import ExercisePage from "pages/exercise/outline"
+import DiabeticCalorie from "pages/exercise/calorie"
 const routes = [
   {
     name: "Home",
@@ -81,31 +83,50 @@ const routes = [
     component: <DiabeticMap />,
   },
   {
-    name: "Recipe",
+    name: "Diet",
     icon: <FoodBankIcon />,
     columns: 1,
     rowsPerColumn: 2,
-    route: "/recipe",
-    prefix: "/recipe",
-    component: <DiabeticRecipe />,
-  },
-  {
-    name: "Diet",
-    icon: <BakeryDiningIcon />,
-    columns: 1,
-    rowsPerColumn: 2,
-    route: "/diet",
     prefix: "/diet",
-    component: <DiabeticDiet />,
+    collapse: [
+      {
+        collapse: [
+          {
+            name: "Recipe",
+            route: "/diet/recipe",
+            component: <DiabeticRecipe />,
+          },
+          {
+            name: "Food",
+            route: "/diet/food",
+            component: <DiabeticFood />,
+          }
+        ],
+      },
+    ],
   },
   {
     name: "Exercise",
     icon: <SportsBasketballIcon />,
     columns: 1,
     rowsPerColumn: 2,
-    route: "/exercise",
     prefix: "/exercise",
-    component: <DiabeticExercise />,
+    collapse: [
+      {
+        collapse: [
+          {
+            name: "Outline",
+            route: "/exercise/outline",
+            component: <ExercisePage />,
+          },
+          {
+            name: "Calorie",
+            route: "/exercise/calorie",
+            component: <DiabeticCalorie />,
+          }
+        ],
+      },
+    ],
   },
 ];
 

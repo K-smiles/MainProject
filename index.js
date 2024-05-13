@@ -13,10 +13,8 @@ const __filenameNew = fileURLToPath(import.meta.url)
 const __dirnameNew = path.dirname(__filenameNew)
 const app = express()
 
-app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true
-}))
+app.use(cors())
+
 const CONNECTION_URL = 'mongodb+srv://test:test@cluster0.w7qj7ix.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 
 mongoose.connect(CONNECTION_URL, {
@@ -51,10 +49,8 @@ app.get('/posts', (req, res, next) => {
     }
   })
 })
+
 app.get('/foods', (req, res, next) => {
-  /* 使用 connection.query 来执行 sql 语句 */
-  // 第一个参数为 sql 语句，可以透过 js 自由组合
-  // 第二个参数为回调函数，err 表示查询异常、第二个参数则为查询结果（这里的查询结果为多个用户行）
   let sql = 'select * from food_diabetes_measure'
 
   if (Object.keys(req.query).length != 0) {
@@ -62,7 +58,9 @@ app.get('/foods', (req, res, next) => {
     let addAnd = false;
     if (req.query["name"] != undefined && req.query["name"] != '') {
       sql = sql + ' where '
-      sql = sql + "'food name' like " + "'%" + req.query["name"] + "%'"
+      sql = sql + "`food name` like " + "'%" + req.query["name"] + "%' "
+      sql = sql + "OR category like " + "'%" + req.query["name"] + "%' "
+      sql = sql + "OR sub_category like " + "'%" + req.query["name"] + "%' "
       addAnd = true;
     }
     if (req.query["category"] != undefined && req.query["category"] != '') {
@@ -87,12 +85,11 @@ app.get('/foods', (req, res, next) => {
   }
 
   sql = sql + ' limit ' + (req.query['page'] - 1) * req.query['pageNumber'] + ',' + (req.query['page']) * req.query['pageNumber']
-
+  console.log(sql)
   queryData(sql, (err, users) => {
     if (err) {
       res.send('query error')
     } else {
-      // 将 MySQL 查询结果作为路由返回值
       res.send(users)
     }
   })

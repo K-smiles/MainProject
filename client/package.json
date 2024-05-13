@@ -5,6 +5,7 @@
   "author": "Cluu",
   "description": "My Final Project ",
   "dependencies": {
+    "@amcharts/amcharts5": "^5.9.8",
     "@emotion/cache": "11.10.7",
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
