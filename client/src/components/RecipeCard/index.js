@@ -5,7 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActions } from '@mui/material';
-import RecipeDialog from 'components/RecipeDialog'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Link } from "react-router-dom";
 export default function RecipeCard({ data }) {
     return (
         <Card sx={{ display: 'flex' }}>
@@ -27,7 +28,11 @@ export default function RecipeCard({ data }) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <RecipeDialog data={data}/>
+                    <Link to={"/recipe/detail/"+data['RecipeId']}>
+                        <Button variant="contained" style={{ width: '120px', height: '50px', fontSize: '1rem', backgroundColor: '#fff', color: '#1A73E83' }} startIcon={<ArrowForwardIcon />}>
+                            Detail
+                        </Button>
+                    </Link>
                 </CardActions>
             </Box>
         </Card>

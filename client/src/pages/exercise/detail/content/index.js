@@ -12,6 +12,7 @@ import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import StarsIcon from '@mui/icons-material/Stars';
+import axios from 'axios';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -40,21 +41,17 @@ function Content() {
         setValue(newValue);
     };
     const { id } = useParams(); // 获取路由中的 "id" 参数
-
-    console.log(id)
-    let baseURL = "/recipes";
-
+    let baseURL = "/recipes/" + id;
     const [data, setData] = React.useState([]);
+
     //load data
     React.useEffect(() => {
         axios({
             method: 'get',
             url: baseURL,
-            params: search,
         }).then((response) => {
             setData(response.data)
         }, []);
-
     }, []);
 
 
@@ -75,21 +72,21 @@ function Content() {
                     <FilledInfoCard
                         icon={<AccessTimeIcon />}
                         title="PrepTime："
-                        description="15min"
+                        description={data['PrepTime']}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
                     <FilledInfoCard
                         icon={<MoreTimeIcon />}
                         title="CookTime:"
-                        description="2H15min"
+                        description={data['CookTime']}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
                     <FilledInfoCard
                         icon={<StarsIcon />}
                         title="AggregatedRating:"
-                        description="5"
+                        description={data['AggregatedRating']}
                     />
                 </Grid>
             </Grid>
@@ -98,7 +95,7 @@ function Content() {
             </Grid>
 
             <DefaultCounterCard
-                title="Name"
+                title={data['Name']}
                 description="Recipecategory"
             />
             <Grid style={{ marginBottom: '3%' }} id="Tips">
@@ -109,7 +106,7 @@ function Content() {
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6} md={8}>
                     <BackgroundBlogCard
-                        image="https://bit.ly/31BuIti"
+                        image={data['Images']}
                     />
                 </Grid>
             </Grid>
@@ -129,13 +126,19 @@ function Content() {
                         </Tabs>
                     </Box>
                     <TabPanel value={value} index={0}>
-                        Panel 1
+                        {data['Keywords'] != undefined && data['Keywords'].map((item) => {
+                            return <Typography variant='h2'> ---- {item}</Typography>
+                        })}
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                        Panel 2
+                        {data['RecipeInstructions'] != undefined && data['RecipeInstructions'].map((item) => {
+                            return <Typography variant='body2'> ---- {item}</Typography>
+                        })}
                     </TabPanel>
                     <TabPanel value={value} index={2}>
-                        Panel 3
+                        {data['RecipeIngredientParts'] != undefined && data['RecipeIngredientParts'].map((item) => {
+                            return <Typography variant='h2'>---- {item}</Typography>
+                        })}
                     </TabPanel>
                 </Grid>
             </Grid>
