@@ -2,7 +2,6 @@
 import Icon from "@mui/material/Icon";
 import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
 import FoodBankIcon from '@mui/icons-material/FoodBank';
-import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 import Home from "FirstPage"
 import TypeAndSymptom from "pages/diabetes/TypeAndSymptom";
@@ -16,6 +15,7 @@ import DiabeticFood from "pages/diet/food";
 
 import ExercisePage from "pages/exercise/outline"
 import DiabeticCalorie from "pages/exercise/calorie"
+
 const routes = [
   {
     name: "Home",
