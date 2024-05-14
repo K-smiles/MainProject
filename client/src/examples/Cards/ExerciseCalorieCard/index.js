@@ -27,16 +27,15 @@ function BackgroundBlogCard({ title, image, met, weight, time }) {
             <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
               <MKTypography variant="body1" color="white" >
                 You burned
-                <MKTypography variant="h2">{time * met * weight} </MKTypography>
+                <MKTypography variant="h2"  color="info">{Math.floor(time/60 * met * weight)} </MKTypography>
               </MKTypography>
               <Image
                 width={200}
-                src={calorieImage}
-              />
+                src={calorieImage} />
             </Grid>
             <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
               <MKTypography variant="body1" color="white">
-                It is equal to <MKTypography variant="h2"> {time * met * weight / 300} </MKTypography>
+                It is equal to <MKTypography variant="h2" color="info"> {Math.floor(time / 60 * met * weight / 300)} </MKTypography>
               </MKTypography>
               <Image
                 width={200}
@@ -58,7 +57,7 @@ BackgroundBlogCard.propTypes = {
     type: PropTypes.oneOf(["external", "internal"]),
     route: PropTypes.string,
     label: PropTypes.string,
-  }), // action变成了可选项
+  }),
 };
 
 export default BackgroundBlogCard;

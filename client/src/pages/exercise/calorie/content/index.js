@@ -142,7 +142,7 @@ function Content() {
                     <Grid item xs={12}>
                         <MKBox xs={12}>
                             {
-                                isVisible && <ExerciseTable />
+                                isVisible && <ExerciseTable frequency={frequency}/>
                             }
                         </MKBox>
                     </Grid>

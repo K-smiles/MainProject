@@ -33,14 +33,22 @@ const optionData = [
     { value: 12, name: "Running (5.3 min/km)", met: 15.5 },
 ];
 
-function ExerciseTable() {
+function ExerciseTable({ frequency }) {
+    let fre = frequency
     //generate data
     const generateData = () => {
         const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         let result = [];
         days.forEach(day => {
-            // Generate a random number of exercises for each day (between 1 and 3)
-            let numExercises = Math.floor(Math.random() * 3) + 1;
+            let numExercises = Math.floor(Math.random() * fre) + 1;
+            if (numExercises > fre / 7) {
+                numExercises = Math.floor(fre / 7) + 1;
+            }
+            if (day == 'Sunday')
+                numExercises = fre
+            else {
+                fre = fre - numExercises
+            }
             let tmpData = {}
             let selectedExercises = [];
 
