@@ -1,23 +1,18 @@
 import * as React from 'react';
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Stack } from '@mui/material';
 import { Pagination } from '@mui/material';
 import FoodCard from 'components/FoodCard';
 import axios from 'axios';
-import Select from 'components/DGSelect'
 import MKButton from "components/MKButton";
 
 import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
 
-import BackgroundBlogCard_new from "examples/Cards/BlogCards/BackgroundBlogCard_new";
 import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
-import TransparentBlogCard from "examples/Cards/BlogCards/TransparentBlogCard_new";
-import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard_new";
-import CenteredBlogCard from "examples/Cards/BlogCards/CenteredBlogCard_new";
 
 import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
 
@@ -289,10 +284,7 @@ function Content() {
         }
     };
     const handleChange = (event, value) => {
-        setPage(value, () => {
-
-            //searchFood()
-        });
+        setPage(value);
 
     };
     let baseURL = "http://localhost:5000/foods";
@@ -314,6 +306,7 @@ function Content() {
             params: search,
         }).then((response) => {
             setData(response.data)
+            console.log(response.data)
         }, []);
     }
 
@@ -353,7 +346,6 @@ function Content() {
                         image={picture3}
                         title="High GI foods (70 and above): "
                         description="These foods increase blood glucose levels rapidly, and long-term consumption of these foods can lead to increased oxidative stress in the body, which can increase the risk of being overweight and developing diabetes and its complications."
-
                     />
                 </Grid>
             </Grid>
@@ -381,6 +373,7 @@ function Content() {
                             id="free-solo-demo"
                             fullWidth
                             freeSolo
+                            aria-placeholder='sadasd'
                             value={name}
                             onChange={(event, newValue) => {
                                 if (newValue)
@@ -399,7 +392,7 @@ function Content() {
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
-                                    label="name"
+                                    label="Input the name of Food"
                                     sx={{
                                         '& .MuiInputBase-input': { // 应用于输入字段
                                             fontWeight: 'bold', // 设置加粗
@@ -413,24 +406,40 @@ function Content() {
                                 />
                             )}
                         />
+
                     </Grid>
                     <Grid item xs={1} />
-                    <Grid item xs={1} />
+
+
+                    <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Button
+                            onClick={() => {
+                                if (page !== 1) {
+                                    setPage(1);
+                                } else {
+                                    searchFood();
+                                }
+                            }}
+                            sx={{
+                                fontSize: '1.8rem', // 更大的字体
+                                padding: '10px 24px', // 增加内边距
+                            }}
+                        >search</Button>
+                    </Grid>
+                    {/*<Grid item xs={1} />
                     {searchIndex.map((item) => {
                         return (<Grid item xs={5}>
                             <Select label={item.label} labels={item.labels} value={item.value} updateValue={item.updateValue} />
                         </Grid>)
                     })}
-                    <Grid item xs={1} />
+                <Grid item xs={1} />*/}
                 </Grid>
-                <Grid style={{ marginBottom: '3%' }}>
-                </Grid>
+
             </MKBox>
 
 
 
             <Grid container justifyContent="center" spacing={8}>
-
                 <Grid item>
                     <input
                         type="file"
@@ -453,32 +462,14 @@ function Content() {
                         </MKButton>
                     </label>
                 </Grid>
-
-
                 <Grid item>
                     <Button onClick={handleDetection} sx={{
                         fontSize: '1.3rem', // 更大的字体
                         padding: '10px 24px', // 增加内边距
                     }}>Detection</Button>
                 </Grid>
-
             </Grid>
 
-
-
-            <Button
-                onClick={() => {
-                    if (page !== 1) {
-                        setPage(1);
-                    } else {
-                        searchFood();
-                    }
-                }}
-                sx={{
-                    fontSize: '1.8rem', // 更大的字体
-                    padding: '10px 24px', // 增加内边距
-                }}
-            >search</Button>
             <Grid style={{ marginBottom: '3%' }}>
             </Grid>
             <MKBox mx={2} borderRadius="xl" shadow="lg"
@@ -489,15 +480,16 @@ function Content() {
                     <Grid item xs={12}>
                         <MKBox xs={12}>
                             <Stack spacing={2} mb={2}>
-                                {data.map((item) => {
-                                    return <FoodCard data={item} />
+                                {
+                                    data.map((item) => {
+                                        return <FoodCard data={item} />
 
-                                })}
+                                    })}
                                 <Grid container justifyContent="center" style={{ margin: '20px 0' }}>
-                                    <Pagination count={10} page={page} onChange={handleChange} />
+                                    {(data != [] && data.length != 0) ? <Pagination count={10} page={page} onChange={handleChange} /> : <Typography>
+                                        There are no data</Typography>}
                                 </Grid>
                             </Stack>
-
                         </MKBox>
                     </Grid>
                 </Grid>
