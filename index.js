@@ -35,6 +35,7 @@ app.get('/api', function (req, res) {
   res.send('{"message":"Hello from the custom server!"}');
 });
 
+
 app.get('/posts', (req, res, next) => {
   queryData('select * from diabetes_incidence_by_year', (err, users) => {
     console.log(err)
@@ -49,7 +50,6 @@ app.get('/posts', (req, res, next) => {
 
 app.get('/foods', (req, res, next) => {
   let sql = 'select * from food_diabetes_measure'
-
   if (Object.keys(req.query).length != 0) {
     console.log(req.query)
     let addAnd = false;

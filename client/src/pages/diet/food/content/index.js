@@ -264,7 +264,6 @@ function Content() {
         }
     };
 
-
     // Function to send image data to the server and update the search field
     const handleDetection = async () => {
         if (image) {
@@ -296,7 +295,7 @@ function Content() {
         });
 
     };
-    let baseURL = "/foods";
+    let baseURL = "http://localhost:5000/foods";
 
     const [data, setData] = React.useState([]);
 
