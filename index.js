@@ -25,7 +25,7 @@ mongoose.connect(CONNECTION_URL, {
 
 
 // Priority serve any static files.
-app.use(express.static(path.resolve(__dirnameNew, 'client/build')));
+// app.use(express.static(path.resolve(__dirnameNew, 'client/build')));
 
 app.use('/recipes', recipeRouter);
 
@@ -123,9 +123,9 @@ app.get('/closest/:latitude/:longitude', (req, res, next) => {
 })
 
 //All remaining requests return the React app, so it can handle routing.
-app.get('*', function (request, response) {
-  response.sendFile(path.resolve(__dirnameNew, 'client/build', 'index.html'));
-});
+// app.get('*', function (request, response) {
+//   response.sendFile(path.resolve(__dirnameNew, 'client/build', 'index.html'));
+// });
 
 app.listen(process.env.PORT || config.port, () => {
   console.log(`express server listen at http://localhost:${config.port}`)
