@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import { Grid, Tabs, Tab, Box, Typography } from '@mui/material';
 import MKBox from "components/MKBox";
-import MKTypography from "components/MKTypography";
 
 import FilledInfoCard from "examples/Cards/InfoCards/FilledInfoCard";
 import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography, Alert, IconButton } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Stack } from '@mui/material';
@@ -9,13 +9,13 @@ import { Pagination } from '@mui/material';
 import FoodCard from 'components/FoodCard';
 import axios from 'axios';
 import MKButton from "components/MKButton";
-
+import SearchIcon from '@mui/icons-material/Search';
 import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
 
 import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
 
 import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
-import SearchIcon from '@mui/icons-material/Search';
+
 //image
 import picture1 from "assets/images/recipe/Question_mark.jpg";
 import picture2 from "assets/images/recipe/Sweet_potato.jpg";
@@ -388,6 +388,9 @@ function Content() {
                         />
                     </Grid>
                     <Grid item xs={1} />
+                    <IconButton children={<SearchIcon />} onClick={searchFood} >
+                        Search
+                    </IconButton>
                     {/*<Grid item xs={1} />
                     {searchIndex.map((item) => {
                         return (<Grid item xs={5}>
@@ -437,12 +440,18 @@ function Content() {
                 mb={{ xs: 1, sm: 2, md: 3 }}>
                 <Stack spacing={2} mx={2}>
                     {data.map((item) => {
-                            return <FoodCard data={item} />
-                        })}
+                        return <FoodCard data={item} />
+                    })}
                     <Grid container justifyContent="center" >
                         {(data != [] && data.length != 0) ?
                             <Pagination count={10} page={page} onChange={handleChange} />
-                            : <Typography>There are no data</Typography>}
+                            : <Alert variant="outlined" severity="warning">
+                                No content or information matching your query keyWord <Typography sx={{ fontWeight: 'bold' }}>{name}</Typography>
+                                suggestion:<br />
+                                Please check the input text for errors.<br />
+                                Please try a different query term.<br />
+                                Please use the more common term.<br />
+                            </Alert>}
                     </Grid>
                 </Stack>
             </MKBox>

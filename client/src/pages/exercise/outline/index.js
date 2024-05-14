@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from 'react';
 // Material Kit 2 React components
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import SimpleFooter from "examples/Footers/SimpleFooter";
-import MKButton from "components/MKButton";
 
 // Routes
 import routes from "routes";

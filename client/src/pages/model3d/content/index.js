@@ -8,7 +8,6 @@ import MKBox from "components/MKBox";
 import Viewer from "./Scene";
 import MKTypography from "components/MKTypography";
 import QAcontent from "./QAcontent";
-import FilledInfoCard from "examples/Cards/InfoCards/FilledInfoCard";
 function Content() {
     return (
         <MKBox bgColor="white" borderRadius="xl" shadow="lg"
@@ -73,36 +72,6 @@ function Content() {
                     mx={2}>
                     <QAcontent />
                 </MKBox>
-            </MKBox>
-            <MKBox
-                variant="gradient"
-                bgColor="white"
-                borderRadius="lg"
-                p={2}
-                mx={2}
-                mt={3}
-            >
-            </MKBox>
-            <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }}  >
-                <FilledInfoCard
-                    icon="map"
-                    title="Hospitals and GPs"
-                    description="You can quickly access the locations of nearby general practitioners (GPs) and hospitals specialized in diabetes care.  The feature provides contact details for GPs and displays the distance to each hospital, helping you easily find and reach out to medical professionals who can assist with diabetes management."
-                    action={{
-                        type: "internal",
-                        route: "/map",
-                        label: "Let's start"
-                    }}
-                />
-            </Grid>
-            <MKBox
-                variant="gradient"
-                bgColor="white"
-                borderRadius="lg"
-                p={2}
-                mx={2}
-                mt={3}
-            >
             </MKBox>
         </MKBox>
     );
