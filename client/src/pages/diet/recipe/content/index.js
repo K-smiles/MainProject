@@ -151,7 +151,7 @@ function Content() {
         setPage(value);
 
     };
-    let baseURL = "/recipes";
+    let baseURL = "http://localhost:5000/recipes";
 
     const [data, setData] = React.useState([]);
 

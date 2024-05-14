@@ -15,7 +15,7 @@ import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
 import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
 
 import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
-
+import SearchIcon from '@mui/icons-material/Search';
 //image
 import picture1 from "assets/images/recipe/Question_mark.jpg";
 import picture2 from "assets/images/recipe/Sweet_potato.jpg";
@@ -285,7 +285,6 @@ function Content() {
     };
     const handleChange = (event, value) => {
         setPage(value);
-
     };
     let baseURL = "http://localhost:5000/foods";
 
@@ -298,7 +297,6 @@ function Content() {
 
     const searchFood = () => {
         let search = { name: name, category: category, subcategory: subcategory, page: page, pageNumber: pageNumber }
-        console.log("page")
         //mock axios to get data
         axios({
             method: 'get',
@@ -306,66 +304,48 @@ function Content() {
             params: search,
         }).then((response) => {
             setData(response.data)
-            console.log(response.data)
         }, []);
     }
 
     return (
         <MKBox bgColor="white" borderRadius="xl" shadow="lg"
             display="flex" flexDirection="column" justifyContent="center"
-            mx={2} mt={-5}
-            padding="0 10%" >
+            mx={2} mt={-5}>
 
-            <MKBox p={4} mx={2} borderRadius="xl" shadow="lg">
+            <MKBox p={4} mx={2} mt={2} borderRadius="xl" shadow="lg">
                 <MKTypography variant="h3" fontWeight="bold">
                     What foods are actually healthier for my body? I'm sure you've wondered this, so in this section you can just look up the GI values of specific foods.
                 </MKTypography>
+                <Grid container spacing={4}>
+                    <Grid item xs={12} md={4}>  {/* 每个卡片在小屏幕占满宽度，在中屏占三分之一 */}
+                        <BackgroundBlogCard
+                            image={picture1}
+                            title="What is GI value?"
+                            description="The GI value or glycaemic index is a measure of the effect of carbohydrates in food on blood glucose levels. Choosing low GI foods can help maintain stable blood glucose levels, which is especially important for managing metabolic conditions such as diabetes"
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <BackgroundBlogCard
+                            image={picture2}
+                            title="Medium GI foods (56 to 69):"
+                            description="These foods raise blood glucose relatively quickly, and when the body frequently digests and absorbs medium GI foods, it regularly triggers a rapid rise in blood glucose levels with reduced insulin sensitivity, which is a key factor in triggering diabetes."
+
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <BackgroundBlogCard
+                            image={picture3}
+                            title="High GI foods (70 and above): "
+                            description="These foods increase blood glucose levels rapidly, and long-term consumption of these foods can lead to increased oxidative stress in the body, which can increase the risk of being overweight and developing diabetes and its complications."
+                        />
+                    </Grid>
+                </Grid>
             </MKBox>
-
-            <Grid style={{ marginBottom: '3%' }} id="Tips">
-            </Grid>
-
-            <Grid container spacing={4}>  {/* 容器模式启用并设置间隙为4 */}
-                <Grid item xs={12} md={4}>  {/* 每个卡片在小屏幕占满宽度，在中屏占三分之一 */}
-                    <BackgroundBlogCard
-                        image={picture1}
-                        title="What is GI value?"
-                        description="The GI value or glycaemic index is a measure of the effect of carbohydrates in food on blood glucose levels. Choosing low GI foods can help maintain stable blood glucose levels, which is especially important for managing metabolic conditions such as diabetes"
-                    />
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <BackgroundBlogCard
-                        image={picture2}
-                        title="Medium GI foods (56 to 69):"
-                        description="These foods raise blood glucose relatively quickly, and when the body frequently digests and absorbs medium GI foods, it regularly triggers a rapid rise in blood glucose levels with reduced insulin sensitivity, which is a key factor in triggering diabetes."
-
-                    />
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <BackgroundBlogCard
-                        image={picture3}
-                        title="High GI foods (70 and above): "
-                        description="These foods increase blood glucose levels rapidly, and long-term consumption of these foods can lead to increased oxidative stress in the body, which can increase the risk of being overweight and developing diabetes and its complications."
-                    />
-                </Grid>
-            </Grid>
-
-
-            <Grid style={{ marginBottom: '3%' }} id="Tips">
-            </Grid>
-
-
-            <DefaultCounterCard
-
-                title="Track food health levels"
-                description="Here you can directly see the GI and GL levels of the food"
-            />
-            <Grid style={{ marginBottom: '3%' }} id="Tips">
-            </Grid>
-
             <MKBox mx={2} borderRadius="xl"
                 mt={{ xs: 1, sm: 2, md: 3 }}
-                mb={{ xs: 1, sm: 2, md: 3 }}>
+                mb={{ xs: 1, sm: 2, md: 3 }} shadow="lg">
+                <DefaultCounterCard title="Track food health levels"
+                    description="Here you can directly see the GI and GL levels of the food" />
                 <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" >
                     <Grid item xs={1} />
                     <Grid item xs={10} mt={{ xs: 1, sm: 2, md: 3 }}>
@@ -392,7 +372,7 @@ function Content() {
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
-                                    label="Input the name of Food"
+                                    label={<> <Typography>Input the name of Food</Typography></>}
                                     sx={{
                                         '& .MuiInputBase-input': { // 应用于输入字段
                                             fontWeight: 'bold', // 设置加粗
@@ -406,26 +386,8 @@ function Content() {
                                 />
                             )}
                         />
-
                     </Grid>
                     <Grid item xs={1} />
-
-
-                    <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Button
-                            onClick={() => {
-                                if (page !== 1) {
-                                    setPage(1);
-                                } else {
-                                    searchFood();
-                                }
-                            }}
-                            sx={{
-                                fontSize: '1.8rem', // 更大的字体
-                                padding: '10px 24px', // 增加内边距
-                            }}
-                        >search</Button>
-                    </Grid>
                     {/*<Grid item xs={1} />
                     {searchIndex.map((item) => {
                         return (<Grid item xs={5}>
@@ -434,65 +396,55 @@ function Content() {
                     })}
                 <Grid item xs={1} />*/}
                 </Grid>
-
             </MKBox>
 
-
-
-            <Grid container justifyContent="center" spacing={8}>
-                <Grid item>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageChange}
-                        id="file-input"
-                        style={{ display: 'none' }}  // Hide the actual input
-                    />
-                    <label htmlFor="file-input">
-                        <MKButton
-                            variant="outlined"
-                            color="info"
-                            component="span"
-                            sx={{
-                                fontSize: '1rem',  // Larger font size
-                                padding: '10px 24px'  // Adjust padding to fit larger text if needed
-                            }}
-                        >
-                            Upload Image
-                        </MKButton>
-                    </label>
+            <MKBox mx={2} borderRadius="xl" mt={{ xs: 1, sm: 2, md: 3 }}
+                mb={{ xs: 1, sm: 2, md: 3 }} shadow="lg">
+                <Grid container justifyContent="center" spacing={8}>
+                    <Grid item>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                            id="file-input"
+                            style={{ display: 'none' }}  // Hide the actual input
+                        />
+                        <label htmlFor="file-input">
+                            <MKButton
+                                variant="outlined"
+                                color="info"
+                                component="span"
+                                sx={{
+                                    fontSize: '1rem',  // Larger font size
+                                    padding: '10px 24px'  // Adjust padding to fit larger text if needed
+                                }}
+                            >
+                                Upload Image
+                            </MKButton>
+                        </label>
+                    </Grid>
+                    <Grid item>
+                        <Button onClick={handleDetection} sx={{
+                            fontSize: '1.3rem', // 更大的字体
+                            padding: '10px 24px', // 增加内边距
+                        }}>Detection</Button>
+                    </Grid>
                 </Grid>
-                <Grid item>
-                    <Button onClick={handleDetection} sx={{
-                        fontSize: '1.3rem', // 更大的字体
-                        padding: '10px 24px', // 增加内边距
-                    }}>Detection</Button>
-                </Grid>
-            </Grid>
+            </MKBox>
 
-            <Grid style={{ marginBottom: '3%' }}>
-            </Grid>
             <MKBox mx={2} borderRadius="xl" shadow="lg"
                 mt={{ xs: 1, sm: 2, md: 3 }}
                 mb={{ xs: 1, sm: 2, md: 3 }}>
-
-                <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" >
-                    <Grid item xs={12}>
-                        <MKBox xs={12}>
-                            <Stack spacing={2} mb={2}>
-                                {
-                                    data.map((item) => {
-                                        return <FoodCard data={item} />
-
-                                    })}
-                                <Grid container justifyContent="center" style={{ margin: '20px 0' }}>
-                                    {(data != [] && data.length != 0) ? <Pagination count={10} page={page} onChange={handleChange} /> : <Typography>
-                                        There are no data</Typography>}
-                                </Grid>
-                            </Stack>
-                        </MKBox>
+                <Stack spacing={2} mx={2}>
+                    {data.map((item) => {
+                            return <FoodCard data={item} />
+                        })}
+                    <Grid container justifyContent="center" >
+                        {(data != [] && data.length != 0) ?
+                            <Pagination count={10} page={page} onChange={handleChange} />
+                            : <Typography>There are no data</Typography>}
                     </Grid>
-                </Grid>
+                </Stack>
             </MKBox>
         </MKBox>
     );

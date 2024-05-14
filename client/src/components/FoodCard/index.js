@@ -5,11 +5,15 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import FoodDialog from 'components/FoodDialog';
-import { Button, Grid } from "@mui/material";
 
-export default function FoodCard({data}) {
+export default function FoodCard({ data }) {
     return (
-        <Grid item xs={12} style={{ marginBottom: '3%' }}> {/* Wrapper Grid to add margin bottom */}
+        <Box sx={{
+            marginBottom: '3%', borderRadius: 1, borderColor: 'black',
+            bgcolor: 'background.paper',
+            m: 1,
+            border: 1,
+        }} >
             <Card sx={{ display: 'flex' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                     <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} >
@@ -24,10 +28,10 @@ export default function FoodCard({data}) {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <FoodDialog data={data}/>
+                        <FoodDialog data={data} />
                     </CardActions>
                 </Box>
             </Card>
-        </Grid>
+        </Box>
     );
 }

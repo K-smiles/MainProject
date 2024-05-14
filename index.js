@@ -29,13 +29,6 @@ app.use(express.static(path.resolve(__dirnameNew, 'client/build')));
 
 app.use('/recipes', recipeRouter);
 
-// Answer API requests.
-app.get('/api', function (req, res) {
-  res.set('Content-Type', 'application/json');
-  res.send('{"message":"Hello from the custom server!"}');
-});
-
-
 app.get('/posts', (req, res, next) => {
   queryData('select * from diabetes_incidence_by_year', (err, users) => {
     console.log(err)
