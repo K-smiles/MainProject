@@ -69,7 +69,7 @@ export const getRecipe = async (req, res) => {
 export const getKeyWord = async (req, res) => {
     const id = "12a3b456-c789-0d1e-2f3a-4567890bcdef"; // Generate a unique ID for the request
     // Assuming the image file is named 'a.png' in the 'uploads' directory
-    const imagePath = path.join('a.jpg');
+    const imagePath = path.join('client/src/assets/images/recipe/rice.jpg');
     try {
         // Read the image file synchronously
         const imageData = await fs.promises.readFile(imagePath, { encoding: 'base64' });
