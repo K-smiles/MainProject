@@ -6,7 +6,6 @@ const router = express.Router();
 
 export const getRecipes = async (req, res) => {
     try {
-
         let keywords = ""
         if (req.query['collection'] != undefined && req.query['collection'] != '') {
             keywords += req.query['collection']
@@ -42,11 +41,16 @@ export const getRecipes = async (req, res) => {
             tmpIngredient['$options'] = 'i'
             search['RecipeIngredientParts'] = tmpIngredient
         }
-        console.log(keywords)
-        console.log(search)
-        const RecipeMessages = await RecipeMessage.find(search)
-            .skip((req.query['page'] - 1) * req.query['pageNumber']).limit(req.query['pageNumber']);
-        res.status(200).json(RecipeMessages);
+        if (req.query['pageNumber'] != undefined && req.query['pageNumber'] != '') {
+            const RecipeMessages = await RecipeMessage.find(search)
+                .skip((req.query['page'] - 1) * req.query['pageNumber']).limit(req.query['pageNumber']);
+            res.status(200).json(RecipeMessages);
+        } else {
+            const RecipeMessages = await RecipeMessage.find(search);
+            const RecipeNames = RecipeMessages.map(recipe => recipe.Name);
+            res.status(200).json(RecipeNames);
+        }
+
     } catch (error) {
         res.status(404).json({ message: error.message });
     }

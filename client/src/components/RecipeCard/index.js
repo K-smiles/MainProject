@@ -4,45 +4,51 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActions } from '@mui/material';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import {CardActionArea } from '@mui/material';
 import { Link } from "react-router-dom";
 
 export default function RecipeCard({ data }) {
+    const [hovered, setHovered] = React.useState(false);
+
+    const handleMouseEnter = () => {
+        setHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        setHovered(false);
+    };
     return (
-        <Box sx={{
-            marginBottom: '3%', borderRadius: 1, borderColor: 'black',
-            bgcolor: 'background.paper',
-            m: 1,
-            border: 1,
-        }} >
-            <Card sx={{ display: 'flex' }}>
-                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <CardMedia
-                        component="img"
-                        sx={{
-                            width: {
-                                xs: 50,
-                                md: 150
-                            }
-                        }}
-                        image={data['Images']}
-                        alt="imag loading"
-                    />
-                    <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }} >
-                        <Typography component="div" variant="h4">
-                            {data['Name']}
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Link to={"/recipe/detail/" + data['RecipeId']}>
-                            <Button variant="contained" style={{ width: '120px', height: '50px', fontSize: '1rem', backgroundColor: '#fff', color: '#1A73E83' }} startIcon={<ArrowForwardIcon />}>
-                                Detail
-                            </Button>
-                        </Link>
-                    </CardActions>
-                </Box>
+        <Link to={"/recipe/detail/" + data['RecipeId']}>
+            <Card onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}>
+                <CardActionArea sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }} >
+                    <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <CardMedia
+                            component="img"
+                            sx={{ width: 151 }}
+                            image={data['Images']}
+                            alt="Live from space album cover"
+                        />
+                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                            <CardContent sx={{ flex: '1 0 auto' }}>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    {data['Name']}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Calories: {data['Calories']} cal<br />
+                                    FatContent: {data['FatContent']}
+                                </Typography>
+                            </CardContent>
+                        </Box>
+                    </Box>
+
+                    <Box>
+                        {hovered && <KeyboardArrowRightIcon fontSize='large' />}
+                    </Box>
+
+                </CardActionArea>
+
             </Card>
-        </Box>
+        </Link>
     );
 }

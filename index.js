@@ -5,7 +5,6 @@ import path from 'path'
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import { fileURLToPath } from 'url'
-import fs from 'fs'
 import axios from 'axios';
 
 import config from './ds/config.js'

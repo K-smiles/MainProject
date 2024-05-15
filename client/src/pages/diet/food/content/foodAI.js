@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, IconButton } from "@mui/material";
 import axios from 'axios';
 import { UploadOutlined } from '@ant-design/icons';
-import { Button, Space, Upload } from 'antd';
+import { Button, Space, Upload, } from 'antd';
 import CircularProgress from '@mui/material/CircularProgress';
-const baseURL = "http://localhost:5000/foods";
+import SearchIcon from '@mui/icons-material/Search';
+const baseURL = process.env.REACT_APP_BASEURL + "/foods";
 
 const FoodAI = ({ searchFunction }) => {
     const [isProgress, SetProgress] = React.useState(false);
@@ -52,29 +53,53 @@ const FoodAI = ({ searchFunction }) => {
     return (
         <Grid container justifyContent="center" spacing={8} mb={2}>
             <Grid item xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }} >
-                <Upload
+            <Upload
                     customRequest={customUpload}
                     listType="picture"
                     maxCount={1}>
-                    <Button icon={<UploadOutlined />}>Upload</Button>
+                    <IconButton sx={{
+                            marginBottom: '3%', borderRadius: 1, borderColor: 'black',
+                            bgcolor: 'background.paper',
+                            m: 1,
+                            border: 1,
+                        }} color="info" children={<><SearchIcon /><Typography>Search</Typography></>}icon={<UploadOutlined />}>Upload</IconButton>
                 </Upload>
+
+
             </Grid>
             <Grid item xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Button onClick={handleDetection} sx={{
-                    fontSize: '1.3rem',
+                <IconButton onClick={handleDetection} sx={{
+                    marginBottom: '3%',
+                    borderRadius: 1,
+                    borderColor: 'black',
+                    bgcolor: 'background.paper',
+                    m: 1,
+                    border: 1,
                     padding: '10px 24px',
-                }}>Detection</Button>
+                    fontSize: '1.3rem',
+                }} color="info">
+                    <Typography>Detection</Typography>
+                </IconButton>
                 {imageLabel == null && isProgress && < CircularProgress />}
                 {imageLabel != null && <Typography>The detecting result is {imageLabel}</Typography>}
             </Grid>
             <Grid item xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Button onClick={() => {
-                    searchFunction(imageLabel)
-                    SetProgress(false)
+                <IconButton onClick={() => {
+                    searchFunction(imageLabel);
+                    SetProgress(false);
                 }} sx={{
-                    fontSize: '1.3rem',
+                    marginBottom: '3%',
+                    borderRadius: 1,
+                    borderColor: 'black',
+                    bgcolor: 'background.paper',
+                    m: 1,
+                    border: 1,
                     padding: '10px 24px',
-                }}>Search</Button>
+                    fontSize: '1.3rem',
+                }} color="info">
+                    <SearchIcon />
+                    <Typography sx={{ ml: 1 }}>Generate</Typography>
+                </IconButton>
             </Grid>
         </Grid>
 

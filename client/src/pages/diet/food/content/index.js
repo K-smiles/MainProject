@@ -316,8 +316,11 @@ function Content() {
 
             <MKBox mx={2} borderRadius="xl"
                 mt={{ xs: 1, sm: 2, md: 3 }}
-                mb={{ xs: 1, sm: 2, md: 3 }} shadow="lg">
-                <DefaultCounterCard title="Track food health levels"
+                mb={{ xs: 1, sm: 2, md: 3 }} >
+
+                <DefaultCounterCard
+                    count="Direct search for food name"
+                    title="Track food health levels"
                     description="Here you can directly see the GI and GL levels of the food" />
                 <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center"
                     mb={2}>
@@ -383,15 +386,17 @@ function Content() {
             </MKBox>
 
             <MKBox mx={2} borderRadius="xl"
-                mb={{ xs: 1, sm: 2, md: 3 }} shadow="lg">
-                <DefaultCounterCard title="Track "
-                    description="Don't know what your want, just upload a image" />
+                mb={{ xs: 1, sm: 2, md: 3 }} shadow="lg" >
+                <DefaultCounterCard
+                    count="Image recognition"
+                    description="By uploading a simple picture of a food you can find out its GI and GL values." />
                 <FoodAI searchFunction={searchByAI} />
             </MKBox>
 
             <MKBox mx={2} borderRadius="xl" shadow="lg"
                 mt={{ xs: 1, sm: 2, md: 3 }}
-                mb={{ xs: 1, sm: 2, md: 3 }}>
+                mb={{ xs: 1, sm: 2, md: 3 }}
+                padding="0 10%">
                 <Stack spacing={2} mx={2}>
                     {(data != [] && data.length != 0 ? <>
 

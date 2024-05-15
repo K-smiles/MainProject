@@ -7,8 +7,8 @@ import Select from 'components/DGSelect'
 import { Button } from '@mui/material';
 import MKButton from 'components/MKButton';
 import Alert from '@mui/material/Alert';
-import ExerciseType from './exerciseType';
-import ExerciseTable from 'components/Calender'
+// import ExerciseType from './exerciseType';
+// import ExerciseTable from 'components/Calender'
 
 function Content() {
     const [gender, setGender] = React.useState('')
@@ -90,13 +90,13 @@ function Content() {
                     <Grid item xs={10}>
                         <DGInput label="Frequency(from 1 to 14)" updateValue={setFrequency} />
                     </Grid>
-                    <Grid item xs={1} /> */}
+                    <Grid item xs={1} />  */}
 
-                    {/* <Grid item xs={1} />
+                    <Grid item xs={1} />
                     <Grid item xs={10}>
                         <Select label={searchIndex[1].label} labels={searchIndex[1].labels} value={searchIndex[1].value} updateValue={searchIndex[1].updateValue} />
                     </Grid>
-                    <Grid item xs={1} /> */}
+                    <Grid item xs={1} />
                     <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
                         <MKButton variant='outlined' color="info"
                             component="span" onClick={() => {
@@ -134,9 +134,9 @@ function Content() {
                     {/* display calorie by exercise type */}
                     <Grid item xs={12}>
                         <MKBox xs={12}>
-                            {
+                            {/* {
                                 isVisible && <ExerciseType weight={weight} option={option} />
-                            }
+                            } */}
                         </MKBox>
                     </Grid>
                     {/*exercise plant*/}

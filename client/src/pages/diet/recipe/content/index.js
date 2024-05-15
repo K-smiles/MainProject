@@ -1,24 +1,26 @@
 import * as React from 'react';
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-import { Button, Grid, Alert, Typography } from "@mui/material";
+import { Button, Grid, Alert, Typography, IconButton } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Stack } from '@mui/material';
 import { Pagination } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+
 import RecipeCard from 'components/RecipeCard';
 import axios from 'axios';
 import Select from 'components/DGSelect'
 import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
 import BackgroundBlogCard_new from "examples/Cards/BlogCards/BackgroundBlogCard_new";
-
 import picture1 from "assets/images/recipe/recipe_summary.jpg";
+
 
 function Content() {
     const [name, setName] = React.useState('')
     const [collections, setCollections] = React.useState('');
     const [cuisines, setCuisines] = React.useState('');
-
+    const [recipeName, setRecipeName] = React.useState([])
     const searchIndex1 = [
         {
             label: 'collections',
@@ -135,8 +137,7 @@ function Content() {
                 { value: 'Corn', label: 'Corn' },
                 { value: 'Trout', label: 'Trout' },
                 { value: 'Beans', label: 'Beans' },
-                { value: 'Rice', label: 'Rice' },
-                { value: '', label: 'null' }],
+                { value: 'Rice', label: 'Rice' }],
             value: ingredients,
             updateValue: setIngredients
         },
@@ -150,9 +151,14 @@ function Content() {
 
     };
 
-let baseURL = process.env.REACT_APP_BASEURL + "/recipes";
+    let baseURL = process.env.REACT_APP_BASEURL + "/recipes";
 
     const [data, setData] = React.useState([]);
+
+    //load data
+    React.useEffect(() => {
+        getAllData()
+    }, []);
 
     //load data
     React.useEffect(() => {
@@ -167,6 +173,15 @@ let baseURL = process.env.REACT_APP_BASEURL + "/recipes";
             params: search,
         }).then((response) => {
             setData(response.data)
+        }, []);
+    }
+    const getAllData = () => {
+
+        axios({
+            method: 'get',
+            url: baseURL,
+        }).then((response) => {
+            setRecipeName(response.data)
         }, []);
     }
 
@@ -187,7 +202,7 @@ let baseURL = process.env.REACT_APP_BASEURL + "/recipes";
             <MKBox mx={2} borderRadius="xl"
                 mt={{ xs: 1, sm: 2, md: 3 }}
                 mb={{ xs: 1, sm: 2, md: 3 }} shadow="lg">
-                <DefaultCounterCard title="track your recipe"
+                <DefaultCounterCard title="Explore your recipe"
                     description="Here you can directly see the recipe" />
                 <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" >
                     <Grid item xs={1} />
@@ -206,7 +221,7 @@ let baseURL = process.env.REACT_APP_BASEURL + "/recipes";
                                 if (newInputValue) setName(newInputValue);
                                 else setName('');
                             }}
-                            options={top100Films.map((option) => option.title)}
+                            options={recipeName.map((option) => option)}
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
@@ -239,35 +254,16 @@ let baseURL = process.env.REACT_APP_BASEURL + "/recipes";
                     <Grid item xs={5}>
                         <Select label={searchIndex1[1].label} labels={searchIndex1[1].labels} value={searchIndex1[1].value} updateValue={searchIndex1[1].updateValue} />
                     </Grid>
-                    <Grid item xs={5}>
-                        <Select label={searchIndex2[1].label} labels={searchIndex2[1].labels} value={searchIndex2[1].value} updateValue={searchIndex2[1].updateValue} />
+                    <Grid item xs={2} />
+                    <Grid item xs={3}>
+                        <IconButton sx={{
+                            marginBottom: '3%', borderRadius: 1, borderColor: 'black',
+                            bgcolor: 'background.paper',
+                            m: 1,
+                            border: 1,
+                        }} color="info" children={<><SearchIcon /><Typography>Search</Typography></>} onClick={searchFood} />
                     </Grid>
                     <Grid item xs={1} />
-
-                    {/* 
-                    <Grid item xs={1} />
-                    {searchIndex2.map((item) => {
-                        return (<Grid item xs={5}>
-                            <Select label={item.label} labels={item.labels} value={item.value} updateValue={item.updateValue} />
-                        </Grid>)
-                    })}
-                    <Grid item xs={1} /> */}
-
-                    <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Button
-                            onClick={() => {
-                                if (page !== 1) {
-                                    setPage(1);
-                                } else {
-                                    searchFood();
-                                }
-                            }}
-                            sx={{
-                                fontSize: '1.3rem',
-                                padding: '10px 24px',
-                            }}
-                        >search</Button>
-                    </Grid>
                 </Grid>
             </MKBox>
 
@@ -278,20 +274,24 @@ let baseURL = process.env.REACT_APP_BASEURL + "/recipes";
                     <Grid item xs={12}>
                         <MKBox xs={12}>
                             <Stack spacing={2} mb={2}>
-                                {data.map((item) => {
-                                    console.log(item)
-                                    return <RecipeCard data={item} />
-                                })}
-                                <Grid container justifyContent="center" style={{ margin: '20px 0' }}>
+                                {(data != [] && data.length != 0 ? <>
+                                    <MKTypography variant="h3" fontWeight="bold">
+                                        The result is below:
+                                    </MKTypography>
+                                    {data.map((item) => {
+                                        return <RecipeCard data={item} />
+                                    })} </> : null)}
+                                <Grid container justifyContent="center">
                                     {(data != [] && data.length != 0) ?
                                         <Pagination count={10} page={page} onChange={handleChange} />
-                                        : <Alert variant="outlined" severity="warning">
+                                        : <MKBox mb={2}><Alert variant="outlined" severity="warning">
                                             No content or information matching your query keyWord <Typography sx={{ fontWeight: 'bold' }}>{name}</Typography>
                                             suggestion:<br />
                                             Please check the input text for errors.<br />
                                             Please try a different query term.<br />
                                             Please use the more common term.<br />
-                                        </Alert>}
+                                        </Alert>
+                                        </MKBox>}
                                 </Grid>
                             </Stack>
                         </MKBox>
@@ -301,7 +301,5 @@ let baseURL = process.env.REACT_APP_BASEURL + "/recipes";
         </MKBox>
     );
 }
-
-const top100Films = []
 
 export default Content;
