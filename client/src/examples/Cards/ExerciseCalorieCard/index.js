@@ -7,7 +7,7 @@ import { Image } from 'antd';
 import { Container, Grid } from "@mui/material";
 import calorieImage from "assets/images/calorie/calories.png"
 import burgerImage from "assets/images/calorie/hamburger.png"
-function BackgroundBlogCard({ title, image, met, weight, time }) {
+function BackgroundBlogCard({ title, image, met, weight}) {
   return (
     <Card
       sx={{
@@ -26,8 +26,8 @@ function BackgroundBlogCard({ title, image, met, weight, time }) {
           <Container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
               <MKTypography variant="body1" color="white" >
-                You burned
-                <MKTypography variant="h2"  color="info">{Math.floor(time/60 * met * weight)} </MKTypography>
+                The calories burned during one hour are
+                <MKTypography variant="h2"  color="info">{(  met * weight)} </MKTypography>
               </MKTypography>
               <Image
                 width={200}
@@ -35,7 +35,7 @@ function BackgroundBlogCard({ title, image, met, weight, time }) {
             </Grid>
             <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
               <MKTypography variant="body1" color="white">
-                It is equal to <MKTypography variant="h2" color="info"> {Math.floor(time / 60 * met * weight / 300)} </MKTypography>
+                It is equal to <MKTypography variant="h2" color="info"> {( met * weight / 300)} </MKTypography>
               </MKTypography>
               <Image
                 width={200}

@@ -1,9 +1,7 @@
 import express from 'express';
 
 import RecipeMessage from '../models/recipeMessage.js';
-import path from 'path'
-import fs from 'fs'
-import axios from 'axios';
+
 const router = express.Router();
 
 export const getRecipes = async (req, res) => {
@@ -62,26 +60,6 @@ export const getRecipe = async (req, res) => {
             "RecipeId": parseInt(id)
         })
         res.status(200).json(recipe);
-    } catch (error) {
-        res.status(404).json({ message: error.message });
-    }
-}
-export const getKeyWord = async (req, res) => {
-    const id = "12a3b456-c789-0d1e-2f3a-4567890bcdef"; // Generate a unique ID for the request
-    // Assuming the image file is named 'a.png' in the 'uploads' directory
-    const imagePath = path.join('client/src/assets/images/recipe/rice.jpg');
-    try {
-        // Read the image file synchronously
-        const imageData = await fs.promises.readFile(imagePath, { encoding: 'base64' });
-        const response = await axios.post('http://3.25.107.27:5000/detect', {
-            id: id,
-            image: imageData
-        });
-        // Assuming the response contains an object with 'id' and 'image' as the label
-        const detectedLabel = response.data.image;
-        
-        console.log(detectedLabel)
-        res.status(200).json(detectedLabel);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }

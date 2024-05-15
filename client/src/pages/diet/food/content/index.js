@@ -14,18 +14,15 @@ import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
 
 import BackgroundBlogCard from "examples/Cards/BlogCards/BackgroundBlogCard";
 
-import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
-
 //image
 import picture1 from "assets/images/recipe/Question_mark.jpg";
 import picture2 from "assets/images/recipe/Sweet_potato.jpg";
 import picture3 from "assets/images/recipe/rice.jpg";
+import FoodAI from './foodAI';
 function Content() {
     const [name, setName] = React.useState('')
     const [category, setCategory] = React.useState('');
     const [subcategory, setSubCategory] = React.useState('');
-    const [image, setImage] = React.useState(null);
-    const [imageLabel, setImageLabel] = React.useState('');
 
     const searchIndex = [
         {
@@ -246,48 +243,13 @@ function Content() {
     const [page, setPage] = React.useState(1);
     const pageNumber = 5
 
-    // Image upload handler
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                setImage(e.target.result); // Set image data to state
-                console.log("File read: ", e.target.result); // Optionally log it or handle it as needed
-            };
-            reader.readAsDataURL(file);
-        }
-    };
 
-    // Function to send image data to the server and update the search field
-    const handleDetection = async () => {
-        if (image) {
-            const id = uuidv4(); // Generate a unique ID for the request
-            const imageData = image.split(',')[1]; // Extract Base64 data from the Data URL
 
-            try {
-                const response = await axios.post('http://3.25.107.27:5000/detect', {
-                    id: id,
-                    image: imageData
-                });
-
-                // Assuming the response contains an object with 'id' and 'image' as the label
-                const detectedLabel = response.data.image;
-                setImageLabel(detectedLabel);  // Update state for displaying the label
-                setName(detectedLabel);        // Automatically set the detected label in the search field
-            } catch (error) {
-                console.error('Error posting image data:', error);
-                setImageLabel('Failed to detect image');
-            }
-        } else {
-            alert('No image uploaded!');
-        }
-    };
     const handleChange = (event, value) => {
         setPage(value);
     };
-    let baseURL = "http://localhost:5000/foods";
 
+    let baseURL = process.env.REACT_APP_BASEURL + "/foods";
     const [data, setData] = React.useState([]);
 
     //load data
@@ -307,17 +269,28 @@ function Content() {
         }, []);
     }
 
+    const searchByAI = (keyWord) => {
+        let search = { name: keyWord, category: category, subcategory: subcategory, page: page, pageNumber: pageNumber }
+        //mock axios to get data
+        axios({
+            method: 'get',
+            url: baseURL,
+            params: search,
+        }).then((response) => {
+            setData(response.data)
+        }, []);
+    }
+
     return (
         <MKBox bgColor="white" borderRadius="xl" shadow="lg"
             display="flex" flexDirection="column" justifyContent="center"
             mx={2} mt={-5}>
-
             <MKBox p={4} mx={2} mt={2} borderRadius="xl" shadow="lg">
                 <MKTypography variant="h3" fontWeight="bold">
                     What foods are actually healthier for my body? I'm sure you've wondered this, so in this section you can just look up the GI values of specific foods.
                 </MKTypography>
                 <Grid container spacing={4}>
-                    <Grid item xs={12} md={4}>  {/* 每个卡片在小屏幕占满宽度，在中屏占三分之一 */}
+                    <Grid item xs={12} md={4}>
                         <BackgroundBlogCard
                             image={picture1}
                             title="What is GI value?"
@@ -329,7 +302,6 @@ function Content() {
                             image={picture2}
                             title="Medium GI foods (56 to 69):"
                             description="These foods raise blood glucose relatively quickly, and when the body frequently digests and absorbs medium GI foods, it regularly triggers a rapid rise in blood glucose levels with reduced insulin sensitivity, which is a key factor in triggering diabetes."
-
                         />
                     </Grid>
                     <Grid item xs={12} md={4}>
@@ -341,14 +313,16 @@ function Content() {
                     </Grid>
                 </Grid>
             </MKBox>
+
             <MKBox mx={2} borderRadius="xl"
                 mt={{ xs: 1, sm: 2, md: 3 }}
                 mb={{ xs: 1, sm: 2, md: 3 }} shadow="lg">
                 <DefaultCounterCard title="Track food health levels"
                     description="Here you can directly see the GI and GL levels of the food" />
-                <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" >
+                <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center"
+                    mb={2}>
                     <Grid item xs={1} />
-                    <Grid item xs={10} mt={{ xs: 1, sm: 2, md: 3 }}>
+                    <Grid item xs={10} mt={{ xs: 1, sm: 2, md: 3 }} sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                         <Autocomplete
                             id="free-solo-demo"
                             fullWidth
@@ -368,7 +342,7 @@ function Content() {
                                 else
                                     setName('');
                             }}
-                            options={top100Films.map((option) => option.title)}
+                            options={top100Films.map((option) => option.label)}
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
@@ -386,72 +360,58 @@ function Content() {
                                 />
                             )}
                         />
+                        <IconButton sx={{
+                            marginBottom: '3%', borderRadius: 1, borderColor: 'black',
+                            bgcolor: 'background.paper',
+                            m: 1,
+                            border: 1,
+                        }} color="info" children={<><SearchIcon /><Typography>Search</Typography></>} onClick={searchFood} />
                     </Grid>
                     <Grid item xs={1} />
-                    <IconButton children={<SearchIcon />} onClick={searchFood} >
-                        Search
-                    </IconButton>
-                    {/*<Grid item xs={1} />
-                    {searchIndex.map((item) => {
-                        return (<Grid item xs={5}>
-                            <Select label={item.label} labels={item.labels} value={item.value} updateValue={item.updateValue} />
-                        </Grid>)
-                    })}
-                <Grid item xs={1} />*/}
+
+                    {
+                        /*<Grid item xs={1} />
+                            {searchIndex.map((item) => {
+                                return (<Grid item xs={5}>
+                                    <Select label={item.label} labels={item.labels} value={item.value} updateValue={item.updateValue} />
+                                </Grid>)
+                            })}
+                        <Grid item xs={1} />
+                        */
+                    }
                 </Grid>
             </MKBox>
 
-            <MKBox mx={2} borderRadius="xl" mt={{ xs: 1, sm: 2, md: 3 }}
+            <MKBox mx={2} borderRadius="xl"
                 mb={{ xs: 1, sm: 2, md: 3 }} shadow="lg">
-                <Grid container justifyContent="center" spacing={8}>
-                    <Grid item>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageChange}
-                            id="file-input"
-                            style={{ display: 'none' }}  // Hide the actual input
-                        />
-                        <label htmlFor="file-input">
-                            <MKButton
-                                variant="outlined"
-                                color="info"
-                                component="span"
-                                sx={{
-                                    fontSize: '1rem',  // Larger font size
-                                    padding: '10px 24px'  // Adjust padding to fit larger text if needed
-                                }}
-                            >
-                                Upload Image
-                            </MKButton>
-                        </label>
-                    </Grid>
-                    <Grid item>
-                        <Button onClick={handleDetection} sx={{
-                            fontSize: '1.3rem', // 更大的字体
-                            padding: '10px 24px', // 增加内边距
-                        }}>Detection</Button>
-                    </Grid>
-                </Grid>
+                <DefaultCounterCard title="Track "
+                    description="Don't know what your want, just upload a image" />
+                <FoodAI searchFunction={searchByAI} />
             </MKBox>
 
             <MKBox mx={2} borderRadius="xl" shadow="lg"
                 mt={{ xs: 1, sm: 2, md: 3 }}
                 mb={{ xs: 1, sm: 2, md: 3 }}>
                 <Stack spacing={2} mx={2}>
-                    {data.map((item) => {
-                        return <FoodCard data={item} />
-                    })}
-                    <Grid container justifyContent="center" >
+                    {(data != [] && data.length != 0 ? <>
+
+                        <MKTypography variant="h3" fontWeight="bold">
+                            The result is below:
+                        </MKTypography>
+
+                        {data.map((item) => {
+                            return <FoodCard data={item} />
+                        })} </> : null)}
+                    <Grid container justifyContent="center">
                         {(data != [] && data.length != 0) ?
                             <Pagination count={10} page={page} onChange={handleChange} />
-                            : <Alert variant="outlined" severity="warning">
+                            : <MKBox mb={2}><Alert variant="outlined" severity="warning">
                                 No content or information matching your query keyWord <Typography sx={{ fontWeight: 'bold' }}>{name}</Typography>
                                 suggestion:<br />
                                 Please check the input text for errors.<br />
                                 Please try a different query term.<br />
                                 Please use the more common term.<br />
-                            </Alert>}
+                            </Alert></MKBox>}
                     </Grid>
                 </Stack>
             </MKBox>
@@ -459,6 +419,13 @@ function Content() {
     );
 }
 
-const top100Films = []
+const top100Films = [
+    { label: "Acorns (Quercus emoryi), stewed with venison8" },
+    { label: "All-Bran (Kellogg's Inc., Canada)" },
+    { label: "All-Bran (Kellogg's, Battle Creek, MI, USA)" },
+    { label: "All-Bran (Kellogg's, Battle Creek, MI, USA), 14" },
+    { label: "All-Bran (Kellogg's, Pagewood, NSW, Australia)" },
+    { label: "All-Bran Fruit 'n Oats (Kellogg's, Australia)" }
+]
 
 export default Content;

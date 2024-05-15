@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 // Material Kit 2 React components
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import SimpleFooter from "examples/Footers/SimpleFooter";
-
+import SpeedDial from 'components/SpeedDial/index.js';
 // Routes
 import routes from "routes";
 import footerRoutes from "footer.routes";
@@ -19,6 +19,7 @@ function ExercisePage() {
             <NavContent />
             <Content />
             <SimpleFooter pt={1} px={1} mt={0} content={footerRoutes} />
+            <SpeedDial routes={routes} />
         </>
     );
 }

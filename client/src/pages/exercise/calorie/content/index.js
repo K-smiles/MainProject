@@ -62,6 +62,7 @@ function Content() {
                     EXERCISE PLAN: Not sure what exercise helps you the most? We can help you with a personalised exercise plan.
                 </MKTypography>
             </MKBox>
+
             <MKBox mx={2} borderRadius="xl" shadow="lg"
                 mt={{ xs: 1, sm: 2, md: 3 }}
                 mb={{ xs: 1, sm: 2, md: 3 }}>
@@ -85,17 +86,17 @@ function Content() {
                     </Grid>
                     <Grid item xs={1} />
 
-                    <Grid item xs={1} />
+                    {/* <Grid item xs={1} />
                     <Grid item xs={10}>
                         <DGInput label="Frequency(from 1 to 14)" updateValue={setFrequency} />
                     </Grid>
-                    <Grid item xs={1} />
+                    <Grid item xs={1} /> */}
 
-                    <Grid item xs={1} />
+                    {/* <Grid item xs={1} />
                     <Grid item xs={10}>
                         <Select label={searchIndex[1].label} labels={searchIndex[1].labels} value={searchIndex[1].value} updateValue={searchIndex[1].updateValue} />
                     </Grid>
-                    <Grid item xs={1} />
+                    <Grid item xs={1} /> */}
                     <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
                         <MKButton variant='outlined' color="info"
                             component="span" onClick={() => {
@@ -139,13 +140,13 @@ function Content() {
                         </MKBox>
                     </Grid>
                     {/*exercise plant*/}
-                    <Grid item xs={12}>
+                    {/* <Grid item xs={12}>
                         <MKBox xs={12}>
                             {
                                 isVisible && <ExerciseTable frequency={frequency}/>
                             }
                         </MKBox>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
             </MKBox>
         </MKBox>

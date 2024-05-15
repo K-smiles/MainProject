@@ -4,8 +4,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import ExerciseCarousel from 'components/ExerciseCarousel'
-
+// import ExerciseCarousel from 'components/ExerciseCarousel'
+import ExerciseCalorieCard from "examples/Cards/ExerciseCalorieCard";
 
 import walkImage from 'assets/sportspictures/Walking_leisurely.jpg'
 import walkExerImage from 'assets/sportspictures/Walking_for_exercise.jpg'
@@ -77,9 +77,10 @@ export default function ExerciseType({ weight, option }) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
     return (
         <Box sx={{ width: '100%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            {/* <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Moderate Activities" {...a11yProps(0)} />
                     <Tab label="Vigorous activities" {...a11yProps(1)} />
@@ -90,7 +91,14 @@ export default function ExerciseType({ weight, option }) {
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
                 <ExerciseCarousel weight={weight} option={option} data={optionData.slice(7, 12)} />
-            </CustomTabPanel>
+            </CustomTabPanel> */}
+
+            <ExerciseCalorieCard
+                title={optionData[option].name}
+                image={optionData[option].image}
+                met={optionData[option].met}
+                weight={weight}
+            />
         </Box>
     );
 }

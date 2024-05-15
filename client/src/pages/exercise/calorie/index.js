@@ -8,6 +8,7 @@ import MKTypography from "components/MKTypography";
 
 // Images
 import bgImage from "assets/images/exercise_background.jpg";
+import SpeedDial from 'components/SpeedDial/index.js';
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
@@ -66,6 +67,7 @@ function DiabeticCalorie() {
             </MKBox>
             <Content />
             <SimpleFooter pt={1} px={1} mt={0} content={footerRoutes} />
+            <SpeedDial routes={routes} />
         </>
     );
 }

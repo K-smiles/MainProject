@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import MKButton from "components/MKButton";
-
+import SpeedDial from 'components/SpeedDial/index.js';
 import bgImage from "assets/images/epic1background.jpg";
 // Routes
 import routes from "routes";
@@ -108,6 +108,7 @@ function DiabetesInAus() {
 
             <Content />
             <SimpleFooter pt={1} px={1} mt={0} content={footerRoutes} />
+            <SpeedDial routes={routes} />
         </>
     );
 }

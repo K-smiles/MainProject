@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // Material Kit 2 React 
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import SimpleFooter from "examples/Footers/SimpleFooter";
 import MKBox from "components/MKBox";
-import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
-
+import SpeedDial from 'components/SpeedDial/index.js';
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
@@ -22,28 +21,6 @@ import bgImage from "assets/images/epic2mapbg.jpg";
  * @returns 
  */
 function DiabeticMap() {
-    const [isVisible, setIsVisible] = useState(false);
-
-    
-    useEffect(() => {
-        const toggleVisibility = () => {
-            if (window.pageYOffset > 300) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
-        window.addEventListener("scroll", toggleVisibility);
-        return () => window.removeEventListener("scroll", toggleVisibility);
-    }, []);
-
-    
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    };
 
     return (
         <>
@@ -94,27 +71,7 @@ function DiabeticMap() {
             </MKBox>
             <Content />
             <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0} />
-            <>
-                {isVisible && (
-                    <MKButton
-                        onClick={scrollToTop}
-                        style={{
-                            position: 'fixed',
-                            bottom: '20px',
-                            right: '10px',
-                            backgroundColor: 'rgba(33, 37, 41, 0.65)',
-                            color: 'white',
-                            minWidth: '50px',
-                            height: '50px',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}
-                    >
-                        <i className="fas fa-arrow-up"></i>
-                    </MKButton>
-                )}
-            </>
+            <SpeedDial routes={routes} />
         </>
     );
 }

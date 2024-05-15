@@ -12,6 +12,8 @@ import post4 from "assets/images/examples/epic4.jpg";
 import post5 from "assets/images/examples/epic5.jpg";
 import post6 from "assets/images/examples/meal_plan.jpg";
 import post7 from "assets/images/examples/exercise_epic.jpg";
+
+
 function Features() {
 
     return (

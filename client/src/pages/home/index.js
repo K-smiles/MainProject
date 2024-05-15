@@ -5,6 +5,7 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
+
 import SpeedDial from 'components/SpeedDial/index.js';
 
 import Container from "@mui/material/Container";
@@ -92,7 +93,6 @@ function Home() {
                         </MKTypography>
                     </Grid>
                 </Container>
-
             </MKBox>
 
             <Card

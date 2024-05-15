@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import MKBox from "components/MKBox";
 import Container from "@mui/material/Container";
 import MKTypography from "components/MKTypography";
-
+import SpeedDial from 'components/SpeedDial/index.js';
 // Images
 import bgImage from "assets/images/dietpic.jpg";
 
@@ -66,6 +66,7 @@ function DiabeticDetail() {
             </MKBox>
             <Content />
             <SimpleFooter pt={1} px={1} mt={0} content={footerRoutes} />
+            <SpeedDial routes={routes} />
         </>
     );
 }

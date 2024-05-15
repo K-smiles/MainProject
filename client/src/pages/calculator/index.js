@@ -6,7 +6,7 @@ import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import SimpleFooter from "examples/Footers/SimpleFooter";
-
+import SpeedDial from 'components/SpeedDial/index.js';
 // Images
 import bgImage from "assets/images/aobut_us.jpg";
 
@@ -18,29 +18,7 @@ import Content from 'pages/calculator/content'
 
 
 function Calculator() {
-    const [isVisible, setIsVisible] = useState(false);
-    // 显示按钮的逻辑
-    useEffect(() => {
-        const toggleVisibility = () => {
-            if (window.pageYOffset > 300) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
 
-        window.addEventListener("scroll", toggleVisibility);
-
-        return () => window.removeEventListener("scroll", toggleVisibility);
-    }, []);
-
-    // 滚动到顶部的方法
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    };
     return (
         <>
             <DefaultNavbar routes={routes}
@@ -80,27 +58,7 @@ function Calculator() {
             </MKBox>
             <Content />
             <SimpleFooter content={footerRoutes} pt={1} px={1} mt={0} />
-            <>
-                {isVisible && (
-                    <MKButton
-                        onClick={scrollToTop}
-                        style={{
-                            position: 'fixed',
-                            bottom: '20px',
-                            right: '10px',
-                            backgroundColor: 'rgba(33, 37, 41, 0.65)',
-                            color: 'white',
-                            minWidth: '50px',
-                            height: '50px',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}
-                    >
-                        <i className="fas fa-arrow-up"></i>
-                    </MKButton>
-                )}
-            </>
+            <SpeedDial routes={routes} />
         </>
     );
 }

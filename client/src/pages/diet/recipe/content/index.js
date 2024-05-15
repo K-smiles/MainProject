@@ -1,7 +1,7 @@
 import * as React from 'react';
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Alert, Typography } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Stack } from '@mui/material';
@@ -9,8 +9,6 @@ import { Pagination } from '@mui/material';
 import RecipeCard from 'components/RecipeCard';
 import axios from 'axios';
 import Select from 'components/DGSelect'
-
-import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard_new";
 import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
 import BackgroundBlogCard_new from "examples/Cards/BlogCards/BackgroundBlogCard_new";
 
@@ -73,14 +71,14 @@ function Content() {
                 { value: 'Vegetable', label: 'Vegetable' },
                 { value: 'Refrigerator', label: 'Refrigerator' },
                 { value: 'Winter', label: 'Winter' },
-                ],
+            ],
             value: collections,
             updateValue: setCollections
         },
         {
             label: 'cuisines',
             labels: [
-                { value: '', label: 'null' },
+                { value: '', label: 'All' },
                 { value: 'Asian', label: 'Asian' },
                 { value: 'Polish', label: 'Polish' },
                 { value: 'Czech', label: 'Czech' },
@@ -97,8 +95,8 @@ function Content() {
                 { value: 'Greek', label: 'Greek' },
                 { value: 'Chinese', label: 'Chinese' },
                 { value: 'Egyptian', label: 'Egyptian' },
-                { value: 'Hungarian', label: 'Hungarian' },          
-                ],
+                { value: 'Hungarian', label: 'Hungarian' },
+            ],
             value: cuisines,
             updateValue: setCuisines
         },
@@ -110,20 +108,20 @@ function Content() {
         {
             label: 'Course',
             labels: [
-                { value: '', label: 'null' },
+                { value: '', label: 'All' },
                 { value: 'Lunch/Snacks', label: 'Lunch/Snacks' },
                 { value: 'Dessert', label: 'Dessert' },
                 { value: 'Sauces', label: 'Sauces' },
                 { value: 'Breakfast', label: 'Breakfast' },
-                { value: 'Brunch', label: 'Brunch' },          
-                ],
+                { value: 'Brunch', label: 'Brunch' },
+            ],
             value: course,
             updateValue: setCourse
         },
         {
             label: 'Ingredients',
             labels: [
-                { value: '', label: 'null' },
+                { value: '', label: 'All' },
                 { value: 'Chicken', label: 'Chicken' },
                 { value: 'Duck', label: 'Duck' },
                 { value: 'Grains', label: 'Grains' },
@@ -151,7 +149,8 @@ function Content() {
         setPage(value);
 
     };
-    let baseURL = "http://localhost:5000/recipes";
+
+let baseURL = process.env.REACT_APP_BASEURL + "/recipes";
 
     const [data, setData] = React.useState([]);
 
@@ -162,49 +161,37 @@ function Content() {
 
     const searchFood = () => {
         let search = { name: name, collection: collections, cuisine: cuisines, course: course, ingredient: ingredients, page: page, pageNumber: pageNumber }
-
         axios({
             method: 'get',
             url: baseURL,
             params: search,
         }).then((response) => {
             setData(response.data)
-
         }, []);
     }
 
     return (
         <MKBox bgColor="white" borderRadius="xl" shadow="lg"
             display="flex" flexDirection="column" justifyContent="center"
-            mx={2} mt={-5}
-            
-        >
-
-            <MKBox p={4} mx={2} borderRadius="xl" shadow="lg">
+            mx={2} mt={-5}>
+            <MKBox p={4} mx={2} mt={2} borderRadius="xl" shadow="lg">
                 <MKTypography variant="h3" fontWeight="bold">
                     A healthy recipe routine is essential for you to prevent diabetes as it not only helps you to maintain a proper weight (BMI) but also effectively stabilises your blood sugar levels.
                 </MKTypography>
-            </MKBox>
-
-            <Grid style={{ marginBottom: '3%' }}>
-                    </Grid>
-
-                    
-            <MKBox padding="0 10%">
                 <BackgroundBlogCard_new
                     image={picture1}
                     title="Finding the suitable recipe for you"
-                    description="Right here, We have shortlisted 200 different types of healthy meals for you along with their detailed preparation steps."
-
-
-                />
+                    description="Right here, We have shortlisted 200 different types of healthy meals for you along with their detailed preparation steps." />
             </MKBox>
+
             <MKBox mx={2} borderRadius="xl"
                 mt={{ xs: 1, sm: 2, md: 3 }}
-                mb={{ xs: 1, sm: 2, md: 3 }} padding="0 10%">
+                mb={{ xs: 1, sm: 2, md: 3 }} shadow="lg">
+                <DefaultCounterCard title="track your recipe"
+                    description="Here you can directly see the recipe" />
                 <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" >
                     <Grid item xs={1} />
-                    <Grid item xs={10} mt={{ xs: 1, sm: 2, md: 3 }}>
+                    <Grid item xs={10}>
                         <Autocomplete
                             id="free-solo-demo"
                             fullWidth
@@ -238,44 +225,55 @@ function Content() {
                             )}
                         />
                     </Grid>
-
                     <Grid item xs={1} />
 
-                    <Grid item xs={1} />
+                    {/* <Grid item xs={1} />
                     {searchIndex1.map((item) => {
                         return (<Grid item xs={5}>
                             <Select label={item.label} labels={item.labels} value={item.value} updateValue={item.updateValue} />
                         </Grid>)
                     })}
+                    <Grid item xs={1} /> */}
+
+                    <Grid item xs={1} />
+                    <Grid item xs={5}>
+                        <Select label={searchIndex1[1].label} labels={searchIndex1[1].labels} value={searchIndex1[1].value} updateValue={searchIndex1[1].updateValue} />
+                    </Grid>
+                    <Grid item xs={5}>
+                        <Select label={searchIndex2[1].label} labels={searchIndex2[1].labels} value={searchIndex2[1].value} updateValue={searchIndex2[1].updateValue} />
+                    </Grid>
                     <Grid item xs={1} />
 
+                    {/* 
                     <Grid item xs={1} />
                     {searchIndex2.map((item) => {
                         return (<Grid item xs={5}>
                             <Select label={item.label} labels={item.labels} value={item.value} updateValue={item.updateValue} />
                         </Grid>)
                     })}
-                    <Grid item xs={1} />
+                    <Grid item xs={1} /> */}
+
+                    <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Button
+                            onClick={() => {
+                                if (page !== 1) {
+                                    setPage(1);
+                                } else {
+                                    searchFood();
+                                }
+                            }}
+                            sx={{
+                                fontSize: '1.3rem',
+                                padding: '10px 24px',
+                            }}
+                        >search</Button>
+                    </Grid>
                 </Grid>
             </MKBox>
-            <Button
-                onClick={() => {
-                    if (page !== 1) {
-                        setPage(1);
-                    } else {
-                        searchFood();
-                    }
-                }}
-                sx={{
-                    fontSize: '1.3rem', // 更大的字体
-                    padding: '10px 24px', // 增加内边距
-                }}
-            >search</Button>
-            <Grid style={{ marginBottom: '3%' }}>
-            </Grid>
+
             <MKBox mx={2} borderRadius="xl" shadow="lg"
                 mt={{ xs: 1, sm: 2, md: 3 }}
-                mb={{ xs: 1, sm: 2, md: 3 }} padding="0 10%">
+                mb={{ xs: 1, sm: 2, md: 3 }} >
                 <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" >
                     <Grid item xs={12}>
                         <MKBox xs={12}>
@@ -284,9 +282,16 @@ function Content() {
                                     console.log(item)
                                     return <RecipeCard data={item} />
                                 })}
-
                                 <Grid container justifyContent="center" style={{ margin: '20px 0' }}>
-                                    <Pagination count={10} page={page} onChange={handleChange} />
+                                    {(data != [] && data.length != 0) ?
+                                        <Pagination count={10} page={page} onChange={handleChange} />
+                                        : <Alert variant="outlined" severity="warning">
+                                            No content or information matching your query keyWord <Typography sx={{ fontWeight: 'bold' }}>{name}</Typography>
+                                            suggestion:<br />
+                                            Please check the input text for errors.<br />
+                                            Please try a different query term.<br />
+                                            Please use the more common term.<br />
+                                        </Alert>}
                                 </Grid>
                             </Stack>
                         </MKBox>
