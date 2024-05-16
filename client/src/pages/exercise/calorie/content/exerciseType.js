@@ -78,8 +78,10 @@ export default function ExerciseType({ weight, option }) {
         setValue(newValue);
     };
 
+
     return (
         <Box sx={{ width: '100%' }}>
+            <TreeSelect {...tProps} />
             {/* <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Moderate Activities" {...a11yProps(0)} />
