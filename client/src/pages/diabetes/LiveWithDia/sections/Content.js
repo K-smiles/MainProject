@@ -122,16 +122,16 @@ function Content() {
                 </MKBox>
                 <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }}  >
                     <FilledInfoCard
-                        icon="devices"
-                        title="Risk Calculator"
-                        description="Quickly assess your risk for diabetes with our simple questionnaire and receive personalized results to help guide your health decisions."
+                        title="3D Interactive Mannequin"
+                        description="you can explore how different stages of diabetes affect your body.  This feature helps you understand the impact of diabetes at each stage, enhancing your ability to manage and mitigate its effects on your health effectively."
                         action={{
                             type: "internal",
-                            route: "/calculator",
+                            route: "/model",
                             label: "Let's start"
                         }}
                     />
                 </Grid>
+                
             </MKBox>
             <NavigationButton left="/diabetes/diabetesinaus" />
         </MKBox>

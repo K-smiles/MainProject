@@ -8,7 +8,7 @@ import { Stack } from '@mui/material';
 import { Pagination } from '@mui/material';
 import FoodCard from 'components/FoodCard';
 import axios from 'axios';
-import MKButton from "components/MKButton";
+import FilledInfoCard from "examples/Cards/InfoCards/FilledInfoCard";
 import SearchIcon from '@mui/icons-material/Search';
 import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
 
@@ -251,6 +251,18 @@ function Content() {
 
     let baseURL = process.env.REACT_APP_BASEURL + "/foods";
     const [data, setData] = React.useState([]);
+    const [nameSet, setNameSet] = React.useState([]);
+
+    //load data
+    React.useEffect(() => {
+        axios({
+            method: 'get',
+            url: baseURL,
+        }).then((response) => {
+            setNameSet(response.data)
+            console.log(response.data)
+        }, []);
+    }, []);
 
     //load data
     React.useEffect(() => {
@@ -278,6 +290,7 @@ function Content() {
             params: search,
         }).then((response) => {
             setData(response.data)
+            console.log(response.data)
         }, []);
     }
 
@@ -345,7 +358,7 @@ function Content() {
                                 else
                                     setName('');
                             }}
-                            options={top100Films.map((option) => option.label)}
+                            options={nameSet.map((option) => option.name)}
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
@@ -399,11 +412,9 @@ function Content() {
                 padding="0 10%">
                 <Stack spacing={2} mx={2}>
                     {(data != [] && data.length != 0 ? <>
-
                         <MKTypography variant="h3" fontWeight="bold">
                             The result is below:
                         </MKTypography>
-
                         {data.map((item) => {
                             return <FoodCard data={item} />
                         })} </> : null)}
@@ -416,21 +427,24 @@ function Content() {
                                 Please check the input text for errors.<br />
                                 Please try a different query term.<br />
                                 Please use the more common term.<br />
-                            </Alert></MKBox>}
+                            </Alert>
+                            </MKBox>}
                     </Grid>
                 </Stack>
+            </MKBox>
+            <MKBox item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }}  >
+                <FilledInfoCard
+                    title="Diabetic Exercise"
+                    description="you can explore your daily calorie.  This feature provides you with scientific plan and helps you to overcome diabete."
+                    action={{
+                        type: "internal",
+                        route: "/exercise",
+                        label: "Let's start"
+                    }}
+                />
             </MKBox>
         </MKBox>
     );
 }
-
-const top100Films = [
-    { label: "Acorns (Quercus emoryi), stewed with venison8" },
-    { label: "All-Bran (Kellogg's Inc., Canada)" },
-    { label: "All-Bran (Kellogg's, Battle Creek, MI, USA)" },
-    { label: "All-Bran (Kellogg's, Battle Creek, MI, USA), 14" },
-    { label: "All-Bran (Kellogg's, Pagewood, NSW, Australia)" },
-    { label: "All-Bran Fruit 'n Oats (Kellogg's, Australia)" }
-]
 
 export default Content;

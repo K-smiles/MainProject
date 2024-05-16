@@ -48,9 +48,10 @@ export default function App() {
           {getRoutes(routes)}
           <Route path="/home" element={<Home />} />
           <Route path="/diabetes" element={<Navigate to="/diabetes/type" />} />
+          <Route path="/diet" element={<Navigate to="/diet/recipe" />} />
+          <Route path="/exercise" element={<Navigate to="/exercise/outline" />} />
           <Route path="/recipe/detail/:id" element={<DiabeticDetail/>} />
           <Route path="*" element={<Navigate to="/home" />} />
-          
         </Routes>
       </ThemeProvider>
     </Provider>

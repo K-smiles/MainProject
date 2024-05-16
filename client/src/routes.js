@@ -12,7 +12,6 @@ import Model3d from "pages/model3d";
 import DiabeticMap from "pages/diabetesmap";
 import DiabeticRecipe from "pages/diet/recipe";
 import DiabeticFood from "pages/diet/food";
-
 import ExercisePage from "pages/exercise/outline"
 import DiabeticCalorie from "pages/exercise/calorie"
 
@@ -55,15 +54,7 @@ const routes = [
       },
     ],
   },
-  {
-    name: "Risk Calculator",
-    icon: <Icon>devices</Icon>,
-    columns: 1,
-    rowsPerColumn: 2,
-    route: "/calculator",
-    prefix: "/calculator",
-    component: <Calculator />,
-  },
+
   {
     name: "Model",
     icon: <ThreeDRotationIcon />,
@@ -72,6 +63,15 @@ const routes = [
     route: "/model",
     prefix: "/model",
     component: <Model3d />,
+  },
+  {
+    name: "Risk Calculator",
+    icon: <Icon>devices</Icon>,
+    columns: 1,
+    rowsPerColumn: 2,
+    route: "/calculator",
+    prefix: "/calculator",
+    component: <Calculator />,
   },
   {
     name: "Map",
@@ -115,12 +115,12 @@ const routes = [
       {
         collapse: [
           {
-            name: "Outline",
+            name: "Exercise Advice",
             route: "/exercise/outline",
             component: <ExercisePage />,
           },
           {
-            name: "Calorie",
+            name: "Exercise Plan",
             route: "/exercise/calorie",
             component: <DiabeticCalorie />,
           }

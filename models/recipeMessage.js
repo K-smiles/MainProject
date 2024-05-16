@@ -8,7 +8,6 @@ const recipeSchema = mongoose.Schema({
     CookTime: String,
     PrepTime: String,
     TotalTime: String,
-    RecipeCategory: String,
     Keywords: [String],
     RecipeIngredientParts: [String],
     AggregatedRating: String,

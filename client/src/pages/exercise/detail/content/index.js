@@ -5,7 +5,7 @@ import MKBox from "components/MKBox";
 
 import FilledInfoCard from "examples/Cards/InfoCards/FilledInfoCard";
 import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
-
+import NavigationButton from 'components/NavigationButton';
 import Divider from '@mui/material/Divider';
 
 // Icons
@@ -152,9 +152,7 @@ function Content() {
                     </TabPanel>
                 </Box>
             </MKBox>
-
-
-
+            <NavigationButton left="/diet/recipe" />
         </MKBox>
     );
 }

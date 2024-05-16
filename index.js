@@ -53,7 +53,7 @@ app.post('/foods/detect', (req, res, next) => {
   getKeyWord(req, res)
 })
 
-app.post('/add',(req,res)=>{
+app.post('/add', (req, res) => {
   //接收post请求参数
   res.send(req.body);
 })
@@ -73,37 +73,16 @@ app.get('/posts', (req, res, next) => {
 app.get('/foods', (req, res, next) => {
   let sql = 'select * from food_diabetes_measure'
   if (Object.keys(req.query).length != 0) {
-    console.log(req.query)
-    let addAnd = false;
     if (req.query["name"] != undefined && req.query["name"] != '') {
       sql = sql + ' where '
       sql = sql + "`food name` like " + "'%" + req.query["name"] + "%' "
-      sql = sql + "OR category like " + "'%" + req.query["name"] + "%' "
-      sql = sql + "OR sub_category like " + "'%" + req.query["name"] + "%' "
-      addAnd = true;
     }
-    if (req.query["category"] != undefined && req.query["category"] != '') {
-      if (addAnd) {
-        sql = sql + ' and '
-      } else {
-        sql = sql + ' where '
-      }
-      sql = sql + 'category = "' + req.query["category"] + '"'
-      addAnd = true;
-    }
+    sql = sql + ' limit ' + (req.query['page'] - 1) * req.query['pageNumber'] + ',' + (req.query['page']) * req.query['pageNumber']
 
-    if (req.query["subcategory"] != undefined && req.query["subcategory"] != '') {
-      if (addAnd) {
-        sql = sql + ' and '
-      } else {
-        sql = sql + ' where '
-      }
-      sql = sql + 'sub_category = "' + req.query["subcategory"] + '"'
-      addAnd = true;
-    }
   }
-
-  sql = sql + ' limit ' + (req.query['page'] - 1) * req.query['pageNumber'] + ',' + (req.query['page']) * req.query['pageNumber']
+  else {
+    sql = 'select `food name` as name from food_diabetes_measure'
+  }
   console.log(sql)
   queryData(sql, (err, users) => {
     if (err) {

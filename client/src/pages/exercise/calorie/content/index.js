@@ -50,8 +50,6 @@ function Content() {
         // },
     ]
 
-
-
     return (
         <MKBox bgColor="white" borderRadius="xl" shadow="lg"
             display="flex" flexDirection="column" justifyContent="center"
@@ -60,7 +58,7 @@ function Content() {
 
             <MKBox p={4} mx={2} borderRadius="xl" shadow="lg">
                 <MKTypography variant="h3" fontWeight="bold">
-                    EXERCISE PLAN: Not sure what exercise helps you the most? We can help you with a personalised exercise plan.
+                    EXERCISE PLAN: According to WHO guidelines for older adults, let’s design a customized weekly workout plan for you to keep yourself healthy!.
                 </MKTypography>
             </MKBox>
 
@@ -91,7 +89,8 @@ function Content() {
                             component="span" onClick={() => {
                                 setIsVisible(true)
                             }}><Typography variant='h2' color='blue'>
-                                Get your calorie</Typography></MKButton>
+                                Get your calorie
+                            </Typography></MKButton>
                     </Grid>
                 </Grid>
             </MKBox>
@@ -103,16 +102,15 @@ function Content() {
                     {/* display calorie by attribute */}
                     <Grid item xs={12}>
                         <MKBox xs={12}>
-
                             <Container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <Alert variant="filled" severity="info">
-                                        Your daily calorie is :  <Typography variant='h1'>{1.2 * ((10 * weight + 6.25 * height - 5 * age) + (gender == 'female' ? -161 : 5))}</Typography>
+                                        Your weekly calorie is :  <Typography variant='h1'>{7 * 1.2 * ((10 * weight + 6.25 * height - 5 * age) + (gender == 'female' ? -161 : 5))}</Typography>
                                     </Alert>
                                 </Grid>
                                 <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <Alert variant="filled" severity="info">
-                                        Your weekly calorie is : <Typography variant='h1'> {7 * 1.2 * ((10 * weight + 6.25 * height - 5 * age) + (gender == 'female' ? -161 : 5))}</Typography>
+                                        This is equivalent to : <Typography variant='h1'> {((7 * 1.2 * ((10 * weight + 6.25 * height - 5 * age) + (gender == 'female' ? -161 : 5))) / 300).toFixed(1)}</Typography>burgers
                                     </Alert>
                                 </Grid>
                             </Container>
@@ -137,9 +135,7 @@ function Content() {
             >
                 <Grid container direction="row" justifyContent="center" spacing={3} alignItems="center" mb={{ xs: 1, sm: 2, md: 3 }}>
                     <Grid item xs={12}>
-
                         <ExercisePlan />
-
                     </Grid>
                 </Grid>
             </MKBox>

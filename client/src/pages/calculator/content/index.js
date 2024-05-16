@@ -6,7 +6,7 @@ import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import Tablist from "./Tablist";
 import FilledInfoCard from "examples/Cards/InfoCards/FilledInfoCard";
-import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
+import Link from '@mui/material/Link';
 
 function Content() {
     return (
@@ -94,28 +94,33 @@ function Content() {
                         </MKBox>
                         <Grid item xs={12} md={8} ml={{ xs: "auto", lg: 30 }} mr={{ xs: "auto", lg: 30 }}  >
                             <FilledInfoCard
-                                icon={<ThreeDRotationIcon />}
-                                title="3D Interactive Mannequin"
-                                description="you can explore how different stages of diabetes affect your body.  This feature helps you understand the impact of diabetes at each stage, enhancing your ability to manage and mitigate its effects on your health effectively."
+                                title="Diabetic Map"
+                                description="you can explore how different hospitals.  This feature helps you find the closest hospital and provides you with GP Info."
                                 action={{
                                     type: "internal",
-                                    route: "/model",
+                                    route: "/map",
                                     label: "Let's start"
                                 }}
                             />
                         </Grid>
+    
+                    </MKBox>
+
+                    <MKBox bgColor="white" borderRadius="xl" shadow="lg" display="flex" flexDirection="column" justifyContent="center" >
                         <MKBox
-                            variant="gradient"
-                            bgColor="white"
-                            borderRadius="lg"
-                            p={2}
+                            mt={{ xs: 1, sm: 2, md: 3 }}
+                            mb={{ xs: 1, sm: 2, md: 3 }}
                             mx={2}
-                            mt={3}
                         >
+                            <Link target="_blank" href="https://www.health.gov.au/resources/apps-and-tools/the-australian-type-2-diabetes-risk-assessment-tool-ausdrisk/the-australian-type-2-diabetes-risk-assessment-tool-ausdrisk-non-interactive"
+                                color='info'>
+                                Link to reference</Link>
                         </MKBox>
                     </MKBox>
                 </Grid>
             </Grid>
+
+
         </MKBox>
     );
 }

@@ -39,6 +39,14 @@ export default function FoodCard({ data }) {
                         <Grid container direction="column" spacing={1} alignItems="flex-end">
                             <Grid item>
                                 <Typography component="span" sx={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+                                    GI_index_level:
+                                </Typography>
+                                <Typography component="span" sx={{ fontWeight: 'bold', fontSize: '1.5rem', color: getColorForGI(data['GI_index']) }}>
+                                    {data['GI_index_level']}
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Typography component="span" sx={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
                                     GI_index:
                                 </Typography>
                                 <Typography component="span" sx={{ fontWeight: 'bold', fontSize: '1.5rem', color: getColorForGI(data['GI_index']) }}>

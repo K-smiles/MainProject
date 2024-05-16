@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Grid, Box } from '@mui/material';
+import Link from '@mui/material/Link';
 
 import { TreeSelect, Select, Table, Button } from 'antd';
 
@@ -70,68 +71,32 @@ function ExerciseTable() {
         },
     };
 
-    //generate data
-    const generateData = () => {
-
-        let result = [];
-        days.forEach(day => {
-            let numExercises = Math.floor(Math.random() * fre) + 1;
-            if (numExercises > fre / 7) {
-                numExercises = Math.floor(fre / 7) + 1;
-            }
-            if (day == 'Sunday')
-                numExercises = fre
-            else {
-                fre = fre - numExercises
-            }
-            let tmpData = {}
-            let selectedExercises = [];
-
-            // Randomly select exercises for the day
-            for (let i = 0; i < numExercises; i++) {
-                const exercise = optionData[Math.floor(Math.random() * optionData.length)];
-                selectedExercises.push({ name: exercise.name, time: Math.floor(Math.random() * 60) });
-            }
-
-            // Add the selected exercises to the result
-            tmpData['name'] = day
-            tmpData['key'] = day
-
-            tmpData['type'] = selectedExercises.map((item) => {
-                return <Typography>
-                    Exercise Type:{item.name}  Duration:{item.time} min
-                </Typography>
-            })
-            result.push(tmpData)
-        });
-
-        return result;
-    }
-
     const handleChange = (value) => {
         setDay(value)
     };
     const generatePlan = () => {
         //generate data
         let exerciseType = []
-        value.forEach(item => {
 
-            if (item == 'moderate') {
-                exerciseType.push(...treeData[0].children)
-            } else if (item == 'intensity') {
-                exerciseType.push(...treeData[1].children)
-            }
-            else {
-                if (item < 8) {
-                    exerciseType.push(treeData[0].children[item - 1])
-                } else {
-                    exerciseType.push(treeData[1].children[item - 8])
+        if (value != undefined && value.length >= 3 && days != '') {
+            value.forEach(item => {
+                if (item == 'moderate') {
+                    exerciseType.push(...treeData[0].children)
+                } else if (item == 'intensity') {
+                    exerciseType.push(...treeData[1].children)
                 }
-            }
-        })
-        console.log(exerciseType)
-        getPlan(days, exerciseType)
-        setIsVisible(true)
+                else {
+                    if (item < 8) {
+                        exerciseType.push(treeData[0].children[item - 1])
+                    } else {
+                        exerciseType.push(treeData[1].children[item - 8])
+                    }
+                }
+            })
+            console.log(exerciseType)
+            getPlan(days, exerciseType)
+            setIsVisible(true)
+        }
     }
 
     const getPlan = (days, types) => {
@@ -211,14 +176,26 @@ function ExerciseTable() {
     return (
         <>
             <Grid container spacing={3} >
-                <Grid item xs={0} md={1} />
+                <Grid item xs={12}>
+                    <Typography p={3} variant='h3'>
+                        Select exercise types you want, and then choose how many days you exercise per week.
+                        <Typography variant='subtitle1'>
+
+                            <Link target="_blank" href="https://www.who.int/publications/i/item/9789240015128">
+                                WHO reference</Link>
+                        </Typography>
+                    </Typography>
+
+                </Grid>
+                <Grid item xs={0} md={2} />
                 <Grid item xs={12} md={6} >
                     <TreeSelect {...tProps} />
                 </Grid>
-                <Grid item xs={12} md={2}>
+                <Grid item xs={6} md={2}>
                     <Select
-                        style={{ width: 120 }}
+                        block
                         onChange={handleChange}
+                        placeholder='workout days per week'
                         options={[
                             { value: 3, label: '3' },
                             { value: 4, label: '4' },
@@ -228,11 +205,14 @@ function ExerciseTable() {
                         ]}
                     />
                 </Grid>
-                <Grid item xs={12} md={2} >
+                <Grid item xs={0} md={2} />
+                <Grid item xs={0} md={3} />
+                <Grid item xs={12} md={6} >
                     <Button type="primary" block onClick={generatePlan}>
-                        generate
+                        Generate your weekly workout plan
                     </Button>
                 </Grid>
+                <Grid item xs={0} md={3} />
                 {isVisible && <>
                     <Grid xs={0} md={2} />
                     <Grid item xs={12} md={8}>
