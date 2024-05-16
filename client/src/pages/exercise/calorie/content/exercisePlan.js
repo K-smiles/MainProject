@@ -190,7 +190,7 @@ function ExerciseTable() {
 
                 </Grid>
                 <Grid item xs={0} md={2} />
-                <Tooltip title="Choose 3 types of Exercise">
+                <Tooltip title="Choose more than 3 types of Exercise">
                 <Grid item xs={12} md={6} >
                         <TreeSelect {...tProps} />
                 </Grid>
