@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Grid, Box } from '@mui/material';
+import { Typography, Grid, Tooltip } from '@mui/material';
 import Link from '@mui/material/Link';
 
 import { TreeSelect, Select, Table, Button } from 'antd';
@@ -125,7 +125,7 @@ function ExerciseTable() {
             t1 = 30;
             t2 = 20;
         } else {
-            t2 = Math.ceil((Math.round((150 / (1.5 * moderate_number + 2 * intensity_number)) / 5) * 5))
+            t2 = Math.ceil(((Math.round((150 / (1.5 * moderate_number + 2 * intensity_number)) / 5) +1) * 5))
             t1 = 1.5 * t2;
         }
 
@@ -190,9 +190,11 @@ function ExerciseTable() {
 
                 </Grid>
                 <Grid item xs={0} md={2} />
+                <Tooltip title="Choose 3 types of Exercise">
                 <Grid item xs={12} md={6} >
-                    <TreeSelect {...tProps} />
+                        <TreeSelect {...tProps} />
                 </Grid>
+                </Tooltip>
                 <Grid item xs={6} md={2}>
                     <Select
                         block
