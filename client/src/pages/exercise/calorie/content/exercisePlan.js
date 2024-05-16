@@ -78,7 +78,7 @@ function ExerciseTable() {
         //generate data
         let exerciseType = []
 
-        if (value != undefined && value.length >= 3 && days != '') {
+        if (value != undefined) {
             value.forEach(item => {
                 if (item == 'moderate') {
                     exerciseType.push(...treeData[0].children)
@@ -93,6 +93,8 @@ function ExerciseTable() {
                     }
                 }
             })
+        }
+        if (exerciseType.length >= 3 && days != '') {
             console.log(exerciseType)
             getPlan(days, exerciseType)
             setIsVisible(true)
