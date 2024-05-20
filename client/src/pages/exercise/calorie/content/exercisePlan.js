@@ -181,7 +181,7 @@ function ExerciseTable() {
             t1 = 30;
             t2 = 20;
         } else {
-            t2 = Math.ceil((150 / (moderate_number + 1.5 * intensity_number)) / 5) * 5;
+            t2 = Math.ceil((150 / (1.5*moderate_number + 2 * intensity_number)) / 5) * 5;
             t1 = Math.ceil((1.5 * t2) / 5) * 5;
         }
         let newRes = []

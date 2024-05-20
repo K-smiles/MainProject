@@ -67,7 +67,7 @@ function Content() {
     }, [page]);
 
     const searchFood = () => {
-        let search = { name: name,gi:giLevel ,page: page, pageNumber: pageNumber }
+        let search = { name: name, gi: giLevel, page: page, pageNumber: pageNumber }
         console.log(search)
         //mock axios to get data
         axios({
@@ -105,23 +105,28 @@ function Content() {
                     <Grid item xs={12} md={4}>
                         <BackgroundBlogCard
                             image={picture1}
-                            title="What is GI value?"
-                            description="The GI value or glycaemic index is a measure of the effect of carbohydrates in food on blood glucose levels. Choosing low GI foods can help maintain stable blood glucose levels, which is especially important for managing metabolic conditions such as diabetes"
+                            title="What are GI and GL values?"
+                            description="Glycemic Index (GI) measures how quickly foods raise blood sugar levels. Glycemic Load (GL) expands on this by considering the amount of carbohydrates in a serving, providing a more practical assessment of food’s impact. While GI assesses speed, GL measures the actual effect on blood sugar. Choosing low GI and GL foods helps maintain stable glucose levels."
                         />
                     </Grid>
                     <Grid item xs={12} md={4}>
                         <BackgroundBlogCard
                             image={picture2}
-                            title="Medium GI foods (56 to 69):"
-                            description="These foods raise blood glucose relatively quickly, and when the body frequently digests and absorbs medium GI foods, it regularly triggers a rapid rise in blood glucose levels with reduced insulin sensitivity, which is a key factor in triggering diabetes."
+                            title="High, Medium, and Low GI Foods"
+
+                            description={
+                                <>
+                                    <p>The Glycemic Index (GI) sorts carbohydrates on a scale from 0 to 100 by their effect on blood sugar. High GI foods (70 or higher) quickly raise blood sugar and insulin. Medium GI foods (56-69) result in moderate increases. Low GI foods (55 or lower) promote slow, stable changes in blood sugar and insulin levels.</p><br />
+
+                                </>
+                            }
                         />
                     </Grid>
                     <Grid item xs={12} md={4}>
                         <BackgroundBlogCard
                             image={picture3}
-                            title="High GI foods (70 and above): "
-                            description="These foods increase blood glucose levels rapidly, and long-term consumption of these foods can lead to increased oxidative stress in the body, which can increase the risk of being overweight and developing diabetes and its complications."
-                        />
+                            title="High, Medium, and Low GL Level "
+                            description="Glycemic Load (GL) quantifies the blood sugar impact of a food portion, combining its carbohydrate content with its GI. High GL (20 or more) significantly raises blood sugar. Medium GL (11-19) moderately affects blood sugar levels. Low GL (10 or less) minimally influences blood sugar, supporting gradual, controlled changes, beneficial for glucose management." />
                     </Grid>
                 </Grid>
             </MKBox>
