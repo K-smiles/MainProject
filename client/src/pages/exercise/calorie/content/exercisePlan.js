@@ -110,25 +110,6 @@ function ExerciseTable() {
         else {
             exercise = types.slice(0, days);
         }
-        let moderate_number = 0
-        let intensity_number = 0
-        exercise.forEach((element) => {
-            if (element['met'] <= 6.0) {
-                moderate_number++;
-            } else {
-                intensity_number++;
-            }
-        });
-        let t1 = 0;
-        let t2 = 0;
-        if ((30 * moderate_number + 40 * intensity_number) > 150) {
-            t1 = 30;
-            t2 = 20;
-        } else {
-            t2 = Math.ceil(((Math.round((150 / (1.5 * moderate_number + 2 * intensity_number)) / 5) +1) * 5))
-            t1 = 1.5 * t2;
-        }
-
         let shedule;
         if (days === 3) {
             shedule = ['Monday', 'Wednesday', 'Friday'];
@@ -160,11 +141,40 @@ function ExerciseTable() {
             results.push({
                 key: day,
                 day: day,
-                info: <><Typography> {item1['title']}</Typography> <Typography> {item1['met'] <= 6.0 ? t1 : t2}min</Typography> </>,
+                title: item1['title'],
+                met: item1['met']
             })
         });
+        let moderate_number = 0
+        let intensity_number = 0
+        results.forEach((element) => {
+            if (element['met'] <= 6.0) {
+                moderate_number++;
+            } else {
+                intensity_number++;
+            }
+        });
+
+        let t1 = 0;
+        let t2 = 0;
+        if ((30 * moderate_number + 40 * intensity_number) >= 150) {
+            t1 = 30;
+            t2 = 20;
+        } else {
+            t2 = Math.ceil((150 / (moderate_number + 1.5 * intensity_number)) / 5) * 5;
+            t1 = Math.ceil((1.5 * t2) / 5) * 5;
+        }
+        let newRes = []
+        results.forEach((item1) => {
+            newRes.push({
+                key: item1.day,
+                day: item1.day,
+                info: <><Typography> {item1.title}</Typography> <Typography> {item1['met'] <= 6.0 ? t1 : t2}min</Typography> </>,
+            })
+
+        });
         console.log(results)
-        setData(results)
+        setData(newRes)
     }
 
     const shuffleArray = (array) => {
@@ -191,9 +201,9 @@ function ExerciseTable() {
                 </Grid>
                 <Grid item xs={0} md={2} />
                 <Tooltip title="Choose more than 3 types of Exercise">
-                <Grid item xs={12} md={6} >
+                    <Grid item xs={12} md={6} >
                         <TreeSelect {...tProps} />
-                </Grid>
+                    </Grid>
                 </Tooltip>
                 <Grid item xs={6} md={2}>
                     <Select

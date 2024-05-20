@@ -9,7 +9,17 @@ import Alert from '@mui/material/Alert';
 // import ExerciseType from './exerciseType';
 import ExercisePlan from './exercisePlan'
 
+import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard_new";
+import CenteredBlogCard from "examples/Cards/BlogCards/CenteredBlogCard_new";
+import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
 
+//icon
+import GroupWorkIcon from '@mui/icons-material/GroupWork';
+import SportsKabaddiIcon from '@mui/icons-material/SportsKabaddi';
+import SportsHandballIcon from '@mui/icons-material/SportsHandball';
+import WarningIcon from '@mui/icons-material/Warning';
+
+import picture5 from "assets/images/Motivation.jpg";
 
 function Content() {
     const [gender, setGender] = React.useState('')
@@ -139,6 +149,83 @@ function Content() {
                     </Grid>
                 </Grid>
             </MKBox>
+            <DefaultCounterCard
+                title="Guidelines for  Physical Activity"
+            />
+
+
+            <Grid container spacing={2} id="Tips" mt={2} padding="0 10%"> {/* Container with some spacing */}
+                <Grid item xs={12} md={8}> {/* Left side with four info cards */}
+                    <Grid container spacing={2}>
+                        {/* Two cards in the first row */}
+                        <Grid item xs={6} md={6} style={{ marginBottom: '18%' }}>
+                            <DefaultInfoCard
+                                icon={<GroupWorkIcon />}
+                                title="Maintaining Consistency :"
+                                description={
+                                    <>
+                                        <p>-Ensure a regular exercise routine.</p><br />
+                                        <p>-Balance intensity with adequate rest and recovery.</p><br />
+                                    </>
+                                }
+                            />
+                        </Grid>
+                        <Grid item xs={6} md={6} style={{ marginBottom: '18%' }}>
+                            <DefaultInfoCard
+                                icon={<SportsKabaddiIcon />}
+                                title="Resuming Activity :"
+                                description={
+                                    <>
+                                        <p>- Take a break during recovery.</p><br />
+                                        <p>- Restart at a lower intensity.</p><br />
+                                        <p>- Gradually increase to your previous level.</p><br />
+                                    </>
+                                }
+                            />
+                        </Grid>
+                        {/* Two cards in the second row */}
+                        <Grid item xs={6} md={6} style={{ marginBottom: '6%' }}>
+                            <DefaultInfoCard
+                                icon={<SportsHandballIcon />}
+                                title="Increasing Exercise :"
+                                description={
+                                    <>
+                                        <p>- Gradually increase the duration of  workouts.</p><br />
+                                        <p>- Aim to double the workout duration in your plan for extra health benefits.</p><br />
+                                    </>
+                                }
+                            />
+                        </Grid>
+                        <Grid item xs={6} md={6} style={{ marginBottom: '6%' }}>
+                            <DefaultInfoCard
+                                icon={<WarningIcon />}
+                                title="Avoiding Injury :"
+                                description={
+                                    <>
+                                        <p>- Be cautious when starting vigorous exercise.</p><br />
+                                        <p>- Progress gradually to prevent injury.</p><br />
+                                    </>
+                                }
+                            />
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid item xs={12} md={4}> {/* Right side with one larger rotating card */}
+                    <CenteredBlogCard
+                        image={picture5}
+                        title="Starting from Inactivity"
+                        description={
+
+                            <>
+                                <p>-Begin with short, light-intensity activities.</p><br />
+                                <p>-Gradually increase duration and frequency.</p><br />
+                                <p>-Light walking is a good start, then add moderate aerobics.</p><br />
+                                <p>-Avoid vigorous activities initially to prevent injury.</p>
+                            </>
+                        }
+                    />
+                </Grid>
+            </Grid>
         </MKBox>
     );
 }

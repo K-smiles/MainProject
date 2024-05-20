@@ -53,11 +53,6 @@ app.post('/foods/detect', (req, res, next) => {
   getKeyWord(req, res)
 })
 
-app.post('/add', (req, res) => {
-  //接收post请求参数
-  res.send(req.body);
-})
-
 app.get('/posts', (req, res, next) => {
   queryData('select * from diabetes_incidence_by_year', (err, users) => {
     console.log(err)
@@ -76,6 +71,10 @@ app.get('/foods', (req, res, next) => {
     if (req.query["name"] != undefined && req.query["name"] != '') {
       sql = sql + ' where '
       sql = sql + "`food name` like " + "'%" + req.query["name"] + "%' "
+    }
+    if (req.query["gi"] != undefined && req.query["gi"] != '') {
+      sql = sql + ' where '
+      sql = sql + "GI_index_level = " + "'" + req.query["gi"] + "' "
     }
     sql = sql + ' limit ' + (req.query['page'] - 1) * req.query['pageNumber'] + ',' + (req.query['page']) * req.query['pageNumber']
 
