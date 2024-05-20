@@ -80,7 +80,7 @@ function Content() {
     }
 
     const searchByAI = (keyWord) => {
-        let search = { name: keyWord, category: category, subcategory: subcategory, page: page, pageNumber: pageNumber }
+        let search = { name: keyWord, page: page, pageNumber: pageNumber }
         //mock axios to get data
         axios({
             method: 'get',

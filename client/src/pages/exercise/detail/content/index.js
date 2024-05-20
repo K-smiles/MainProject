@@ -144,7 +144,7 @@ function Content() {
                     <TabPanel value={value} index={1}>
                         {
                             data['RecipeInstructions'] != undefined && data['RecipeInstructions'].map((item, index) => {
-                                return <Typography variant='body1'>{index+1}. {item}</Typography>
+                                return <Typography variant='body1'>{index + 1}. {item}</Typography>
                             })}
                     </TabPanel>
                     <TabPanel value={value} index={2}>
