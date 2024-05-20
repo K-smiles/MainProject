@@ -58,7 +58,6 @@ export const getRecipes = async (req, res) => {
 
 export const getRecipe = async (req, res) => {
     const { id } = req.params;
-
     try {
         const recipe = await RecipeMessage.findOne({
             "RecipeId": parseInt(id)

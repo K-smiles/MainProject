@@ -106,13 +106,14 @@ function ExerciseTable() {
             })
         }
         if (exerciseType.length >= 3 && days != '') {
-            console.log(exerciseType)
+
             getPlan(days, exerciseType)
             setIsVisible(true)
         }
     }
 
     const getPlan = (days, types) => {
+
         let exercise = []
         shuffleArray(types)
         if (days >= types.length) {
@@ -121,6 +122,7 @@ function ExerciseTable() {
         else {
             exercise = types.slice(0, days);
         }
+
         let shedule;
         if (days === 3) {
             shedule = ['Monday', 'Wednesday', 'Friday'];
@@ -156,6 +158,7 @@ function ExerciseTable() {
                 met: item1['met']
             })
         });
+        console.log(results)
         let moderate_number = 0
         let intensity_number = 0
         results.forEach((element) => {
@@ -165,10 +168,16 @@ function ExerciseTable() {
                 intensity_number++;
             }
         });
-
+        console.log(moderate_number)
+        console.log(intensity_number)
         let t1 = 0;
         let t2 = 0;
-        if ((30 * moderate_number + 40 * intensity_number) >= 150) {
+        if (moderate_number == 0) {
+            t2 = Math.ceil((75 / (intensity_number)) / 5) * 5;
+        } else if (intensity_number == 0) {
+            t1 = Math.ceil((150 / (moderate_number)) / 5) * 5;
+        }
+        else if ((30 * moderate_number + 40 * intensity_number) >= 150) {
             t1 = 30;
             t2 = 20;
         } else {
@@ -176,6 +185,7 @@ function ExerciseTable() {
             t1 = Math.ceil((1.5 * t2) / 5) * 5;
         }
         let newRes = []
+
         results.forEach((item1) => {
             newRes.push({
                 key: item1.day,
@@ -184,7 +194,6 @@ function ExerciseTable() {
             })
 
         });
-        console.log(results)
         setData(newRes)
     }
 

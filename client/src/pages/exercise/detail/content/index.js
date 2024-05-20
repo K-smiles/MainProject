@@ -14,6 +14,8 @@ import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import StarsIcon from '@mui/icons-material/Stars';
 import axios from 'axios';
 import { Image } from 'antd';
+
+import RecommendationRecipe from './recommendation';
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
     return (
@@ -35,7 +37,7 @@ function TabPanel(props) {
 
 function Content() {
 
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState(3);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -46,7 +48,6 @@ function Content() {
 
     //load data
     React.useEffect(() => {
-
         axios({
             method: 'get',
             url: baseURL,
@@ -75,7 +76,7 @@ function Content() {
                     <FilledInfoCard
                         icon={<MoreTimeIcon />}
                         title="CookTime:"
-                        description={data['CookTime']}/>
+                        description={data['CookTime']} />
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <FilledInfoCard
@@ -103,6 +104,7 @@ function Content() {
                         <Tab label="Ingredient list" />
                         <Tab label="Steps" />
                         <Tab label="Raw material" />
+                        <Tab label="Recommendation" />
                     </Tabs>
                     <TabPanel value={value} index={0}>
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'left', justifyContent: 'center' }}>
@@ -149,6 +151,12 @@ function Content() {
                         {data['RecipeIngredientParts'] != undefined && data['RecipeIngredientParts'].map((item, index) => {
                             return <>  <Typography variant='h3'>{index}. {item}</Typography> <Divider component="li" /></>
                         })}
+                    </TabPanel>
+                    <TabPanel value={value} index={3}>
+                        {
+                        data['recipe_recommendation'] != undefined && 
+                        <RecommendationRecipe id1={data['recipe_recommendation'][0]} id2={data['recipe_recommendation'][1]} />
+                        }
                     </TabPanel>
                 </Box>
             </MKBox>
