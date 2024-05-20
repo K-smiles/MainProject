@@ -54,7 +54,6 @@ const routes = [
       },
     ],
   },
-
   {
     name: "Model",
     icon: <ThreeDRotationIcon />,

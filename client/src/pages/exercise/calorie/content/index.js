@@ -105,7 +105,7 @@ function Content() {
                             <Container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <Alert variant="filled" severity="info">
-                                        Your weekly calorie consumption :  <Typography variant='h1'>{7 * 1.2 * ((10 * weight + 6.25 * height - 5 * age) + (gender == 'female' ? -161 : 5))}</Typography>
+                                        Your weekly calorie burned without additional exercise:  <Typography variant='h1'>{7 * 1.2 * ((10 * weight + 6.25 * height - 5 * age) + (gender == 'female' ? -161 : 5))}</Typography>
                                     </Alert>
                                 </Grid>
                                 <Grid xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }}>

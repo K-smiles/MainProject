@@ -13,6 +13,7 @@ import recipeRouter from './routes/recipes.js';
 
 const __filenameNew = fileURLToPath(import.meta.url)
 const __dirnameNew = path.dirname(__filenameNew)
+
 const app = express()
 
 app.use(cors())
@@ -49,17 +50,16 @@ const getKeyWord = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 }
+
 app.post('/foods/detect', (req, res, next) => {
   getKeyWord(req, res)
 })
 
 app.get('/posts', (req, res, next) => {
   queryData('select * from diabetes_incidence_by_year', (err, users) => {
-    console.log(err)
     if (err) {
       res.send('query error')
     } else {
-      // 将 MySQL 查询结果作为路由返回值
       res.send(users)
     }
   })
@@ -82,7 +82,7 @@ app.get('/foods', (req, res, next) => {
   else {
     sql = 'select `food name` as name from food_diabetes_measure'
   }
-  console.log(sql)
+
   queryData(sql, (err, users) => {
     if (err) {
       res.send('query error')
@@ -93,43 +93,31 @@ app.get('/foods', (req, res, next) => {
 })
 
 app.get('/hospitals', (req, res, next) => {
-  /* 使用 connection.query 来执行 sql 语句 */
-  // 第一个参数为 sql 语句，可以透过 js 自由组合
-  // 第二个参数为回调函数，err 表示查询异常、第二个参数则为查询结果（这里的查询结果为多个用户行）
   queryData('select * from myhosp_data', (err, hospitals) => {
-
     if (err) {
       res.send('query error')
     } else {
-      // 将 MySQL 查询结果作为路由返回值
       res.send(hospitals)
     }
   })
 })
 
 app.get('/closest/:latitude/:longitude', (req, res, next) => {
-  /* 使用 connection.query 来执行 sql 语句 */
-  // 第一个参数为 sql 语句，可以透过 js 自由组合
-  // 第二个参数为回调函数，err 表示查询异常、第二个参数则为查询结果（这里的查询结果为多个用户行）
   const latitude = parseFloat(req.params.latitude);
   const longitude = parseFloat(req.params.longitude);
   let sql = 'SELECT *, Round((6371 * acos(cos(radians('
     + latitude +
     ')) * cos(radians(Latitude)) * cos(radians(Longitude) - radians(' + longitude + ')) + sin(radians('
     + latitude + ')) * sin(radians(Latitude)))),1) AS Distance FROM myhosp_data HAVING Distance < 50 ORDER BY Distance ASC LIMIT 10'
-  console.log(sql)
   queryData(sql, (err, users) => {
     if (err) {
       res.send('query error')
     } else {
-      console.log(users)
-      // 将 MySQL 查询结果作为路由返回值
       res.send(users)
     }
   })
 })
 
-//All remaining requests return the React app, so it can handle routing.
 app.get('*', function (request, response) {
   response.sendFile(path.resolve(__dirnameNew, 'client/build', 'index.html'));
 });
