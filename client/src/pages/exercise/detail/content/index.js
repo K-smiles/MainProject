@@ -37,7 +37,7 @@ function TabPanel(props) {
 
 function Content() {
 
-    const [value, setValue] = React.useState(3);
+    const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -144,18 +144,18 @@ function Content() {
                     <TabPanel value={value} index={1}>
                         {
                             data['RecipeInstructions'] != undefined && data['RecipeInstructions'].map((item, index) => {
-                                return <Typography variant='body1'>{index}. {item}</Typography>
+                                return <Typography variant='body1'>{index+1}. {item}</Typography>
                             })}
                     </TabPanel>
                     <TabPanel value={value} index={2}>
                         {data['RecipeIngredientParts'] != undefined && data['RecipeIngredientParts'].map((item, index) => {
-                            return <>  <Typography variant='h3'>{index}. {item}</Typography> <Divider component="li" /></>
+                            return <>  <Typography variant='h3'>{index + 1}. {item}</Typography> <Divider component="li" /></>
                         })}
                     </TabPanel>
                     <TabPanel value={value} index={3}>
                         {
-                        data['recipe_recommendation'] != undefined && 
-                        <RecommendationRecipe id1={data['recipe_recommendation'][0]} id2={data['recipe_recommendation'][1]} />
+                            data['recipe_recommendation'] != undefined &&
+                            <RecommendationRecipe id1={data['recipe_recommendation'][0]} id2={data['recipe_recommendation'][1]} />
                         }
                     </TabPanel>
                 </Box>
